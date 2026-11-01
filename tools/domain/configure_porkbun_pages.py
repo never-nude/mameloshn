@@ -150,8 +150,11 @@ class Porkbun:
         payload = {**record, "dryRun": dry_run}
         self.request(f"/dns/create/{DOMAIN}", method="POST", payload=payload)
 
-    def edit(self, record_id: str, record: dict[str, object]) -> None:
-        self.request(f"/dns/edit/{DOMAIN}/{record_id}", method="POST", payload=record)
+    def edit(
+        self, record_id: str, record: dict[str, object], *, dry_run: bool = False
+    ) -> None:
+        payload = {**record, "dryRun": dry_run}
+        self.request(f"/dns/edit/{DOMAIN}/{record_id}", method="POST", payload=payload)
 
     def delete(self, record_id: str) -> None:
         self.request(f"/dns/delete/{DOMAIN}/{record_id}", method="POST", payload={})
@@ -175,6 +178,16 @@ def wildcard_requires_manual_review(record: dict[str, object]) -> bool:
     if label != "*":
         return False
     return not (record_type == "CNAME" and content == PORKBUN_PARKING_CNAME)
+
+
+def records_conflict(left: dict[str, object], right: dict[str, object]) -> bool:
+    """Return whether two records cannot coexist at the same DNS label."""
+    left_label, left_type, _ = record_key(left)
+    right_label, right_type, _ = record_key(right)
+    if left_label != right_label:
+        return False
+    singleton_types = {"CNAME", "ALIAS", "ANAME"}
+    return left_type in singleton_types or right_type in singleton_types
 
 
 def describe(record: dict[str, object]) -> str:
@@ -217,7 +230,7 @@ def main() -> int:
     # Porkbun's parked apex A and www CNAME records into GitHub records without a
     # delete/create gap.
     for old_record in list(deletions):
-        old_label, old_type, _ = record_key(old_record)
+        old_label, old_type, old_content = record_key(old_record)
         if old_label == "*":
             continue
         replacement = next(
@@ -228,6 +241,23 @@ def main() -> int:
             ),
             None,
         )
+        # Porkbun parks the apex as an exclusive ALIAS. Convert only that exact
+        # known parking record into the first desired A so the apex never has a
+        # delete/create gap and the remaining A/AAAA records can coexist.
+        if (
+            replacement is None
+            and old_label == ""
+            and old_type in {"ALIAS", "ANAME", "CNAME"}
+            and old_content == PORKBUN_PARKING_CNAME
+        ):
+            replacement = next(
+                (
+                    record
+                    for record in creations
+                    if record_key(record)[:2] == ("", "A")
+                ),
+                None,
+            )
         if replacement is None:
             continue
         edits.append((old_record, replacement))
@@ -273,20 +303,63 @@ def main() -> int:
         print("error: Porkbun returned a mutable record without an ID; no writes made.", file=sys.stderr)
         return 3
 
-    try:
-        # Validate every create before making the first write.
-        for record in creations:
-            client.create(record, dry_run=True)
+    blocking_deletions = [
+        record
+        for record in deletions
+        if any(records_conflict(record, creation) for creation in creations)
+    ]
+    blocked_creations = [
+        record
+        for record in creations
+        if any(records_conflict(deletion, record) for deletion in blocking_deletions)
+    ]
+    early_creations = [record for record in creations if record not in blocked_creations]
+    trailing_deletions = [record for record in deletions if record not in blocking_deletions]
+    blocking_edits = [
+        (old_record, new_record)
+        for old_record, new_record in edits
+        if record_key(old_record)[1] != record_key(new_record)[1]
+    ]
+    normal_edits = [edit for edit in edits if edit not in blocking_edits]
 
-        # Add records that can coexist with parking, then edit matching records,
-        # and only then remove leftovers such as the known parking wildcard.
-        for record in creations:
-            client.create(record)
-            print(f"Created {describe(record)}")
+    try:
+        # Validate all edits before the first write. The only cross-type edit is
+        # the exact known Porkbun parking ALIAS converted to the first GitHub A.
         for old_record, new_record in edits:
+            client.edit(str(old_record["id"]), new_record, dry_run=True)
+
+        # Apply the parking conversion first. Once one GitHub A is live, the
+        # remaining apex A/AAAA records can be safely dry-run and created.
+        for old_record, new_record in blocking_edits:
             client.edit(str(old_record["id"]), new_record)
             print(f"Updated {describe(old_record)} -> {describe(new_record)}")
-        for record in deletions:
+
+        # Validate everything that can now coexist with the current zone.
+        for record in early_creations:
+            client.create(record, dry_run=True)
+
+        # Add records that can coexist and update reusable same-type records.
+        for record in early_creations:
+            client.create(record)
+            print(f"Created {describe(record)}")
+        for old_record, new_record in normal_edits:
+            client.edit(str(old_record["id"]), new_record)
+            print(f"Updated {describe(old_record)} -> {describe(new_record)}")
+
+        # Remove only known records that block the desired type, then validate
+        # and create their replacements immediately to minimize the gap.
+        for record in blocking_deletions:
+            client.delete(str(record["id"]))
+            print(f"Deleted {describe(record)}")
+        for record in blocked_creations:
+            client.create(record, dry_run=True)
+        for record in blocked_creations:
+            client.create(record)
+            print(f"Created {describe(record)}")
+
+        # Remove non-blocking leftovers, including Porkbun's parking wildcard,
+        # only after the replacement host records exist.
+        for record in trailing_deletions:
             client.delete(str(record["id"]))
             print(f"Deleted {describe(record)}")
 
