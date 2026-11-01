@@ -78,15 +78,17 @@ struct MameloshnWordmark: View {
             .frame(width: compact ? 34 : 42, height: compact ? 34 : 42)
 
             VStack(alignment: .leading, spacing: 0) {
-                Text("Mameloshn")
+                Text("Ziskeit")
                     .font(.system(compact ? .headline : .title3, design: .rounded, weight: .bold))
                     .foregroundStyle(AppTheme.ink)
                 if !compact {
-                    Text("Yiddish in your family’s voice")
+                    Text("ZISS-kite · “my sweet one”")
                         .font(.caption)
                         .foregroundStyle(AppTheme.secondaryInk)
                 }
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Ziskeit, pronounced ZISS-kite, my sweet one")
     }
 }

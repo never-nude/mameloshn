@@ -14,9 +14,9 @@ struct LearnView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     SectionHeading(
-                        "The first course",
-                        eyebrow: "Speak before grammar",
-                        subtitle: "Short lessons in a consistent Latin spelling, with Bessarabia–Odessa pronunciation notes where we can support them."
+                        "A path back to the family voice",
+                        eyebrow: "Words as a living thread",
+                        subtitle: "Move through short lessons in Latin letters, carrying each word into memory and family conversation."
                     )
 
                     LazyVGrid(columns: columns, alignment: .leading, spacing: 18) {
@@ -82,7 +82,7 @@ private struct LessonTile: View {
                 ProgressView(value: progress)
                     .tint(AppTheme.color(for: lesson.tone))
                 HStack {
-                    Text(progress == 1 ? "Complete" : "\(Int(progress * 100))% learned")
+                    Text(progress == 1 ? "Held in memory" : (progress > 0 ? "Continue the thread" : "Begin here"))
                     Spacer()
                     Image(systemName: progress == 1 ? "checkmark.circle.fill" : "arrow.right")
                 }
@@ -116,7 +116,7 @@ struct LessonDetailView: View {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Start the lesson")
                                     .font(.headline)
-                                Text("One prompt at a time · earn XP · about \(lesson.minutes) minutes")
+                                Text("One phrase at a time · about \(lesson.minutes) minutes")
                                     .font(.caption)
                                     .opacity(0.82)
                             }
@@ -148,7 +148,7 @@ struct LessonDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .cardSurface(padding: 16)
 
-                    Text("PHRASE REFERENCE")
+                    Text("PHRASES TO CARRY")
                         .font(.caption.weight(.bold))
                         .tracking(1.1)
                         .foregroundStyle(AppTheme.secondaryInk)
@@ -163,7 +163,7 @@ struct LessonDetailView: View {
                         model.markLessonComplete(lesson)
                     } label: {
                         Label(
-                            model.progress(for: lesson) == 1 ? "Lesson learned" : "Mark the lesson learned",
+                            model.progress(for: lesson) == 1 ? "Words added to Remember" : "Keep these words in Remember",
                             systemImage: model.progress(for: lesson) == 1 ? "checkmark.circle.fill" : "checkmark.circle"
                         )
                         .font(.headline)
@@ -237,7 +237,7 @@ private struct PhraseLearningCard: View {
                         .foregroundStyle(model.isLearned(phrase) ? AppTheme.sage : AppTheme.paperDeep)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel(model.isLearned(phrase) ? "Mark as not learned" : "Mark as learned")
+                .accessibilityLabel(model.isLearned(phrase) ? "Remove phrase from Remember" : "Keep phrase in Remember")
             }
 
             Divider().opacity(0.55)

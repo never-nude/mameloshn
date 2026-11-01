@@ -1,9 +1,10 @@
-const CACHE_NAME = "mameloshn-web-v3";
+const CACHE_NAME = "mameloshn-web-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./styles.css",
   "./course-data.js",
+  "./conversation-data.js",
   "./app.js",
   "./manifest.webmanifest",
   "./assets/icon-180.png",
@@ -35,6 +36,12 @@ self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
+
+  // Media elements may ask for byte ranges. Never cache a partial response as the full clip.
+  if (event.request.headers.has("range")) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
 
   if (event.request.mode === "navigate") {
     event.respondWith(

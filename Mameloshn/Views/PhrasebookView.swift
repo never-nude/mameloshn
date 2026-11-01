@@ -95,6 +95,7 @@ private struct PhrasebookRow: View {
                     .foregroundStyle(model.isLearned(phrase) ? AppTheme.sage : AppTheme.paperDeep)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(model.isLearned(phrase) ? "Remove phrase from Remember" : "Keep phrase in Remember")
         }
         .cardSurface(padding: 15)
     }

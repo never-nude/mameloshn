@@ -1,7 +1,7 @@
 {
-  "name": "Mameloshn — Yiddish in your family’s voice",
-  "short_name": "Mameloshn",
-  "description": "A Latin-letter Yiddish course shaped around family roots from Bessarabia to Odessa.",
+  "name": "Ziskeit — Yiddish in your family’s voice",
+  "short_name": "Ziskeit",
+  "description": "Warm family conversations and spoken Yiddish in Latin letters, shaped around roots from Bessarabia to Odessa.",
   "id": "./",
   "start_url": "./#home",
   "scope": "./",

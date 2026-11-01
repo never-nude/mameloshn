@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; media-src 'self' blob:; manifest-src 'self'; worker-src 'self'">
     <meta name="theme-color" content="#f6f0e2">
-    <meta name="description" content="Learn spoken Yiddish in Latin letters, with a family-centered Bessarabia–Odessa course.">
+    <meta name="description" content="Learn warm, spoken family Yiddish through short conversations in Latin letters, shaped by roots from Bessarabia to Odessa.">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Mameloshn">
-    <meta property="og:title" content="Mameloshn — Yiddish in your family’s voice">
-    <meta property="og:description" content="A free, private, Latin-letter Yiddish course shaped around Bessarabia and Odessa.">
+    <meta name="apple-mobile-web-app-title" content="Ziskeit">
+    <meta property="og:title" content="Ziskeit — Yiddish in your family’s voice">
+    <meta property="og:description" content="A warm, private course for learning conversational family Yiddish in Latin letters, shaped around Bessarabia and Odessa.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://never-nude.github.io/mameloshn/">
     <meta property="og:image" content="https://never-nude.github.io/mameloshn/assets/icon-512.png">
-    <title>Mameloshn — Learn your family’s Yiddish</title>
+    <title>Ziskeit — Learn your family’s Yiddish</title>
     <link rel="canonical" href="https://never-nude.github.io/mameloshn/">
     <link rel="icon" href="assets/icon-192.png">
     <link rel="apple-touch-icon" href="assets/icon-180.png">
@@ -22,15 +22,15 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to lesson content</a>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <div class="app-shell" id="app-shell">
       <aside class="sidebar" aria-label="Main navigation">
-        <button class="wordmark wordmark-button" type="button" data-go="home" aria-label="Mameloshn home">
+        <button class="wordmark wordmark-button" type="button" data-go="home" aria-label="Ziskeit home">
           <img src="assets/icon-192.png" alt="" width="46" height="46">
           <span>
-            <strong>Mameloshn</strong>
-            <small>Yiddish in your family’s voice</small>
+            <strong>Ziskeit</strong>
+            <small>ZISS-kite · your family’s Yiddish</small>
           </span>
         </button>
 
@@ -44,11 +44,10 @@
       </aside>
 
       <header class="mobile-header">
-        <button class="wordmark wordmark-button compact" type="button" data-go="home" aria-label="Mameloshn home">
+        <button class="wordmark wordmark-button compact" type="button" data-go="home" aria-label="Ziskeit home">
           <img src="assets/icon-192.png" alt="" width="38" height="38">
-          <span><strong>Mameloshn</strong><small>Latin letters only</small></span>
+          <span><strong>Ziskeit</strong><small>ZISS-kite · Latin letters only</small></span>
         </button>
-        <div class="mobile-xp" aria-label="Total experience points"><span aria-hidden="true">★</span> <b id="header-xp">0</b></div>
       </header>
 
       <main id="main-content" tabindex="-1"></main>
@@ -63,10 +62,11 @@
     <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
 
     <noscript>
-      <div class="noscript">Mameloshn needs JavaScript for lessons, practice, and locally saved progress.</div>
+      <div class="noscript">Ziskeit needs JavaScript for conversations, lessons, practice, and locally saved progress.</div>
     </noscript>
 
     <script src="course-data.js"></script>
+    <script src="conversation-data.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

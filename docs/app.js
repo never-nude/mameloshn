@@ -4,15 +4,20 @@
   const lessons = Array.isArray(window.MAMELOSHN_LESSONS)
     ? window.MAMELOSHN_LESSONS
     : [];
+  const conversations = Array.isArray(window.MAMELOSHN_CONVERSATIONS)
+    ? window.MAMELOSHN_CONVERSATIONS
+    : [];
   const config = window.MAMELOSHN_COURSE_CONFIG || {};
   const STORAGE_KEY = "mameloshn.learning-state.v1";
   const NAV_ITEMS = [
     { id: "home", label: "Home", icon: "⌂" },
+    { id: "talk", label: "Zog mir", shortLabel: "Talk", icon: "◖" },
     { id: "learn", label: "Learn", icon: "▤" },
     { id: "practice", label: "Practice", icon: "◆" },
     { id: "phrasebook", label: "Phrasebook", icon: "≡" },
     { id: "family", label: "Family words", shortLabel: "Family", icon: "♥" },
   ];
+  const BOTTOM_NAV_ITEMS = NAV_ITEMS.filter((item) => item.id !== "phrasebook");
   const TONE_COLORS = {
     plum: "#53284d",
     beet: "#9e2536",
@@ -30,7 +35,6 @@
   const toastRegion = document.querySelector("#toast-region");
   const storageWarning = document.querySelector("#storage-warning");
   const sidebarRoots = document.querySelector("#sidebar-roots");
-  const headerXP = document.querySelector("#header-xp");
 
   let storageAvailable = true;
   let storageWarningShown = false;
@@ -41,10 +45,18 @@
     practice: null,
     phraseQuery: "",
     lessonDetail: null,
+    conversation: null,
     modal: null,
     lastFocused: null,
   };
-  let voices = [];
+  let activeAudio = null;
+  let activePlaybackAbort = null;
+  let mediaToken = 0;
+  let conversationSequenceToken = 0;
+  let mediaRecorder = null;
+  let mediaStream = null;
+  let recordingChunks = [];
+  let recordingRequestToken = 0;
 
   const coreEntries = lessons.flatMap((lesson) =>
     lesson.phrases.map((phrase) => ({ lesson, phrase }))
@@ -52,10 +64,10 @@
 
   if (!storageAvailable) storageWarning.hidden = false;
   buildNavigation();
-  resetDailyXPIfNeeded();
   bindEvents();
-  loadSpeechVoices();
   render();
+  const initialConversationID = conversationIDFromHash();
+  if (initialConversationID) openConversation(initialConversationID, false);
 
   if (!state.hasSeenWelcome) {
     openWelcome();
@@ -77,10 +89,6 @@
       familyPhrases: [],
       familyRoots: config.heritageTrack || "Bessarabia–Odessa",
       hasSeenWelcome: false,
-      totalXP: 0,
-      dailyXP: 0,
-      currentStreak: 0,
-      lastActiveDay: null,
     };
   }
 
@@ -116,11 +124,6 @@
           ? candidate.familyRoots
           : base.familyRoots,
       hasSeenWelcome: Boolean(candidate.hasSeenWelcome),
-      totalXP: safeNumber(candidate.totalXP),
-      dailyXP: safeNumber(candidate.dailyXP),
-      currentStreak: safeNumber(candidate.currentStreak),
-      lastActiveDay:
-        typeof candidate.lastActiveDay === "string" ? candidate.lastActiveDay : null,
     };
   }
 
@@ -151,11 +154,6 @@
     }
   }
 
-  function safeNumber(value) {
-    const number = Number(value);
-    return Number.isFinite(number) && number >= 0 ? Math.floor(number) : 0;
-  }
-
   function buildNavigation() {
     const markup = NAV_ITEMS.map(
       (item) => `
@@ -165,7 +163,7 @@
         </button>`
     ).join("");
     sideNav.innerHTML = markup;
-    bottomNav.innerHTML = NAV_ITEMS.map(
+    bottomNav.innerHTML = BOTTOM_NAV_ITEMS.map(
       (item) => `
         <button class="nav-button" type="button" data-go="${item.id}" data-nav="${item.id}">
           <span class="nav-icon" aria-hidden="true">${item.icon}</span>
@@ -197,21 +195,13 @@
         handleAction(action, event.target);
       }
     });
-    window.addEventListener("hashchange", () => {
-      const next = sectionFromHash(ui.section);
-      if (next !== ui.section) {
-        ui.section = next;
-        ui.session = null;
-        ui.lessonDetail = null;
-        document.body.classList.remove("in-session");
-        window.speechSynthesis?.cancel?.();
-        if (next !== "practice") ui.practice = null;
-        render();
-        focusMain();
-      }
-    });
+    window.addEventListener("hashchange", syncRouteFromHash);
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden) window.speechSynthesis?.cancel?.();
+      if (document.hidden) cancelPlayback();
+    });
+    window.addEventListener("pagehide", () => {
+      cancelPlayback();
+      cleanupRecording(true);
     });
   }
 
@@ -239,6 +229,12 @@
       ui.lessonDetail = lessonDetailButton.dataset.openLesson;
       render();
       focusMain();
+      return;
+    }
+
+    const conversationButton = event.target.closest("[data-open-conversation]");
+    if (conversationButton) {
+      openConversation(conversationButton.dataset.openConversation);
       return;
     }
 
@@ -286,15 +282,27 @@
         state.hasSeenWelcome = true;
         saveState();
         closeModal();
-        go("learn");
+        if (ui.conversation) {
+          renderConversationSession();
+          focusMain();
+        } else {
+          go("talk");
+        }
         break;
       case "close-modal":
         closeModal();
         break;
       case "exit-session":
         ui.session = null;
-        window.speechSynthesis?.cancel?.();
+        cancelPlayback();
         document.body.classList.remove("in-session");
+        render();
+        focusMain();
+        break;
+      case "exit-conversation":
+        cleanupConversation();
+        document.body.classList.remove("in-session");
+        window.history.replaceState(null, "", "#talk");
         render();
         focusMain();
         break;
@@ -308,39 +316,64 @@
       case "play-slow": {
         const entry = findEntry(button.dataset.phraseId);
         if (entry) {
-          const didSpeak = speak(entry.phrase, action === "play-slow");
-          const challenge = ui.session?.challenges?.[ui.session.index];
-          if (
-            challenge?.mode?.id === "listenForMeaning" &&
-            challenge.phraseID === entry.phrase.id
-          ) {
-            if (didSpeak) {
-              ui.session.audioPlayed = true;
-            } else {
-              const fallback = config.challengeModes?.find(
-                (item) =>
-                  item.id === (config.nonSpeakableListenFallback || "readForMeaning")
-              );
-              if (fallback) challenge.mode = fallback;
-            }
-            renderSession();
-            requestAnimationFrame(() => {
-              if (didSpeak) {
-                document
-                  .querySelector(
-                    `[data-action="${action}"][data-phrase-id="${CSS.escape(
-                      entry.phrase.id
-                    )}"]`
-                  )
-                  ?.focus();
+          markAudioButton(button, true);
+          playPhraseReference(entry.phrase, action === "play-slow").then((didPlay) => {
+            markAudioButton(button, false);
+            const challenge = ui.session?.challenges?.[ui.session.index];
+            if (
+              challenge?.mode?.id === "listenForMeaning" &&
+              challenge.phraseID === entry.phrase.id
+            ) {
+              if (didPlay) {
+                ui.session.audioPlayed = true;
               } else {
-                document.querySelector("#session-question-title")?.focus();
+                const fallback = config.challengeModes?.find(
+                  (item) =>
+                    item.id === (config.nonSpeakableListenFallback || "readForMeaning")
+                );
+                if (fallback) challenge.mode = fallback;
               }
-            });
-          }
+              renderSession();
+              requestAnimationFrame(() => {
+                if (didPlay) {
+                  document
+                    .querySelector(
+                      `[data-action="${action}"][data-phrase-id="${CSS.escape(
+                        entry.phrase.id
+                      )}"]`
+                    )
+                    ?.focus();
+                } else {
+                  document.querySelector("#session-question-title")?.focus();
+                }
+              });
+            }
+          });
         }
         break;
       }
+      case "play-conversation-line":
+      case "play-conversation-line-slow":
+        playCurrentConversationLine(action.endsWith("slow"), button);
+        break;
+      case "play-exchange":
+        playConversationExchange(button);
+        break;
+      case "previous-conversation-line":
+        moveConversationLine(-1);
+        break;
+      case "next-conversation-line":
+        moveConversationLine(1);
+        break;
+      case "start-recording":
+        startRecording();
+        break;
+      case "stop-recording":
+        stopRecording();
+        break;
+      case "discard-take":
+        discardTake();
+        break;
       case "show-written-prompt": {
         const challenge = ui.session?.challenges?.[ui.session.index];
         const fallback = config.challengeModes?.find(
@@ -395,12 +428,13 @@
 
   function go(section) {
     if (!NAV_ITEMS.some((item) => item.id === section)) section = "home";
+    cleanupConversation();
     if (ui.session) {
       ui.session = null;
       document.body.classList.remove("in-session");
     }
     ui.lessonDetail = null;
-    window.speechSynthesis?.cancel?.();
+    cancelPlayback();
     ui.section = section;
     if (section !== "practice") ui.practice = null;
     const nextHash = `#${section}`;
@@ -418,6 +452,56 @@
     return NAV_ITEMS.some((item) => item.id === value) ? value : "home";
   }
 
+  function conversationIDFromHash() {
+    const [section, encodedID] = window.location.hash.replace(/^#/, "").split("/");
+    if (section !== "talk" || !encodedID) return null;
+    try {
+      return decodeURIComponent(encodedID);
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function syncRouteFromHash() {
+    const rawHash = window.location.hash.replace(/^#/, "");
+    if (rawHash === "main-content") return;
+    const next = sectionFromHash(ui.section);
+    const conversationID = conversationIDFromHash();
+
+    if (next === "talk" && conversationID) {
+      if (ui.conversation?.id !== conversationID) {
+        if (!openConversation(conversationID, false)) {
+          cleanupConversation();
+          ui.section = "talk";
+          window.history.replaceState(null, "", "#talk");
+          render();
+          focusMain();
+        }
+      }
+      return;
+    }
+
+    if (next === ui.section) {
+      if (ui.conversation) {
+        cleanupConversation();
+        document.body.classList.remove("in-session");
+        render();
+        focusMain();
+      }
+      return;
+    }
+
+    cleanupConversation();
+    ui.section = next;
+    ui.session = null;
+    ui.lessonDetail = null;
+    document.body.classList.remove("in-session");
+    cancelPlayback();
+    if (next !== "practice") ui.practice = null;
+    render();
+    focusMain();
+  }
+
   function render() {
     if (!lessons.length) {
       main.innerHTML = `<section class="page"><div class="card empty-state"><h1>Course data could not load</h1><p>Refresh the page to try again.</p></div></section>`;
@@ -425,9 +509,13 @@
     }
 
     updateChrome();
-    document.body.classList.toggle("in-session", Boolean(ui.session));
+    document.body.classList.toggle("in-session", Boolean(ui.session || ui.conversation));
     if (ui.session) {
       renderSession();
+      return;
+    }
+    if (ui.conversation) {
+      renderConversationSession();
       return;
     }
 
@@ -435,6 +523,9 @@
       case "learn":
         if (ui.lessonDetail) renderLessonDetail(ui.lessonDetail);
         else renderLearn();
+        break;
+      case "talk":
+        renderTalk();
         break;
       case "practice":
         ensurePractice();
@@ -459,11 +550,9 @@
       else button.removeAttribute("aria-current");
     });
     sidebarRoots.textContent = state.familyRoots.trim() || config.heritageTrack;
-    headerXP.textContent = state.totalXP;
   }
 
   function renderHome() {
-    const progress = overallProgress();
     const nextLesson = lessons.find((lesson) => lessonProgress(lesson) < 1);
     const due = dueEntries().length;
     const roots = state.familyRoots.trim() || config.heritageTrack;
@@ -471,18 +560,26 @@
       <section class="page">
         <header class="page-header">
           <div class="page-title">
-            <span class="eyebrow">Your Yiddish today</span>
+            <span class="eyebrow">A return to your roots</span>
             <h1>Sholem aleykhem</h1>
-            <p>A few spoken phrases at a time—always in Latin letters.</p>
+            <p>Come back to the language through voices, memories, and small expressions of care—always in Latin letters.</p>
           </div>
-          ${progressRing(progress)}
         </header>
 
-        <div class="metric-grid" aria-label="Your learning progress">
-          ${metric("♨", state.currentStreak, state.currentStreak === 1 ? "day" : "days", "#8c422e")}
-          ${metric("★", state.totalXP, "total XP", "#a76509")}
-          ${metric("◎", `${state.dailyXP}/${config.dailyGoal || 50}`, "today", "#356148")}
+        <div class="roots-path-card">
+          <span class="roots-path-mark" aria-hidden="true">⌖</span>
+          <div><span class="eyebrow">${esc(roots)}</span><strong>A language carried through people</strong><p>Each phrase is a way back: hear it, understand what it carries, and make room for your family’s own version.</p></div>
         </div>
+
+        <button class="talk-hero" type="button" data-go="talk">
+          <span class="talk-hero-icon" aria-hidden="true">“</span>
+          <span class="talk-hero-copy">
+            <span class="eyebrow">Zog mir · Speak with me</span>
+            <strong>A real little exchange</strong>
+            <span>Hear the feeling, answer aloud, and listen back—one family moment at a time.</span>
+          </span>
+          <span class="talk-hero-action" aria-hidden="true">→</span>
+        </button>
 
         ${
           nextLesson
@@ -508,13 +605,13 @@
 
           <article class="card feature-card">
             <div class="feature-topline">
-              <span class="pill" style="--tone:var(--sage)">◆ ${due} ready</span>
+              <span class="pill" style="--tone:var(--sage)">◆ Return gently</span>
               <span class="eyebrow">Recall</span>
             </div>
             <h2>${due ? "A short review is waiting" : "Build a memory worth keeping"}</h2>
             <p>${
               due
-                ? "Rate each phrase Again, Good, or Easy. The next review adjusts to what you remember."
+                ? "Return to the phrases that are fading and let them become familiar again."
                 : "Complete a lesson, then spaced review will bring each phrase back at the right time."
             }</p>
             <button class="plain-link" type="button" data-go="${due ? "practice" : "learn"}">${
@@ -523,20 +620,8 @@
           </article>
         </div>
 
-        <p class="notice"><span class="notice-icon" aria-hidden="true">ⓘ</span><span><strong>Rough audio</strong> uses your browser’s approximate voice. Progress and family words stay in this browser. You can make a backup from Family words.</span></p>
+        <p class="notice"><span class="notice-icon" aria-hidden="true">ⓘ</span><span><strong>Pronunciation reference</strong> uses the same fixed voice clips on every device. Missing clips stay silent instead of switching to a harsh browser voice. Your recordings stay in this tab and disappear when you leave the exchange.</span></p>
       </section>`;
-  }
-
-  function metric(icon, value, label, tone) {
-    return `<div class="card metric" style="--tone:${tone}">
-      <span class="metric-icon" aria-hidden="true">${icon}</span>
-      <span class="metric-copy"><strong>${esc(String(value))}</strong><span>${esc(label)}</span></span>
-    </div>`;
-  }
-
-  function progressRing(progress) {
-    const percent = Math.round(progress * 100);
-    return `<div class="progress-ring" style="--progress:${percent * 3.6}deg" role="img" aria-label="${percent} percent complete"><strong>${percent}%</strong></div>`;
   }
 
   function continueCard(lesson) {
@@ -544,7 +629,7 @@
     return `<button class="continue-card" type="button" data-start-lesson="${escAttr(lesson.id)}">
       <span class="lesson-glyph" aria-hidden="true">${lessonGlyph(lesson)}</span>
       <span class="continue-copy">
-        <span class="eyebrow">${started ? "Continue" : "Today"} · Lesson ${lesson.number}</span>
+        <span class="eyebrow">${started ? "Return" : "Begin here"} · Lesson ${lesson.number}</span>
         <h2>${esc(lesson.title)}</h2>
         <p>${esc(lesson.subtitle)}</p>
         <small>${esc(reasonForLesson(lesson))}</small>
@@ -576,15 +661,253 @@
     );
   }
 
+  function renderTalk() {
+    main.innerHTML = `<section class="page talk-page">
+      <header class="page-header talk-heading">
+        <div class="page-title">
+          <span class="eyebrow">Zog mir · Speak with me</span>
+          <h1>Learn it as a conversation</h1>
+          <p>Short exchanges with the warmth, worry, teasing, and rhythm a family phrase carries. Hear a line, answer it, then listen to yourself.</p>
+        </div>
+        <button class="secondary-button" type="button" data-go="phrasebook">Open phrasebook</button>
+      </header>
+
+      <div class="conversation-grid">
+        ${
+          conversations.length
+            ? conversations.map(conversationCard).join("")
+            : `<div class="card empty-state"><h2>Conversation scenes could not load</h2><p>Refresh the page to try again.</p></div>`
+        }
+      </div>
+
+      <p class="notice"><span class="notice-icon" aria-hidden="true">⌖</span><span>The pronunciation cues are broad Southeastern candidates for the Bessarabia–Odessa family route. Your aunt’s or family’s remembered version has the final word.</span></p>
+    </section>`;
+  }
+
+  function conversationCard(conversation, index) {
+    const firstGuideLine =
+      conversation.lines.find((line) => line.speaker === "Guide") || conversation.lines[0];
+    return `<button class="card conversation-card" type="button" data-open-conversation="${escAttr(
+      conversation.id
+    )}">
+      <span class="conversation-number" aria-hidden="true">${String(index + 1).padStart(
+        2,
+        "0"
+      )}</span>
+      <span class="conversation-card-copy">
+        <span class="conversation-meta"><span>${esc(conversation.mood)}</span><span>${
+          conversation.lines.length
+        } lines</span></span>
+        <strong>${esc(conversation.title)}</strong>
+        <span>${esc(conversation.setting)}</span>
+        <q>${esc(firstGuideLine.transliteration)}</q>
+      </span>
+      <span class="conversation-arrow" aria-hidden="true">→</span>
+    </button>`;
+  }
+
+  function openConversation(conversationID, updateHash = true) {
+    const conversation = conversations.find((item) => item.id === conversationID);
+    if (!conversation) return false;
+    cleanupConversation();
+    ui.section = "talk";
+    ui.session = null;
+    ui.lessonDetail = null;
+    ui.conversation = {
+      id: conversationID,
+      index: 0,
+      recording: false,
+      recordingPending: false,
+      takeUrl: null,
+      takeLineID: null,
+      recordingError: "",
+    };
+    document.body.classList.add("in-session");
+    const nextHash = `#talk/${conversationID}`;
+    if (updateHash && window.location.hash !== nextHash) {
+      window.history.replaceState(null, "", nextHash);
+    }
+    updateChrome();
+    renderConversationSession();
+    window.scrollTo({ top: 0 });
+    focusMain();
+    return true;
+  }
+
+  function currentConversation() {
+    if (!ui.conversation) return null;
+    return conversations.find((item) => item.id === ui.conversation.id) || null;
+  }
+
+  function renderConversationSession() {
+    const conversation = currentConversation();
+    if (!conversation) {
+      cleanupConversation();
+      return renderTalk();
+    }
+    const index = Math.min(ui.conversation.index, conversation.lines.length - 1);
+    const line = conversation.lines[index];
+    const progress = ((index + 1) / conversation.lines.length) * 100;
+    const isYourTurn = line.speaker === "You";
+    const hasTake =
+      ui.conversation.takeUrl && ui.conversation.takeLineID === line.id;
+    const guide = guideName(conversation);
+    const speaker = isYourTurn ? "You" : guide;
+
+    document.body.classList.add("in-session");
+    main.innerHTML = `<section class="session-page conversation-session">
+      <header class="session-header">
+        <button class="icon-button" type="button" data-action="exit-conversation" aria-label="Leave this conversation">×</button>
+        <div class="session-progress" role="progressbar" aria-label="Conversation progress" aria-valuemin="1" aria-valuemax="${
+          conversation.lines.length
+        }" aria-valuenow="${index + 1}"><span style="--width:${progress}%"></span></div>
+        <span class="conversation-counter">${index + 1}/${conversation.lines.length}</span>
+      </header>
+
+      <div class="conversation-scene-head">
+        <div>
+          <span class="eyebrow">${esc(conversation.mood)}</span>
+          <h1>${esc(conversation.title)}</h1>
+          <p>${esc(conversation.setting)}</p>
+        </div>
+        <button class="secondary-button exchange-button" type="button" data-action="play-exchange">▶ Hear the exchange</button>
+      </div>
+
+      <article class="card dialogue-card ${isYourTurn ? "your-turn" : "guide-turn"}" aria-labelledby="dialogue-line">
+        <div class="speaker-row">
+          <span class="speaker-avatar" aria-hidden="true">${isYourTurn ? "Y" : esc(
+            guide.slice(0, 1)
+          )}</span>
+          <div><span class="speaker-name">${esc(speaker)}</span><span class="speaker-intent">${esc(
+            line.emotion
+          )}</span></div>
+          <span class="turn-label">${isYourTurn ? "Your turn" : "Listen first"}</span>
+        </div>
+
+        <div class="dialogue-copy">
+          <h2 id="dialogue-line" tabindex="-1">${esc(line.transliteration)}</h2>
+          <p class="dialogue-meaning">${esc(line.meaning)}</p>
+          <p class="dialogue-pronunciation"><span>Say it like</span>${esc(
+            line.pronunciation
+          )}</p>
+          <div class="rhythm-row" aria-label="Rhythm chunks">
+            ${line.rhythmChunks
+              .map((chunk) => `<span>${esc(chunk)}</span>`)
+              .join(`<i aria-hidden="true">·</i>`)}
+          </div>
+        </div>
+
+        <div class="dialogue-actions">
+          <button class="primary-button" type="button" data-action="play-conversation-line">▶ Natural pace</button>
+          <button class="secondary-button" type="button" data-action="play-conversation-line-slow">◷ Slow it down</button>
+        </div>
+
+        ${
+          isYourTurn
+            ? `<div class="record-panel">
+                <div><strong>Now say it back</strong><span>Match the feeling and the stressed words, then compare.</span></div>
+                <button class="${
+                  ui.conversation.recording ? "danger-button recording-button" : "secondary-button"
+                }" type="button" data-action="${
+                  ui.conversation.recording ? "stop-recording" : "start-recording"
+                }" ${ui.conversation.recordingPending ? "disabled" : ""}><span class="record-dot" aria-hidden="true"></span>${
+                  ui.conversation.recording
+                    ? "Stop recording"
+                    : ui.conversation.recordingPending
+                      ? "Waiting for microphone…"
+                      : "Record my line"
+                }</button>
+              </div>
+              ${
+                hasTake
+                  ? `<div class="take-panel"><div><strong>Your take</strong><span>Listen for rhythm and warmth, not perfection.</span></div><audio controls preload="metadata" aria-label="Your recorded take" src="${escAttr(
+                    ui.conversation.takeUrl
+                  )}"></audio><button class="text-button" type="button" data-action="discard-take">Discard</button></div>`
+                  : ""
+              }
+              ${
+                ui.conversation.recordingError
+                  ? `<p class="recording-error" role="status">${esc(
+                      ui.conversation.recordingError
+                    )}</p>`
+                  : ""
+              }`
+            : `<p class="listen-coach">Let the line land as one thought. Notice where ${esc(
+                guide
+              )} leans on the affectionate word.</p>`
+        }
+      </article>
+
+      <aside class="expression-card">
+        <span class="eyebrow">What the words carry</span>
+        <strong>${esc(conversation.beautifulExpression)}</strong>
+        <p>${esc(conversation.reflection || "A small expression that keeps a family feeling close.")}</p>
+      </aside>
+
+      <details class="dialect-disclosure">
+        <summary>Why it may sound different in your family</summary>
+        <p>${esc(conversation.dialectNote)}</p>
+        <span>${esc(confidenceLabel(conversation.confidence))}</span>
+      </details>
+
+      <nav class="conversation-step-nav" aria-label="Conversation lines">
+        <button class="secondary-button" type="button" data-action="previous-conversation-line" ${
+          index === 0 ? "disabled" : ""
+        }>← Previous</button>
+        <button class="primary-button" type="button" data-action="next-conversation-line">${
+          index === conversation.lines.length - 1 ? "Finish exchange" : "Next line →"
+        }</button>
+      </nav>
+    </section>`;
+  }
+
+  function guideName(conversation) {
+    if (["phone-check-in", "come-in", "soup", "kitchen"].includes(conversation.id)) {
+      return "Bobe";
+    }
+    if (["grandfathers-story", "family-saying"].includes(conversation.id)) return "Zeyde";
+    return "Family elder";
+  }
+
+  function confidenceLabel(confidence) {
+    return confidence === "broad Southeastern"
+      ? "Broad Southeastern starting point"
+      : "Family candidate · confirm it with a relative";
+  }
+
+  function moveConversationLine(amount) {
+    const conversation = currentConversation();
+    if (!conversation) return;
+    const next = ui.conversation.index + amount;
+    if (next >= conversation.lines.length) {
+      cleanupConversation();
+      document.body.classList.remove("in-session");
+      window.history.replaceState(null, "", "#talk");
+      render();
+      focusMain();
+      showToast("Exchange complete. Zeyer gut!");
+      return;
+    }
+    if (next < 0) return;
+    cancelPlayback();
+    cleanupRecording(true);
+    ui.conversation.index = next;
+    ui.conversation.recordingError = "";
+    renderConversationSession();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    requestAnimationFrame(() => document.querySelector("#dialogue-line")?.focus());
+  }
+
   function renderLearn() {
     main.innerHTML = `
       <section class="page">
-        <header class="page-header">
+        <header class="page-header learn-heading">
           <div class="page-title">
             <span class="eyebrow">Seven short lessons</span>
             <h1>Learn by using it</h1>
             <p>Read, listen, recall, and notice regional clues. There is no Hebrew alphabet to memorize.</p>
           </div>
+          <button class="secondary-button" type="button" data-go="phrasebook">Open phrasebook</button>
         </header>
         <div class="lesson-list">
           ${lessons.map(lessonRow).join("")}
@@ -595,7 +918,6 @@
 
   function lessonRow(lesson) {
     const progress = lessonProgress(lesson);
-    const percent = Math.round(progress * 100);
     const tone = toneColor(lesson.tone);
     return `<button class="lesson-row" type="button" data-open-lesson="${escAttr(lesson.id)}" style="--tone:${tone}">
       <span class="lesson-number">${progress === 1 ? "✓" : lesson.number}</span>
@@ -604,8 +926,7 @@
         <p>${esc(lesson.subtitle)}</p>
       </span>
       <span class="lesson-meta">
-        <span>${lesson.minutes} min · ${lesson.phrases.length} items</span>
-        <span class="mini-progress" aria-label="${percent} percent complete"><span style="--width:${percent}%"></span></span>
+        <span>${lesson.minutes} min · ${lesson.phrases.length} expressions</span>
       </span>
     </button>`;
   }
@@ -616,7 +937,7 @@
       ui.lessonDetail = null;
       return renderLearn();
     }
-    const percent = Math.round(lessonProgress(lesson) * 100);
+    const started = lessonProgress(lesson) > 0;
     main.innerHTML = `<section class="page lesson-detail-page">
       <button class="text-button back-link" type="button" data-go="learn">← All lessons</button>
       <header class="lesson-detail-header" style="--tone:${toneColor(lesson.tone)}">
@@ -628,7 +949,7 @@
         </div>
         <button class="primary-button" type="button" data-start-lesson="${escAttr(
           lesson.id
-        )}">${percent ? "Practice lesson" : "Start lesson"} →</button>
+        )}">${started ? "Return to lesson" : "Start lesson"} →</button>
       </header>
       <div class="dialect-note"><span aria-hidden="true">⌖</span><span><strong>Dialect note.</strong> ${esc(
         lesson.dialectNote
@@ -637,12 +958,10 @@
         ${lesson.phrases.map((phrase, index) => lessonReferenceCard(lesson, phrase, index)).join("")}
       </div>
       <div class="lesson-detail-footer">
-        <div><strong>${percent}% complete</strong><span class="mini-progress" aria-label="${percent} percent complete"><span style="--width:${percent}%;--tone:${toneColor(
-          lesson.tone
-        )}"></span></span></div>
+        <div><strong>${started ? "A place to return to" : "Begin when you are ready"}</strong></div>
         <button class="primary-button" type="button" data-start-lesson="${escAttr(
           lesson.id
-        )}">${percent ? "Practice this lesson" : "Start this lesson"}</button>
+        )}">${started ? "Return to this lesson" : "Start this lesson"}</button>
       </div>
     </section>`;
   }
@@ -696,7 +1015,6 @@
       audioPlayed: false,
       correct: false,
       missed: [],
-      xpEarned: 0,
       complete: false,
       feedback: "",
     };
@@ -713,10 +1031,9 @@
       "recallYiddish",
     ];
     const modes = config.challengeModes || [];
-    const speechAvailable = "speechSynthesis" in window;
     return lesson.phrases.map((phrase, index) => {
       let modeID = modeCycle[index % modeCycle.length];
-      if (modeID === "listenForMeaning" && (!phrase.canSpeak || !speechAvailable)) {
+      if (modeID === "listenForMeaning" && !phrase.canSpeak) {
         modeID = config.nonSpeakableListenFallback || "readForMeaning";
       }
       const mode = modes.find((item) => item.id === modeID) || {
@@ -755,14 +1072,12 @@
     document.body.classList.add("in-session");
 
     if (session.complete) {
-      const correctCount = session.challenges.length - session.missed.length;
-      const accuracy = Math.round((correctCount / session.challenges.length) * 100);
       main.innerHTML = `<section class="session-page">
         <div class="card completion-card">
           <div class="completion-badge" aria-hidden="true">✓</div>
           <span class="eyebrow">Lesson ${lesson.number} complete</span>
           <h1>${esc(lesson.title)}</h1>
-          <p>You practiced ${lesson.phrases.length} pieces of living Yiddish with <strong>${accuracy}% accuracy</strong> and earned <strong>${session.xpEarned} XP</strong>. Missed phrases are already waiting in Practice.</p>
+          <p>You spent time with ${lesson.phrases.length} pieces of living Yiddish. Let them settle, then return to the ones that still feel unfamiliar.</p>
           <div class="completion-actions">
             <button class="primary-button" type="button" data-action="exit-session">Back to course</button>
             <button class="secondary-button" type="button" data-go="practice">Review now</button>
@@ -779,8 +1094,8 @@
     const isListening = challenge.mode.id === "listenForMeaning";
     const prompt = isListening
       ? `<div class="prompt-card card listen-prompt">
-          <span class="prompt-kicker">Rough audio · browser voice</span>
-          <button class="big-listen" type="button" data-action="play" data-phrase-id="${escAttr(phrase.id)}" aria-label="Play rough audio">▶</button>
+          <span class="prompt-kicker">Pronunciation reference · listen for the feeling</span>
+          <button class="big-listen" type="button" data-action="play" data-phrase-id="${escAttr(phrase.id)}" aria-label="Play pronunciation reference">▶</button>
           <button class="text-button" type="button" data-action="play-slow" data-phrase-id="${escAttr(phrase.id)}">Play slowly</button>
           <button class="text-button" type="button" data-action="show-written-prompt">Can’t hear it? Show the phrase</button>
         </div>`
@@ -797,8 +1112,8 @@
     main.innerHTML = `<section class="session-page">
       <header class="session-header">
         <button class="icon-button" type="button" data-action="exit-session" aria-label="Leave lesson">×</button>
-        <div class="session-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(progress)}"><span style="--width:${progress}%"></span></div>
-        <div class="xp-chip" aria-label="Experience earned this lesson">+${session.xpEarned} XP</div>
+        <div class="session-progress" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(progress)}"><span style="--width:${progress}%"></span></div>
+        <div class="session-marker">Lesson ${lesson.number}</div>
       </header>
 
       <div class="question-wrap">
@@ -842,7 +1157,7 @@
       const audioLocked = challenge.mode.id === "listenForMeaning" && !session.audioPlayed;
       return `<div class="answer-bar" aria-live="polite">
         <div class="answer-copy"><strong>${
-          audioLocked ? "Play the rough audio first" : "Choose one answer"
+          audioLocked ? "Listen to the line first" : "Choose one answer"
         }</strong><span>${
           audioLocked ? "The choices will unlock after you listen." : "You can change it before checking."
         }</span></div>
@@ -886,11 +1201,7 @@
     const chosen = challenge.options[session.selected];
     session.correct = chosen === challenge.correctAnswer;
     session.checked = true;
-    if (session.correct) {
-      const points = config.pointsPerCorrectAnswer || 10;
-      session.xpEarned += points;
-      awardXP(points);
-    } else if (!session.missed.includes(challenge.phraseID)) {
+    if (!session.correct && !session.missed.includes(challenge.phraseID)) {
       session.missed.push(challenge.phraseID);
     }
     saveState();
@@ -915,9 +1226,6 @@
 
     const lesson = lessons.find((item) => item.id === session.lessonID);
     completeLesson(lesson, session.missed);
-    const bonus = config.lessonCompletionBonus || 20;
-    awardXP(bonus);
-    session.xpEarned += bonus;
     session.complete = true;
     saveState();
     renderSession();
@@ -971,7 +1279,7 @@
         <div class="card completion-card">
           <div class="completion-badge" aria-hidden="true">◆</div>
           <h1 id="practice-complete-title" tabindex="-1">Review complete</h1>
-          <p>You brought ${practice.queue.length || learnedCount} phrases back to mind. Come back when they are due, or take another round now.</p>
+          <p>You brought familiar phrases back to mind. Let them rest, or spend a little more time with them now.</p>
           <div class="completion-actions"><button class="primary-button" type="button" data-action="restart-practice">Practice another round</button><button class="secondary-button" type="button" data-go="home">Go home</button></div>
         </div>
       </section>`;
@@ -1009,9 +1317,9 @@
         ${
           practice.revealed
             ? `<div class="rating-grid">
-                ${ratingButton("Again", "10 min", "again", "#8b2335")}
-                ${ratingButton("Good", "later", "good", "#315843")}
-                ${ratingButton("Easy", "longer", "easy", "#386791")}
+                ${ratingButton("Needs time", "bring it back soon", "again", "#8b2335")}
+                ${ratingButton("I remember", "let it rest", "good", "#315843")}
+                ${ratingButton("Feels familiar", "keep it close", "easy", "#386791")}
               </div>`
             : `<button class="primary-button reveal-button" type="button" data-action="reveal-review">Reveal answer</button>`
         }
@@ -1040,8 +1348,6 @@
     }
     learnID(phraseID);
     state.reviewStates[phraseID] = { level, dueAt: new Date(dueAt).toISOString() };
-    const points = config.reviewRatingXP?.[rating] || (rating === "easy" ? 5 : rating === "good" ? 3 : 1);
-    awardXP(points);
     practice.index += 1;
     practice.revealed = false;
     if (practice.index >= practice.queue.length) practice.complete = true;
@@ -1107,15 +1413,15 @@
 
   function audioControls(phrase, compact = false) {
     if (!phrase.canSpeak) return "";
-    return `<span class="phrase-actions" aria-label="Rough audio controls">
+    return `<span class="phrase-actions" aria-label="Pronunciation reference controls">
       <button class="audio-button" type="button" data-action="play" data-phrase-id="${escAttr(
         phrase.id
-      )}" aria-label="Play rough audio for ${escAttr(phrase.transliteration)}">${
+      )}" aria-label="Play pronunciation reference for ${escAttr(phrase.transliteration)}">${
         compact ? "▶" : "▶ Play"
       }</button>
       <button class="audio-button" type="button" data-action="play-slow" data-phrase-id="${escAttr(
         phrase.id
-      )}" aria-label="Play rough audio slowly for ${escAttr(
+      )}" aria-label="Play pronunciation reference slowly for ${escAttr(
         phrase.transliteration
       )}">${compact ? "Slow" : "Slow"}</button>
     </span>`;
@@ -1280,14 +1586,15 @@
     modalRoot.innerHTML = `<div class="modal-backdrop">
       <section class="modal welcome-modal" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
         <div class="welcome-body">
-          <div class="welcome-logo"><img src="assets/icon-192.png" alt=""><div><strong>Mameloshn</strong><br><small>Yiddish in your family’s voice</small></div></div>
-          <div class="welcome-hero"><h1 id="welcome-title">Learn the Yiddish your family remembers.</h1><p>A speaking-first course for family roots from Bessarabia to Odessa, written entirely in Latin letters.</p></div>
+          <div class="welcome-logo"><img src="assets/icon-192.png" alt=""><div><strong>Ziskeit</strong><br><small>ZISS-kite · my sweet one</small></div></div>
+          <div class="welcome-hero"><h1 id="welcome-title">Come talk a little.</h1><p>A conversation-first Yiddish course for family roots from Bessarabia to Odessa, written entirely in Latin letters.</p></div>
           <div class="welcome-features">
             ${welcomeFeature("Aa", "No Hebrew alphabet", "Read a consistent Latin transliteration and an easy sound guide.")}
             ${welcomeFeature("⌖", "Bessarabia–Odessa aware", "Compare a stable reference form with broad Southeastern family pronunciation.")}
+            ${welcomeFeature("“", "Practice a real exchange", "Hear the feeling, answer aloud, record your line, and listen back.")}
             ${welcomeFeature("♥", "Your family gets the last word", "Save the exact words, vowels, places, and memories your relatives used.")}
           </div>
-          <button class="primary-button welcome-cta" type="button" data-action="finish-welcome">Start with the sounds →</button>
+          <button class="primary-button welcome-cta" type="button" data-action="finish-welcome">Start talking →</button>
         </div>
       </section>
     </div>`;
@@ -1351,7 +1658,7 @@
       speechCue: item.pronunciation || item.transliteration,
       usage: item.memory || "A word from your own family.",
       variants: [],
-      canSpeak: true,
+      canSpeak: false,
     };
   }
 
@@ -1373,12 +1680,6 @@
     return learned / lesson.phrases.length;
   }
 
-  function overallProgress() {
-    if (!coreEntries.length) return 0;
-    const learned = coreEntries.filter(({ phrase }) => isLearned(phrase.id)).length;
-    return learned / coreEntries.length;
-  }
-
   function dueEntries() {
     const now = Date.now();
     return practiceEntries().filter(({ phrase }) => {
@@ -1386,30 +1687,6 @@
       const due = Date.parse(state.reviewStates[phrase.id]?.dueAt || "");
       return !Number.isFinite(due) || due <= now;
     });
-  }
-
-  function awardXP(amount) {
-    amount = safeNumber(amount);
-    if (!amount) return;
-    const today = dateKey(new Date());
-    const previous = state.lastActiveDay ? dateKey(new Date(state.lastActiveDay)) : null;
-    if (previous === today) {
-      state.dailyXP += amount;
-    } else {
-      state.currentStreak = previous && dayDifference(previous, today) === 1 ? state.currentStreak + 1 : 1;
-      state.dailyXP = amount;
-    }
-    state.totalXP += amount;
-    state.lastActiveDay = new Date().toISOString();
-  }
-
-  function resetDailyXPIfNeeded() {
-    if (state.lastActiveDay && dateKey(new Date(state.lastActiveDay)) !== dateKey(new Date())) {
-      const gap = dayDifference(dateKey(new Date(state.lastActiveDay)), dateKey(new Date()));
-      state.dailyXP = 0;
-      if (gap > 1) state.currentStreak = 0;
-      saveState();
-    }
   }
 
   function dateKey(date) {
@@ -1420,56 +1697,262 @@
     return `${year}-${month}-${day}`;
   }
 
-  function dayDifference(fromKey, toKey) {
-    const from = Date.parse(`${fromKey}T12:00:00Z`);
-    const to = Date.parse(`${toKey}T12:00:00Z`);
-    return Math.round((to - from) / (24 * 60 * 60 * 1000));
+  function safeNumber(value) {
+    const number = Number(value);
+    return Number.isFinite(number) && number >= 0 ? Math.floor(number) : 0;
   }
 
-  function loadSpeechVoices() {
-    if (!("speechSynthesis" in window)) return;
-    const refresh = () => {
-      voices = window.speechSynthesis.getVoices();
-    };
-    refresh();
-    window.speechSynthesis.addEventListener?.("voiceschanged", refresh);
+  function markAudioButton(button, playing) {
+    if (!button?.isConnected) return;
+    button.disabled = playing;
+    if (playing) button.setAttribute("aria-busy", "true");
+    else button.removeAttribute("aria-busy");
   }
 
-  function speak(phrase, slowly = false) {
-    if (!("speechSynthesis" in window) || !phrase?.canSpeak) {
-      showToast("Rough audio is not available in this browser.");
-      return false;
-    }
-    try {
-      const currentVoices = window.speechSynthesis.getVoices();
-      if (currentVoices.length) voices = currentVoices;
-      const voice =
-        voices.find((item) => item.lang === "en-US" && item.localService === true) ||
-        voices.find((item) => item.lang?.startsWith("en") && item.localService === true);
-      if (!voice) {
-        showToast("No local browser voice is available. Use the written sound guide instead.");
-        return false;
-      }
-      const utterance = new SpeechSynthesisUtterance(
-        phrase.speechCue || phrase.pronunciation || phrase.transliteration
+  async function playPhraseReference(phrase, slowly = false) {
+    if (!phrase?.canSpeak) return false;
+    cancelPlayback();
+    const source = `audio/phrases/${encodeURIComponent(phrase.id)}.m4a`;
+    const played = await playSource(source, slowly, false);
+    if (!played) showToast("Audio is unavailable. Use the written sound guide for this line.");
+    return played;
+  }
+
+  async function playCurrentConversationLine(slowly, button) {
+    const conversation = currentConversation();
+    if (!conversation) return;
+    const line = conversation.lines[ui.conversation.index];
+    cancelPlayback();
+    markAudioButton(button, true);
+    const source = conversationAudioSource(conversation, line);
+    const played = await playSource(source, slowly, false);
+    markAudioButton(button, false);
+    if (!played) showToast("Audio is unavailable. Follow the written rhythm instead.");
+  }
+
+  async function playConversationExchange(button) {
+    const conversation = currentConversation();
+    if (!conversation) return;
+    cancelPlayback();
+    const sequenceToken = conversationSequenceToken;
+    markAudioButton(button, true);
+    for (const line of conversation.lines) {
+      if (sequenceToken !== conversationSequenceToken || !ui.conversation) break;
+      const played = await playSource(
+        conversationAudioSource(conversation, line),
+        false,
+        true
       );
-      utterance.voice = voice;
-      utterance.lang = "en-US";
-      utterance.rate = slowly ? 0.32 : 0.43;
-      utterance.pitch = 0.96;
-      utterance.onerror = () => showToast("Your browser could not play that rough audio.");
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utterance);
-      return true;
-    } catch (_error) {
-      showToast("Your browser could not play that rough audio.");
-      return false;
+      if (!played || sequenceToken !== conversationSequenceToken) break;
+      await shortPause(230);
     }
+    markAudioButton(button, false);
+  }
+
+  function conversationAudioSource(conversation, line) {
+    return `audio/conversations/${encodeURIComponent(conversation.id)}-${encodeURIComponent(
+      line.id
+    )}.m4a`;
+  }
+
+  async function playSource(source, slowly, untilEnd) {
+    stopActiveMedia();
+    const token = mediaToken;
+    return playStaticAudio(source, slowly, untilEnd, token);
+  }
+
+  function playStaticAudio(source, slowly, untilEnd, token) {
+    return new Promise((resolve) => {
+      let settled = false;
+      let started = false;
+      const audio = new Audio(source);
+      activeAudio = audio;
+      audio.preload = "auto";
+      audio.playsInline = true;
+      audio.playbackRate = slowly ? 0.78 : 1;
+      if ("preservesPitch" in audio) audio.preservesPitch = true;
+      if ("webkitPreservesPitch" in audio) audio.webkitPreservesPitch = true;
+
+      const finish = (result) => {
+        if (settled) return;
+        settled = true;
+        if (activePlaybackAbort === abort) activePlaybackAbort = null;
+        if (activeAudio === audio && (untilEnd || !result)) activeAudio = null;
+        resolve(result);
+      };
+      const abort = () => {
+        audio.pause();
+        finish(false);
+      };
+      activePlaybackAbort = abort;
+      const onStarted = () => {
+        if (started || token !== mediaToken) return;
+        started = true;
+        if (!untilEnd) finish(true);
+      };
+      audio.onplaying = onStarted;
+      audio.onended = () => finish(started);
+      audio.onerror = () => finish(false);
+      try {
+        const playResult = audio.play();
+        if (playResult?.then) playResult.then(onStarted).catch(() => finish(false));
+      } catch (_error) {
+        finish(false);
+      }
+    });
+  }
+
+  function stopActiveMedia() {
+    mediaToken += 1;
+    if (activePlaybackAbort) activePlaybackAbort();
+    activePlaybackAbort = null;
+    if (activeAudio) {
+      activeAudio.pause();
+      activeAudio.removeAttribute("src");
+      activeAudio.load();
+      activeAudio = null;
+    }
+  }
+
+  function cancelPlayback() {
+    conversationSequenceToken += 1;
+    stopActiveMedia();
+  }
+
+  function shortPause(milliseconds) {
+    return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
+  }
+
+  async function startRecording() {
+    const conversation = currentConversation();
+    if (!conversation || ui.conversation.recording || ui.conversation.recordingPending) return;
+    const line = conversation.lines[ui.conversation.index];
+    if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
+      ui.conversation.recordingError =
+        "This browser cannot record here. You can still say the line aloud and use the written rhythm.";
+      renderConversationSession();
+      return;
+    }
+    cancelPlayback();
+    cleanupRecording(false);
+    const requestToken = ++recordingRequestToken;
+    ui.conversation.recordingError = "";
+    ui.conversation.recordingPending = true;
+    renderConversationSession();
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      if (
+        requestToken !== recordingRequestToken ||
+        !ui.conversation ||
+        currentConversation()?.id !== conversation.id ||
+        currentConversation()?.lines[ui.conversation.index]?.id !== line.id
+      ) {
+        stream.getTracks().forEach((track) => track.stop());
+        return;
+      }
+      mediaStream = stream;
+      const mimeType = preferredRecordingType();
+      const recorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
+      mediaRecorder = recorder;
+      recordingChunks = [];
+      ui.conversation.recordingPending = false;
+      recorder.ondataavailable = (event) => {
+        if (event.data?.size) recordingChunks.push(event.data);
+      };
+      recorder.onerror = () => {
+        if (!ui.conversation) return;
+        ui.conversation.recordingError = "The recording stopped unexpectedly. Please try once more.";
+      };
+      recorder.onstop = () => {
+        const type = recorder.mimeType || mimeType || "audio/webm";
+        const blob = new Blob(recordingChunks, { type });
+        recordingChunks = [];
+        mediaStream?.getTracks().forEach((track) => track.stop());
+        mediaStream = null;
+        mediaRecorder = null;
+        if (!ui.conversation) return;
+        ui.conversation.recording = false;
+        ui.conversation.recordingPending = false;
+        if (blob.size) {
+          if (ui.conversation.takeUrl) URL.revokeObjectURL(ui.conversation.takeUrl);
+          ui.conversation.takeUrl = URL.createObjectURL(blob);
+          ui.conversation.takeLineID = line.id;
+        } else {
+          ui.conversation.recordingError = "No sound was captured. Check the microphone and try again.";
+        }
+        renderConversationSession();
+        requestAnimationFrame(() => document.querySelector(".take-panel audio")?.focus());
+      };
+      recorder.start();
+      ui.conversation.recording = true;
+      renderConversationSession();
+    } catch (_error) {
+      mediaStream?.getTracks().forEach((track) => track.stop());
+      mediaStream = null;
+      mediaRecorder = null;
+      if (!ui.conversation) return;
+      ui.conversation.recording = false;
+      ui.conversation.recordingPending = false;
+      ui.conversation.recordingError =
+        "Microphone access was not available. You can allow it in the browser’s site settings and try again.";
+      renderConversationSession();
+    }
+  }
+
+  function stopRecording() {
+    if (mediaRecorder?.state === "recording") mediaRecorder.stop();
+  }
+
+  function preferredRecordingType() {
+    const types = [
+      "audio/webm;codecs=opus",
+      "audio/mp4;codecs=mp4a.40.2",
+      "audio/mp4",
+    ];
+    return types.find((type) => MediaRecorder.isTypeSupported?.(type)) || "";
+  }
+
+  function discardTake(silent = false) {
+    if (!ui.conversation) return;
+    if (ui.conversation.takeUrl) URL.revokeObjectURL(ui.conversation.takeUrl);
+    ui.conversation.takeUrl = null;
+    ui.conversation.takeLineID = null;
+    if (!silent) renderConversationSession();
+  }
+
+  function cleanupRecording(revokeTake = false) {
+    recordingRequestToken += 1;
+    if (mediaRecorder) {
+      mediaRecorder.ondataavailable = null;
+      mediaRecorder.onstop = null;
+      if (mediaRecorder.state !== "inactive") mediaRecorder.stop();
+      mediaRecorder = null;
+    }
+    mediaStream?.getTracks().forEach((track) => track.stop());
+    mediaStream = null;
+    recordingChunks = [];
+    if (ui.conversation) {
+      ui.conversation.recording = false;
+      ui.conversation.recordingPending = false;
+      if (revokeTake && ui.conversation.takeUrl) {
+        URL.revokeObjectURL(ui.conversation.takeUrl);
+        ui.conversation.takeUrl = null;
+        ui.conversation.takeLineID = null;
+      }
+    }
+  }
+
+  function cleanupConversation() {
+    cancelPlayback();
+    cleanupRecording(true);
+    ui.conversation = null;
   }
 
   function exportBackup() {
     const payload = {
-      app: "Mameloshn",
+      app: "Ziskeit",
       format: 1,
       exportedAt: new Date().toISOString(),
       state,
@@ -1478,7 +1961,7 @@
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `mameloshn-backup-${dateKey(new Date())}.json`;
+    link.download = `ziskeit-backup-${dateKey(new Date())}.json`;
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -1492,7 +1975,7 @@
     try {
       const parsed = JSON.parse(await file.text());
       if (
-        parsed?.app !== "Mameloshn" ||
+        !["Mameloshn", "Ziskeit"].includes(parsed?.app) ||
         parsed?.format !== 1 ||
         !parsed.state ||
         typeof parsed.state !== "object" ||
@@ -1530,7 +2013,7 @@
       showToast(
         storageFailure
           ? "Browser storage is unavailable, so your current course was left unchanged."
-          : "That file is not a Mameloshn backup. Your current course was left unchanged."
+          : "That file is not a Ziskeit backup. Your current course was left unchanged."
       );
     }
   }

@@ -45,7 +45,7 @@ struct RootView: View {
                 .listStyle(.sidebar)
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("HERITAGE TRACK")
+                    Text("FAMILY ROOTS")
                         .font(.caption2.weight(.bold))
                         .tracking(1.1)
                         .foregroundStyle(AppTheme.beet)
@@ -121,7 +121,7 @@ private struct WelcomeView: View {
                     MameloshnWordmark()
 
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Learn the Yiddish\nyour family remembers.")
+                        Text("Listen for the Yiddish\nyour family remembers.")
                             .font(.system(size: 42, weight: .bold, design: .rounded))
                             .foregroundStyle(AppTheme.ink)
                             .fixedSize(horizontal: false, vertical: true)
@@ -154,7 +154,7 @@ private struct WelcomeView: View {
                         model.hasSeenWelcome = true
                     } label: {
                         HStack {
-                            Text("Start with the sounds")
+                            Text("Begin with the family sounds")
                             Spacer()
                             Image(systemName: "arrow.right")
                         }

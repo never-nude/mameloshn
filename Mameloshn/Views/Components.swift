@@ -1,31 +1,5 @@
 import SwiftUI
 
-struct ProgressRing: View {
-    let progress: Double
-    var size: CGFloat = 72
-    var lineWidth: CGFloat = 8
-
-    var body: some View {
-        ZStack {
-            Circle()
-                .stroke(AppTheme.paperDeep, lineWidth: lineWidth)
-            Circle()
-                .trim(from: 0, to: max(0.015, progress))
-                .stroke(
-                    AppTheme.beet,
-                    style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
-                )
-                .rotationEffect(.degrees(-90))
-            Text("\(Int(progress * 100))%")
-                .font(.system(.subheadline, design: .rounded, weight: .bold))
-                .foregroundStyle(AppTheme.ink)
-        }
-        .frame(width: size, height: size)
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(Int(progress * 100)) percent complete")
-    }
-}
-
 struct SectionHeading: View {
     let eyebrow: String?
     let title: String

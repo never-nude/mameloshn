@@ -20,21 +20,7 @@ final class AppModel: ObservableObject {
     @Published var hasSeenWelcome = false {
         didSet { saveIfReady() }
     }
-    @Published private(set) var totalXP = 0 {
-        didSet { saveIfReady() }
-    }
-    @Published private(set) var dailyXP = 0 {
-        didSet { saveIfReady() }
-    }
-    @Published private(set) var currentStreak = 0 {
-        didSet { saveIfReady() }
-    }
-    @Published private(set) var lastActiveDay: Date? {
-        didSet { saveIfReady() }
-    }
-
     let lessons = Curriculum.lessons
-    let dailyGoal = 50
 
     private let storageKey = "mameloshn.learning-state.v1"
     private var isRestoring = true
@@ -52,12 +38,6 @@ final class AppModel: ObservableObject {
         allPhrases + familyPhrases.map(\.practicePhrase)
     }
 
-    var overallProgress: Double {
-        guard !allPhrases.isEmpty else { return 0 }
-        let learnedCoreCount = allPhrases.filter { learnedPhraseIDs.contains($0.id) }.count
-        return Double(learnedCoreCount) / Double(allPhrases.count)
-    }
-
     var duePhrases: [Phrase] {
         let now = Date()
         let learned = allPracticePhrases.filter { learnedPhraseIDs.contains($0.id) }
@@ -70,10 +50,6 @@ final class AppModel: ObservableObject {
 
     var nextUnlearnedLesson: Lesson? {
         lessons.first { progress(for: $0) < 1 }
-    }
-
-    var dailyGoalProgress: Double {
-        min(1, Double(dailyXP) / Double(dailyGoal))
     }
 
     func progress(for lesson: Lesson) -> Double {
@@ -126,34 +102,6 @@ final class AppModel: ObservableObject {
         }
 
         reviewStates[phrase.id] = state
-        switch rating {
-        case .again: awardXP(1)
-        case .good: awardXP(3)
-        case .easy: awardXP(5)
-        }
-    }
-
-    func awardXP(_ amount: Int) {
-        guard amount > 0 else { return }
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
-
-        if let lastActiveDay {
-            let previous = calendar.startOfDay(for: lastActiveDay)
-            if previous == today {
-                dailyXP += amount
-            } else {
-                let gap = calendar.dateComponents([.day], from: previous, to: today).day ?? 0
-                currentStreak = gap == 1 ? currentStreak + 1 : 1
-                dailyXP = amount
-            }
-        } else {
-            currentStreak = 1
-            dailyXP = amount
-        }
-
-        totalXP += amount
-        lastActiveDay = Date()
     }
 
     func addFamilyPhrase(_ phrase: FamilyPhrase) {
@@ -189,10 +137,6 @@ final class AppModel: ObservableObject {
         familyPhrases = state.familyPhrases
         familyRoots = state.familyRoots
         hasSeenWelcome = state.hasSeenWelcome
-        totalXP = state.totalXP ?? 0
-        dailyXP = isToday(state.lastActiveDay) ? (state.dailyXP ?? 0) : 0
-        currentStreak = state.currentStreak ?? 0
-        lastActiveDay = state.lastActiveDay
     }
 
     private func saveIfReady() {
@@ -202,18 +146,9 @@ final class AppModel: ObservableObject {
             reviewStates: reviewStates,
             familyPhrases: familyPhrases,
             familyRoots: familyRoots,
-            hasSeenWelcome: hasSeenWelcome,
-            totalXP: totalXP,
-            dailyXP: dailyXP,
-            currentStreak: currentStreak,
-            lastActiveDay: lastActiveDay
+            hasSeenWelcome: hasSeenWelcome
         )
         guard let data = try? JSONEncoder().encode(state) else { return }
         UserDefaults.standard.set(data, forKey: storageKey)
-    }
-
-    private func isToday(_ date: Date?) -> Bool {
-        guard let date else { return false }
-        return Calendar.current.isDateInToday(date)
     }
 }

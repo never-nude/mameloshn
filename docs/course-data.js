@@ -3,22 +3,14 @@
  *
  * This mirrors the native Swift curriculum. Yiddish is presented only in
  * Latin letters. `pronunciation` is the learner-facing sound guide;
- * `speechCue` is the approximate string to pass to browser speech synthesis.
+ * `speechCue` is the approximate phonetic source used to render fixed audio clips.
  */
 
 window.MAMELOSHN_COURSE_CONFIG = {
-  title: "Mameloshn",
+  title: "Ziskeit",
   heritageTrack: "Bessarabia–Odessa",
-  dailyGoal: 50,
-  pointsPerCorrectAnswer: 10,
-  lessonCompletionBonus: 20,
   answerChoiceCount: 4,
   reviewSessionSize: 8,
-  reviewRatingXP: {
-    again: 1,
-    good: 3,
-    easy: 5,
-  },
   reviewIntervalsInDays: [0, 1, 3, 7, 14, 30],
   challengeModes: [
     {
@@ -75,7 +67,7 @@ window.MAMELOSHN_LESSONS = [
         usage:
           "Keep the sound in the back of your throat; it is not a hard k.",
         variants: [],
-        canSpeak: false,
+        canSpeak: true,
       },
       {
         id: "sound-ts",
@@ -85,7 +77,7 @@ window.MAMELOSHN_LESSONS = [
         speechCue: "ts",
         usage: "You will hear it at the start and end of Yiddish words.",
         variants: [],
-        canSpeak: false,
+        canSpeak: true,
       },
       {
         id: "sound-sh",
@@ -95,7 +87,7 @@ window.MAMELOSHN_LESSONS = [
         speechCue: "sh",
         usage: "Exactly the familiar English sh sound.",
         variants: [],
-        canSpeak: false,
+        canSpeak: true,
       },
       {
         id: "sound-zh",
@@ -105,7 +97,7 @@ window.MAMELOSHN_LESSONS = [
         speechCue: "zh",
         usage: "A voiced sh: let your throat vibrate.",
         variants: [],
-        canSpeak: false,
+        canSpeak: true,
       },
       {
         id: "sound-oy",
@@ -115,7 +107,7 @@ window.MAMELOSHN_LESSONS = [
         speechCue: "oy",
         usage: "You already know it from oy vey.",
         variants: [],
-        canSpeak: false,
+        canSpeak: true,
       },
       {
         id: "sound-ey",
@@ -126,7 +118,7 @@ window.MAMELOSHN_LESSONS = [
         usage:
           "Family accents can shift this vowel; copy the speaker you want to sound like.",
         variants: [],
-        canSpeak: false,
+        canSpeak: true,
       },
       {
         id: "sound-ay",
@@ -137,7 +129,7 @@ window.MAMELOSHN_LESSONS = [
         usage:
           "Keep it distinct from ey: mayn sounds roughly like mine, while heym starts like hame.",
         variants: [],
-        canSpeak: false,
+        canSpeak: true,
       },
     ],
   },

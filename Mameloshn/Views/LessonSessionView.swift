@@ -10,13 +10,8 @@ struct LessonSessionView: View {
     @State private var challengeIndex = 0
     @State private var selectedAnswer: String?
     @State private var hasListened = false
-    @State private var correctAnswers = 0
-    @State private var earnedXP = 0
     @State private var missedPhraseIDs: Set<String> = []
     @State private var isComplete = false
-
-    private let pointsPerAnswer = 10
-    private let completionBonus = 20
 
     init(lesson: Lesson) {
         _sessionLesson = State(initialValue: lesson)
@@ -29,13 +24,11 @@ struct LessonSessionView: View {
             if sessionLesson.phrases.isEmpty {
                 emptyLesson
             } else if isComplete {
-                LessonCelebrationView(
+                LessonReflectionView(
                     lesson: sessionLesson,
-                    earnedXP: earnedXP,
-                    correctAnswers: correctAnswers,
                     dismiss: dismiss.callAsFunction
                 )
-                .transition(.scale(scale: 0.94).combined(with: .opacity))
+                .transition(.opacity)
             } else {
                 challengeFlow
                     .transition(.opacity)
@@ -85,20 +78,19 @@ struct LessonSessionView: View {
 
                 Spacer(minLength: 12)
 
-                Label("\(earnedXP) XP", systemImage: "star.fill")
+                Label("Family thread", systemImage: "heart.fill")
                     .font(.system(.subheadline, design: .rounded, weight: .bold))
                     .foregroundStyle(AppTheme.plum)
                     .padding(.horizontal, 12)
                     .frame(height: 36)
-                    .background(AppTheme.honey.opacity(0.22), in: Capsule())
-                    .accessibilityLabel("\(earnedXP) experience points earned")
+                    .background(AppTheme.plum.opacity(0.1), in: Capsule())
             }
 
             ProgressView(value: progress)
                 .tint(lessonColor)
                 .scaleEffect(y: 1.7)
                 .accessibilityLabel("Lesson progress")
-                .accessibilityValue("\(Int(progress * 100)) percent")
+                .accessibilityValue("Word \(challengeIndex + 1) of \(sessionLesson.phrases.count)")
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 16)
@@ -247,17 +239,12 @@ struct LessonSessionView: View {
                     .foregroundStyle(feedbackColor)
 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(wasCorrect ? "You got it." : "Not this one.")
+                    Text(wasCorrect ? "That’s the phrase." : "Listen once more.")
                         .font(.system(.title3, design: .rounded, weight: .bold))
                         .foregroundStyle(AppTheme.ink)
 
-                    if wasCorrect {
-                        Text("\(answerExplanation) · +\(pointsPerAnswer) XP")
-                            .foregroundStyle(AppTheme.secondaryInk)
-                    } else {
-                        Text(answerExplanation)
-                            .foregroundStyle(AppTheme.secondaryInk)
-                    }
+                    Text(answerExplanation)
+                        .foregroundStyle(AppTheme.secondaryInk)
 
                     Text("Say it like: \(currentPhrase.pronunciation)")
                         .font(.caption.weight(.semibold))
@@ -272,7 +259,7 @@ struct LessonSessionView: View {
                 HStack {
                     Text(isLastChallenge ? "Finish lesson" : "Continue")
                     Spacer()
-                    Image(systemName: isLastChallenge ? "sparkles" : "arrow.right")
+                    Image(systemName: isLastChallenge ? "heart.fill" : "arrow.right")
                 }
                 .font(.system(.headline, design: .rounded, weight: .bold))
                 .foregroundStyle(.white)
@@ -392,15 +379,9 @@ struct LessonSessionView: View {
 
         withAnimation(.snappy(duration: 0.28)) {
             selectedAnswer = option
-            if isCorrect {
-                correctAnswers += 1
-                earnedXP += pointsPerAnswer
-            }
         }
 
-        if isCorrect {
-            model.awardXP(pointsPerAnswer)
-        } else {
+        if !isCorrect {
             missedPhraseIDs.insert(currentPhrase.id)
         }
     }
@@ -423,10 +404,8 @@ struct LessonSessionView: View {
     private func finishLesson() {
         guard !isComplete else { return }
         model.markLessonComplete(sessionLesson, missedPhraseIDs: missedPhraseIDs)
-        model.awardXP(completionBonus)
 
         withAnimation(.spring(response: 0.55, dampingFraction: 0.78)) {
-            earnedXP += completionBonus
             isComplete = true
         }
     }
@@ -554,43 +533,14 @@ private struct LessonAnswerChoice: View {
     }
 }
 
-private struct LessonCelebrationView: View {
+private struct LessonReflectionView: View {
     let lesson: Lesson
-    let earnedXP: Int
-    let correctAnswers: Int
     let dismiss: () -> Void
-
-    @State private var isCelebrating = false
-
-    private let sparkOffsets = [
-        CGSize(width: -118, height: -52),
-        CGSize(width: -86, height: -116),
-        CGSize(width: -22, height: -132),
-        CGSize(width: 48, height: -126),
-        CGSize(width: 104, height: -82),
-        CGSize(width: 125, height: -16),
-        CGSize(width: -126, height: 18),
-        CGSize(width: 94, height: 48)
-    ]
 
     var body: some View {
         ScrollView {
             VStack(spacing: 26) {
                 ZStack {
-                    ForEach(sparkOffsets.indices, id: \.self) { index in
-                        Image(systemName: index.isMultiple(of: 2) ? "sparkle" : "star.fill")
-                            .font(.system(size: index.isMultiple(of: 3) ? 18 : 13, weight: .bold))
-                            .foregroundStyle(index.isMultiple(of: 2) ? AppTheme.honey : lessonColor)
-                            .offset(sparkOffsets[index])
-                            .scaleEffect(isCelebrating ? 1 : 0.15)
-                            .opacity(isCelebrating ? 1 : 0)
-                            .animation(
-                                .spring(response: 0.58, dampingFraction: 0.58)
-                                    .delay(Double(index) * 0.045),
-                                value: isCelebrating
-                            )
-                    }
-
                     Circle()
                         .fill(lessonColor.opacity(0.12))
                         .frame(width: 150, height: 150)
@@ -598,45 +548,27 @@ private struct LessonCelebrationView: View {
                         .fill(lessonColor)
                         .frame(width: 112, height: 112)
                         .shadow(color: lessonColor.opacity(0.24), radius: 22, y: 10)
-                    Image(systemName: "trophy.fill")
+                    Image(systemName: "heart.text.square.fill")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundStyle(.white)
-                        .scaleEffect(isCelebrating ? 1 : 0.35)
-                        .rotationEffect(.degrees(isCelebrating ? 0 : -12))
-                        .animation(.spring(response: 0.58, dampingFraction: 0.65), value: isCelebrating)
                 }
                 .frame(height: 210)
                 .accessibilityHidden(true)
 
                 VStack(spacing: 9) {
-                    Text("Lesson complete!")
+                    Text("These words are with you")
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundStyle(AppTheme.ink)
                         .multilineTextAlignment(.center)
-                    Text("You finished \(lesson.title). These words are ready for review.")
+                    Text("You spent time with \(lesson.title). Return to these phrases in Remember, and let them settle into the family voice you are rebuilding.")
                         .font(.title3)
                         .foregroundStyle(AppTheme.secondaryInk)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
-                HStack(spacing: 12) {
-                    LessonResultMetric(
-                        value: "+\(earnedXP)",
-                        label: "XP earned",
-                        symbol: "star.fill",
-                        color: AppTheme.plum
-                    )
-                    LessonResultMetric(
-                        value: "\(accuracy)%",
-                        label: "Accuracy",
-                        symbol: "target",
-                        color: AppTheme.sage
-                    )
-                }
-
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("WORDS YOU LEARNED")
+                    Text("WORDS TO CARRY FORWARD")
                         .font(.caption.weight(.bold))
                         .tracking(1.1)
                         .foregroundStyle(lessonColor)
@@ -660,7 +592,7 @@ private struct LessonCelebrationView: View {
 
                 Button(action: dismiss) {
                     HStack {
-                        Text("Back to the course")
+                        Text("Return to the path")
                         Spacer()
                         Image(systemName: "arrow.right")
                     }
@@ -677,41 +609,10 @@ private struct LessonCelebrationView: View {
             .frame(maxWidth: 650)
             .frame(maxWidth: .infinity)
         }
-        .onAppear {
-            isCelebrating = true
-        }
     }
 
     private var lessonColor: Color {
         AppTheme.color(for: lesson.tone)
     }
 
-    private var accuracy: Int {
-        guard !lesson.phrases.isEmpty else { return 0 }
-        return Int((Double(correctAnswers) / Double(lesson.phrases.count) * 100).rounded())
-    }
-}
-
-private struct LessonResultMetric: View {
-    let value: String
-    let label: String
-    let symbol: String
-    let color: Color
-
-    var body: some View {
-        VStack(spacing: 7) {
-            Label(value, systemImage: symbol)
-                .font(.system(.title2, design: .rounded, weight: .bold))
-                .foregroundStyle(color)
-            Text(label)
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(AppTheme.secondaryInk)
-        }
-        .frame(maxWidth: .infinity, minHeight: 90)
-        .background(.white.opacity(0.72), in: RoundedRectangle(cornerRadius: 19, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: 19, style: .continuous)
-                .stroke(.white.opacity(0.9), lineWidth: 1)
-        }
-    }
 }

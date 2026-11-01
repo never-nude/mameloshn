@@ -13,16 +13,16 @@ struct PracticeView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     SectionHeading(
-                        "Review out loud",
-                        eyebrow: "A little, often",
-                        subtitle: "Listen, recall the meaning, then rate how easily it came back."
+                        "Remember out loud",
+                        eyebrow: "Keep the family voice close",
+                        subtitle: "Listen, recall the meaning, and notice how the phrase returns to you."
                     )
 
                     if model.learnedPhraseIDs.isEmpty {
                         EmptyCourseState(
                             symbol: "rectangle.stack.badge.plus",
-                            title: "Your review deck is waiting",
-                            detail: "Mark a phrase learned in any lesson and it will appear here.",
+                            title: "Your first word is waiting",
+                            detail: "Choose a phrase to carry from any lesson and it will return here.",
                             actionTitle: "Open the lessons"
                         ) {
                             model.selectedSection = .learn
@@ -41,14 +41,14 @@ struct PracticeView: View {
                 .frame(maxWidth: .infinity)
             }
         }
-        .navigationTitle("Practice")
+        .navigationTitle("Remember")
         .onAppear(perform: startSessionIfNeeded)
     }
 
     private func reviewCard(_ phrase: Phrase) -> some View {
         VStack(spacing: 22) {
             HStack {
-                HeritageTag(text: "Card \(sessionPosition) of \(sessionTotal)")
+                HeritageTag(text: "Remembering \(sessionPosition) of \(sessionTotal)")
                 Spacer()
                 AudioButton(phrase: phrase)
             }
@@ -90,14 +90,14 @@ struct PracticeView: View {
 
             if revealed {
                 VStack(spacing: 10) {
-                    Text("HOW DID THAT FEEL?")
+                    Text("HOW FAMILIAR DID IT FEEL?")
                         .font(.caption2.weight(.bold))
                         .tracking(1)
                         .foregroundStyle(AppTheme.secondaryInk)
                     HStack(spacing: 10) {
-                        ratingButton("Again", symbol: "arrow.counterclockwise", color: AppTheme.beet, rating: .again)
-                        ratingButton("Good", symbol: "hand.thumbsup.fill", color: AppTheme.blue, rating: .good)
-                        ratingButton("Easy", symbol: "sparkles", color: AppTheme.sage, rating: .easy)
+                        ratingButton("Return soon", symbol: "arrow.counterclockwise", color: AppTheme.beet, rating: .again)
+                        ratingButton("Coming back", symbol: "waveform", color: AppTheme.blue, rating: .good)
+                        ratingButton("Held clearly", symbol: "heart.fill", color: AppTheme.sage, rating: .easy)
                     }
                 }
             } else {
@@ -120,17 +120,17 @@ struct PracticeView: View {
 
     private var finishedCard: some View {
         VStack(spacing: 17) {
-            Image(systemName: "checkmark.seal.fill")
+            Image(systemName: "heart.circle.fill")
                 .font(.system(size: 48))
                 .foregroundStyle(AppTheme.sage)
-            Text("Review complete")
+            Text("A thread remembered")
                 .font(.system(.title, design: .rounded, weight: .bold))
                 .foregroundStyle(AppTheme.ink)
-            Text("You brought \(sessionTotal) phrases back to mind. That small act of recall is what makes them stick.")
+            Text("You brought familiar words back to mind. Each return helps keep your family’s voice within reach.")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(AppTheme.secondaryInk)
                 .frame(maxWidth: 440)
-            Button("Practice another round") {
+            Button("Return to more words") {
                 queue = Array(model.allPracticePhrases.filter { model.isLearned($0) }.shuffled().prefix(8))
                 initialSessionCount = queue.count
                 revealed = false

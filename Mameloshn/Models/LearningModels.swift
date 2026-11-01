@@ -13,7 +13,7 @@ enum AppSection: String, CaseIterable, Identifiable {
         switch self {
         case .home: "Home"
         case .learn: "Learn"
-        case .practice: "Practice"
+        case .practice: "Remember"
         case .phrasebook: "Phrasebook"
         case .family: "Family words"
         }
@@ -128,8 +128,4 @@ struct StoredLearningState: Codable {
     var familyPhrases: [FamilyPhrase] = []
     var familyRoots = "Bessarabia–Odessa"
     var hasSeenWelcome = false
-    var totalXP: Int?
-    var dailyXP: Int?
-    var currentStreak: Int?
-    var lastActiveDay: Date?
 }
