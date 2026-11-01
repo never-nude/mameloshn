@@ -3,6 +3,8 @@ DerivedData/
 build/
 *.xcuserstate
 xcuserdata/
+__pycache__/
+*.py[cod]
 
 # Unrelated workspace artifacts; keep them out of this repository.
 threadvoice-site/
