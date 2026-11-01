@@ -26,6 +26,7 @@
     blue: "#386791",
     clay: "#8c422e",
   };
+  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
 
   const main = document.querySelector("#main-content");
   const appShell = document.querySelector("#app-shell");
@@ -38,6 +39,7 @@
 
   let storageAvailable = true;
   let storageWarningShown = false;
+  let unreadableSave = false;
   let state = loadState();
   let ui = {
     section: sectionFromHash(),
@@ -66,6 +68,7 @@
   buildNavigation();
   bindEvents();
   render();
+  if (unreadableSave) showToast("Saved progress could not be read. A copy was kept in browser storage.");
   const initialConversationID = conversationIDFromHash();
   if (initialConversationID) openConversation(initialConversationID, false);
 
@@ -128,11 +131,21 @@
   }
 
   function loadState() {
+    let raw = null;
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return normalizeState(raw ? JSON.parse(raw) : null);
+      raw = localStorage.getItem(STORAGE_KEY);
     } catch (_error) {
       storageAvailable = false;
+      return defaultState();
+    }
+    if (!raw) return defaultState();
+    try {
+      return normalizeState(JSON.parse(raw));
+    } catch (_error) {
+      try {
+        localStorage.setItem(`${STORAGE_KEY}.unreadable`, raw);
+      } catch (_ignored) {}
+      unreadableSave = true;
       return defaultState();
     }
   }
@@ -187,6 +200,7 @@
       if (event.key === "Escape" && ui.modal && ui.modal !== "welcome") closeModal();
       if (
         event.key === "Enter" &&
+        !event.repeat &&
         ui.session &&
         !ui.session.complete &&
         event.target.tagName !== "BUTTON"
@@ -269,7 +283,9 @@
 
   function handleChange(event) {
     if (event.target.matches("[data-import-file]")) {
-      importBackup(event.target.files && event.target.files[0]);
+      const file = event.target.files && event.target.files[0];
+      event.target.value = "";
+      importBackup(file);
     }
   }
 
@@ -278,17 +294,19 @@
       case "open-welcome":
         openWelcome();
         break;
-      case "finish-welcome":
+      case "finish-welcome": {
+        const firstTime = !state.hasSeenWelcome;
         state.hasSeenWelcome = true;
         saveState();
         closeModal();
         if (ui.conversation) {
           renderConversationSession();
           focusMain();
-        } else {
+        } else if (firstTime) {
           go("talk");
         }
         break;
+      }
       case "close-modal":
         closeModal();
         break;
@@ -319,6 +337,7 @@
           markAudioButton(button, true);
           playPhraseReference(entry.phrase, action === "play-slow").then((didPlay) => {
             markAudioButton(button, false);
+            if (didPlay === null) return;
             const challenge = ui.session?.challenges?.[ui.session.index];
             if (
               challenge?.mode?.id === "listenForMeaning" &&
@@ -326,7 +345,7 @@
             ) {
               if (didPlay) {
                 ui.session.audioPlayed = true;
-              } else {
+              } else if (didPlay === false) {
                 const fallback = config.challengeModes?.find(
                   (item) =>
                     item.id === (config.nonSpeakableListenFallback || "readForMeaning")
@@ -443,7 +462,7 @@
     }
     render();
     focusMain();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollTop();
   }
 
   function sectionFromHash(fallback = "home") {
@@ -620,7 +639,8 @@
           </article>
         </div>
 
-        <p class="notice"><span class="notice-icon" aria-hidden="true">ⓘ</span><span><strong>Pronunciation reference</strong> uses the same fixed voice clips on every device. Missing clips stay silent instead of switching to a harsh browser voice. Your recordings stay in this tab and disappear when you leave the exchange.</span></p>
+        <p class="notice"><span class="notice-icon" aria-hidden="true">ⓘ</span><span><strong>About the voice.</strong> Every clip you hear is a synthesized version of a family member’s voice reading the reference spelling, so it is warm and familiar but an approximation, not an archive recording; it is the same on every device and never swaps in a browser voice. Your recordings stay in this tab and disappear when you leave the exchange.</span></p>
+        <button class="text-button" type="button" data-action="open-welcome">How Ziskeit works</button>
       </section>`;
   }
 
@@ -787,7 +807,7 @@
         <div class="dialogue-copy">
           <h2 id="dialogue-line" tabindex="-1">${esc(line.transliteration)}</h2>
           <p class="dialogue-meaning">${esc(line.meaning)}</p>
-          <p class="dialogue-pronunciation"><span>Say it like</span>${esc(
+          <p class="dialogue-pronunciation"><span>Southeastern family form</span>${esc(
             line.pronunciation
           )}</p>
           <div class="rhythm-row" aria-label="Rhythm chunks">
@@ -795,6 +815,7 @@
               .map((chunk) => `<span>${esc(chunk)}</span>`)
               .join(`<i aria-hidden="true">·</i>`)}
           </div>
+          ${index === 0 ? '<p class="listen-coach">The clip reads the reference spelling above; the family form shows the vowels a Bessarabia–Odessa relative may have used.</p>' : ""}
         </div>
 
         <div class="dialogue-actions">
@@ -890,11 +911,11 @@
     }
     if (next < 0) return;
     cancelPlayback();
-    cleanupRecording(true);
+    cleanupRecording(false);
     ui.conversation.index = next;
     ui.conversation.recordingError = "";
     renderConversationSession();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollTop();
     requestAnimationFrame(() => document.querySelector("#dialogue-line")?.focus());
   }
 
@@ -1012,6 +1033,7 @@
       index: 0,
       selected: null,
       checked: false,
+      checkedAt: 0,
       audioPlayed: false,
       correct: false,
       missed: [],
@@ -1201,6 +1223,7 @@
     const chosen = challenge.options[session.selected];
     session.correct = chosen === challenge.correctAnswer;
     session.checked = true;
+    session.checkedAt = Date.now();
     if (!session.correct && !session.missed.includes(challenge.phraseID)) {
       session.missed.push(challenge.phraseID);
     }
@@ -1212,6 +1235,7 @@
   function continueQuestion() {
     const session = ui.session;
     if (!session || !session.checked) return;
+    if (Date.now() - (session.checkedAt || 0) < 400) return;
     if (session.index < session.challenges.length - 1) {
       session.index += 1;
       session.selected = null;
@@ -1219,7 +1243,7 @@
       session.audioPlayed = false;
       session.correct = false;
       renderSession();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollTop();
       requestAnimationFrame(() => document.querySelector("#session-question-title")?.focus());
       return;
     }
@@ -1714,7 +1738,9 @@
     cancelPlayback();
     const source = `audio/phrases/${encodeURIComponent(phrase.id)}.m4a`;
     const played = await playSource(source, slowly, false);
-    if (!played) showToast("Audio is unavailable. Use the written sound guide for this line.");
+    if (played === false) {
+      showToast(audioUnavailableMessage("Use the written sound guide for this line."));
+    }
     return played;
   }
 
@@ -1727,7 +1753,9 @@
     const source = conversationAudioSource(conversation, line);
     const played = await playSource(source, slowly, false);
     markAudioButton(button, false);
-    if (!played) showToast("Audio is unavailable. Follow the written rhythm instead.");
+    if (played === false) {
+      showToast(audioUnavailableMessage("Follow the written rhythm instead."));
+    }
   }
 
   async function playConversationExchange(button) {
@@ -1743,6 +1771,10 @@
         false,
         true
       );
+      if (played === false && sequenceToken === conversationSequenceToken) {
+        showToast(audioUnavailableMessage("Follow the written rhythm instead."));
+        break;
+      }
       if (!played || sequenceToken !== conversationSequenceToken) break;
       await shortPause(230);
     }
@@ -1782,7 +1814,7 @@
       };
       const abort = () => {
         audio.pause();
-        finish(false);
+        finish(null);
       };
       activePlaybackAbort = abort;
       const onStarted = () => {
@@ -2058,6 +2090,12 @@
     return `word-${Date.now()}-${Math.random().toString(16).slice(2)}`;
   }
 
+  function audioUnavailableMessage(hint) {
+    return navigator.onLine === false
+      ? `You are offline and this clip has not been saved on this device yet. ${hint}`
+      : `Audio is unavailable. ${hint}`;
+  }
+
   function showToast(message) {
     const toast = document.createElement("div");
     toast.className = "toast";
@@ -2068,6 +2106,10 @@
 
   function focusMain() {
     requestAnimationFrame(() => main.focus({ preventScroll: true }));
+  }
+
+  function scrollTop() {
+    window.scrollTo({ top: 0, behavior: reduceMotion?.matches ? "auto" : "smooth" });
   }
 
   function esc(value) {

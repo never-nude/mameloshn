@@ -1,0 +1,834 @@
+[
+ {
+  "file": "audio/phrases/sound-kh.m4a",
+  "id": "sound-kh",
+  "kind": "sound",
+  "text": "kh",
+  "meaning": "The throaty sound in Scottish “loch”",
+  "speechCue": "kh",
+  "lesson": "sound-map",
+  "ttsOverride": "akh"
+ },
+ {
+  "file": "audio/phrases/sound-ts.m4a",
+  "id": "sound-ts",
+  "kind": "sound",
+  "text": "ts",
+  "meaning": "The ending sound in “cats”",
+  "speechCue": "ts",
+  "lesson": "sound-map",
+  "ttsOverride": "tsa"
+ },
+ {
+  "file": "audio/phrases/sound-sh.m4a",
+  "id": "sound-sh",
+  "kind": "sound",
+  "text": "sh",
+  "meaning": "The opening sound in “shoe”",
+  "speechCue": "sh",
+  "lesson": "sound-map",
+  "ttsOverride": "sha"
+ },
+ {
+  "file": "audio/phrases/sound-zh.m4a",
+  "id": "sound-zh",
+  "kind": "sound",
+  "text": "zh",
+  "meaning": "The middle sound in “measure”",
+  "speechCue": "zh",
+  "lesson": "sound-map",
+  "ttsOverride": "zha"
+ },
+ {
+  "file": "audio/phrases/sound-oy.m4a",
+  "id": "sound-oy",
+  "kind": "sound",
+  "text": "oy",
+  "meaning": "The vowel in “boy”",
+  "speechCue": "oy",
+  "lesson": "sound-map",
+  "ttsOverride": "oy"
+ },
+ {
+  "file": "audio/phrases/sound-ey.m4a",
+  "id": "sound-ey",
+  "kind": "sound",
+  "text": "ey",
+  "meaning": "Roughly the vowel in “day”",
+  "speechCue": "ey",
+  "lesson": "sound-map",
+  "ttsOverride": "ey"
+ },
+ {
+  "file": "audio/phrases/sound-ay.m4a",
+  "id": "sound-ay",
+  "kind": "sound",
+  "text": "ay",
+  "meaning": "The vowel in “eye”",
+  "speechCue": "ay",
+  "lesson": "sound-map",
+  "ttsOverride": "ay"
+ },
+ {
+  "file": "audio/phrases/sholem-aleykhem.m4a",
+  "id": "sholem-aleykhem",
+  "kind": "phrase",
+  "text": "Sholem aleykhem",
+  "meaning": "Hello / peace be with you",
+  "speechCue": "SHOH-lem ah-LAY-khem",
+  "lesson": "greetings"
+ },
+ {
+  "file": "audio/phrases/aleykhem-sholem.m4a",
+  "id": "aleykhem-sholem",
+  "kind": "phrase",
+  "text": "Aleykhem sholem",
+  "meaning": "Hello to you too",
+  "speechCue": "ah-LAY-khem SHOH-lem",
+  "lesson": "greetings"
+ },
+ {
+  "file": "audio/phrases/gut-morgn.m4a",
+  "id": "gut-morgn",
+  "kind": "phrase",
+  "text": "Gut morgn",
+  "meaning": "Good morning",
+  "speechCue": "goot MOR-gen",
+  "lesson": "greetings"
+ },
+ {
+  "file": "audio/phrases/a-gutn-tog.m4a",
+  "id": "a-gutn-tog",
+  "kind": "phrase",
+  "text": "A gutn tog",
+  "meaning": "Good day / hello",
+  "speechCue": "ah GOOT-en tog",
+  "lesson": "greetings"
+ },
+ {
+  "file": "audio/phrases/vi-geyt-es.m4a",
+  "id": "vi-geyt-es",
+  "kind": "phrase",
+  "text": "Vi geyt es?",
+  "meaning": "How’s it going?",
+  "speechCue": "vee GATE ess",
+  "lesson": "greetings"
+ },
+ {
+  "file": "audio/phrases/gut-a-dank.m4a",
+  "id": "gut-a-dank",
+  "kind": "phrase",
+  "text": "Gut, a dank",
+  "meaning": "Good, thank you",
+  "speechCue": "goot, ah DONK",
+  "lesson": "greetings"
+ },
+ {
+  "file": "audio/phrases/zay-gezunt.m4a",
+  "id": "zay-gezunt",
+  "kind": "phrase",
+  "text": "Zay gezunt",
+  "meaning": "Be well / goodbye",
+  "speechCue": "zye geh-ZOONT",
+  "lesson": "greetings"
+ },
+ {
+  "file": "audio/phrases/biz-bald.m4a",
+  "id": "biz-bald",
+  "kind": "phrase",
+  "text": "Biz bald",
+  "meaning": "See you soon",
+  "speechCue": "biz bald",
+  "lesson": "greetings"
+ },
+ {
+  "file": "audio/phrases/di-mame.m4a",
+  "id": "di-mame",
+  "kind": "phrase",
+  "text": "di mame",
+  "meaning": "the mother / mom",
+  "speechCue": "dee MAH-meh",
+  "lesson": "family-table"
+ },
+ {
+  "file": "audio/phrases/der-tate.m4a",
+  "id": "der-tate",
+  "kind": "phrase",
+  "text": "der tate",
+  "meaning": "the father / dad",
+  "speechCue": "dair TAH-teh",
+  "lesson": "family-table"
+ },
+ {
+  "file": "audio/phrases/di-bobe.m4a",
+  "id": "di-bobe",
+  "kind": "phrase",
+  "text": "di bobe",
+  "meaning": "the grandmother",
+  "speechCue": "dee BOH-beh",
+  "lesson": "family-table"
+ },
+ {
+  "file": "audio/phrases/der-zeyde.m4a",
+  "id": "der-zeyde",
+  "kind": "phrase",
+  "text": "der zeyde",
+  "meaning": "the grandfather",
+  "speechCue": "dair ZAY-deh",
+  "lesson": "family-table"
+ },
+ {
+  "file": "audio/phrases/di-mishpokhe.m4a",
+  "id": "di-mishpokhe",
+  "kind": "phrase",
+  "text": "di mishpokhe",
+  "meaning": "the family / extended family",
+  "speechCue": "dee mish-POH-huh",
+  "lesson": "family-table"
+ },
+ {
+  "file": "audio/phrases/dos-kind.m4a",
+  "id": "dos-kind",
+  "kind": "phrase",
+  "text": "dos kind",
+  "meaning": "the child",
+  "speechCue": "doss kind",
+  "lesson": "family-table"
+ },
+ {
+  "file": "audio/phrases/di-shvester.m4a",
+  "id": "di-shvester",
+  "kind": "phrase",
+  "text": "di shvester",
+  "meaning": "the sister",
+  "speechCue": "dee SHVESS-ter",
+  "lesson": "family-table"
+ },
+ {
+  "file": "audio/phrases/der-bruder.m4a",
+  "id": "der-bruder",
+  "kind": "phrase",
+  "text": "der bruder",
+  "meaning": "the brother",
+  "speechCue": "dair BROO-der",
+  "lesson": "family-table"
+ },
+ {
+  "file": "audio/phrases/dos-broyt.m4a",
+  "id": "dos-broyt",
+  "kind": "phrase",
+  "text": "dos broyt",
+  "meaning": "the bread",
+  "speechCue": "doss broyt",
+  "lesson": "kitchen"
+ },
+ {
+  "file": "audio/phrases/dos-vaser.m4a",
+  "id": "dos-vaser",
+  "kind": "phrase",
+  "text": "dos vaser",
+  "meaning": "the water",
+  "speechCue": "doss VAH-ser",
+  "lesson": "kitchen"
+ },
+ {
+  "file": "audio/phrases/der-tey.m4a",
+  "id": "der-tey",
+  "kind": "phrase",
+  "text": "der tey",
+  "meaning": "the tea",
+  "speechCue": "dair tay",
+  "lesson": "kitchen"
+ },
+ {
+  "file": "audio/phrases/di-bulbes.m4a",
+  "id": "di-bulbes",
+  "kind": "phrase",
+  "text": "di bulbes",
+  "meaning": "the potatoes",
+  "speechCue": "dee BOOL-bess",
+  "lesson": "kitchen"
+ },
+ {
+  "file": "audio/phrases/di-kashe.m4a",
+  "id": "di-kashe",
+  "kind": "phrase",
+  "text": "di kashe",
+  "meaning": "the cooked grain / kasha",
+  "speechCue": "dee KAH-sheh",
+  "lesson": "kitchen"
+ },
+ {
+  "file": "audio/phrases/der-borshtsh.m4a",
+  "id": "der-borshtsh",
+  "kind": "phrase",
+  "text": "der borshtsh",
+  "meaning": "the borscht",
+  "speechCue": "dair BORSHT",
+  "lesson": "kitchen"
+ },
+ {
+  "file": "audio/phrases/ikh-bin-hungerik.m4a",
+  "id": "ikh-bin-hungerik",
+  "kind": "phrase",
+  "text": "Ikh bin hungerik",
+  "meaning": "I’m hungry",
+  "speechCue": "ikh bin HOONG-er-ik",
+  "lesson": "kitchen"
+ },
+ {
+  "file": "audio/phrases/es-gezunterheyt.m4a",
+  "id": "es-gezunterheyt",
+  "kind": "phrase",
+  "text": "Es gezunterheyt!",
+  "meaning": "Eat in good health!",
+  "speechCue": "ess geh-ZOON-ter-hayt",
+  "lesson": "kitchen"
+ },
+ {
+  "file": "audio/phrases/ikh-heys.m4a",
+  "id": "ikh-heys",
+  "kind": "phrase",
+  "text": "Ikh heys…",
+  "meaning": "My name is…",
+  "speechCue": "ikh hayce",
+  "lesson": "keep-talking"
+ },
+ {
+  "file": "audio/phrases/vi-heystu.m4a",
+  "id": "vi-heystu",
+  "kind": "phrase",
+  "text": "Vi heystu?",
+  "meaning": "What’s your name?",
+  "speechCue": "vee HAYCE-too",
+  "lesson": "keep-talking"
+ },
+ {
+  "file": "audio/phrases/fun-vanen-bistu.m4a",
+  "id": "fun-vanen-bistu",
+  "kind": "phrase",
+  "text": "Fun vanen bistu?",
+  "meaning": "Where are you from?",
+  "speechCue": "foon VAH-nen BIS-too",
+  "lesson": "keep-talking"
+ },
+ {
+  "file": "audio/phrases/ikh-bin-fun.m4a",
+  "id": "ikh-bin-fun",
+  "kind": "phrase",
+  "text": "Ikh bin fun…",
+  "meaning": "I’m from…",
+  "speechCue": "ikh bin foon",
+  "lesson": "keep-talking"
+ },
+ {
+  "file": "audio/phrases/ikh-farshtey-nisht.m4a",
+  "id": "ikh-farshtey-nisht",
+  "kind": "phrase",
+  "text": "Ikh farshtey nisht",
+  "meaning": "I don’t understand",
+  "speechCue": "ikh far-SHTAY nisht",
+  "lesson": "keep-talking"
+ },
+ {
+  "file": "audio/phrases/zog-nokh-a-mol.m4a",
+  "id": "zog-nokh-a-mol",
+  "kind": "phrase",
+  "text": "Zog dos nokh a mol",
+  "meaning": "Say that again",
+  "speechCue": "zog doss nokh ah mole",
+  "lesson": "keep-talking"
+ },
+ {
+  "file": "audio/phrases/red-langsamer.m4a",
+  "id": "red-langsamer",
+  "kind": "phrase",
+  "text": "Red a bisl langzamer",
+  "meaning": "Speak a little more slowly",
+  "speechCue": "red ah BISS-ul LONG-zah-mer",
+  "lesson": "keep-talking"
+ },
+ {
+  "file": "audio/phrases/vos-meynt-dos.m4a",
+  "id": "vos-meynt-dos",
+  "kind": "phrase",
+  "text": "Vos meynt dos?",
+  "meaning": "What does that mean?",
+  "speechCue": "voss maynt doss",
+  "lesson": "keep-talking"
+ },
+ {
+  "file": "audio/phrases/ikh-hob-dikh-lib.m4a",
+  "id": "ikh-hob-dikh-lib",
+  "kind": "phrase",
+  "text": "Ikh hob dikh lib",
+  "meaning": "I love you",
+  "speechCue": "ikh hob dikh leeb",
+  "lesson": "warmth"
+ },
+ {
+  "file": "audio/phrases/mayn-tayere.m4a",
+  "id": "mayn-tayere",
+  "kind": "phrase",
+  "text": "Mayn tayere",
+  "meaning": "My dear (to a woman)",
+  "speechCue": "mine TYE-eh-reh",
+  "lesson": "warmth"
+ },
+ {
+  "file": "audio/phrases/a-sheynem-dank.m4a",
+  "id": "a-sheynem-dank",
+  "kind": "phrase",
+  "text": "A sheynem dank",
+  "meaning": "Thank you very much",
+  "speechCue": "ah SHAY-nem donk",
+  "lesson": "warmth"
+ },
+ {
+  "file": "audio/phrases/shlof-gezunt.m4a",
+  "id": "shlof-gezunt",
+  "kind": "phrase",
+  "text": "Shlof gezunt",
+  "meaning": "Sleep well",
+  "speechCue": "shlof geh-ZOONT",
+  "lesson": "warmth"
+ },
+ {
+  "file": "audio/phrases/zolst-zayn-gezunt.m4a",
+  "id": "zolst-zayn-gezunt",
+  "kind": "phrase",
+  "text": "Zolst zayn gezunt",
+  "meaning": "May you be healthy",
+  "speechCue": "zolst zine geh-ZOONT",
+  "lesson": "warmth"
+ },
+ {
+  "file": "audio/phrases/oy-vey.m4a",
+  "id": "oy-vey",
+  "kind": "phrase",
+  "text": "Oy vey!",
+  "meaning": "Oh no! / what a worry!",
+  "speechCue": "oy vay",
+  "lesson": "warmth"
+ },
+ {
+  "file": "audio/phrases/nu.m4a",
+  "id": "nu",
+  "kind": "phrase",
+  "text": "Nu?",
+  "meaning": "Well? / so? / come on?",
+  "speechCue": "noo",
+  "lesson": "warmth"
+ },
+ {
+  "file": "audio/phrases/dos-iz-mayn-bobe.m4a",
+  "id": "dos-iz-mayn-bobe",
+  "kind": "phrase",
+  "text": "Dos iz mayn bobe",
+  "meaning": "This is my grandmother",
+  "speechCue": "doss iz mine BOH-beh",
+  "lesson": "family-story"
+ },
+ {
+  "file": "audio/phrases/mayn-zeyde-hot-gezogt.m4a",
+  "id": "mayn-zeyde-hot-gezogt",
+  "kind": "phrase",
+  "text": "Mayn zeyde hot gezogt…",
+  "meaning": "My grandfather said…",
+  "speechCue": "mine ZAY-deh hot geh-ZOKT",
+  "lesson": "family-story"
+ },
+ {
+  "file": "audio/phrases/ven-ikh-bin-geven-a-kind.m4a",
+  "id": "ven-ikh-bin-geven-a-kind",
+  "kind": "phrase",
+  "text": "Ven ikh bin geven a kind…",
+  "meaning": "When I was a child…",
+  "speechCue": "ven ikh bin geh-VEHN ah kind",
+  "lesson": "family-story"
+ },
+ {
+  "file": "audio/phrases/in-undzer-heym.m4a",
+  "id": "in-undzer-heym",
+  "kind": "phrase",
+  "text": "In undzer heym…",
+  "meaning": "In our home…",
+  "speechCue": "in OON-dzer hame",
+  "lesson": "family-story"
+ },
+ {
+  "file": "audio/phrases/vi-hot-men-dos-gezogt.m4a",
+  "id": "vi-hot-men-dos-gezogt",
+  "kind": "phrase",
+  "text": "Vi hot men dos gezogt bay aykh in der heym?",
+  "meaning": "How did you say that in your home?",
+  "speechCue": "vee hot men doss geh-ZOKT bye eye-kh in dair hame",
+  "lesson": "family-story"
+ },
+ {
+  "file": "audio/phrases/dertseyl-mir-a-mayse.m4a",
+  "id": "dertseyl-mir-a-mayse",
+  "kind": "phrase",
+  "text": "Dertseyl mir a mayse",
+  "meaning": "Tell me a story",
+  "speechCue": "der-TSAYL meer ah MY-seh",
+  "lesson": "family-story"
+ },
+ {
+  "file": "audio/phrases/ikh-vil-visn-mer.m4a",
+  "id": "ikh-vil-visn-mer",
+  "kind": "phrase",
+  "text": "Ikh vil visn mer",
+  "meaning": "I want to know more",
+  "speechCue": "ikh vil VISS-en mehr",
+  "lesson": "family-story"
+ },
+ {
+  "file": "audio/conversations/phone-check-in-phone-1.m4a",
+  "id": "phone-check-in-phone-1",
+  "kind": "conversation",
+  "conversationId": "phone-check-in",
+  "lineId": "phone-1",
+  "index": 0,
+  "speaker": "You",
+  "text": "Bobe, dos bin ikh. Vi geyt es dir?",
+  "meaning": "Grandma, it’s me. How are you?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/phone-check-in-phone-2.m4a",
+  "id": "phone-check-in-phone-2",
+  "kind": "conversation",
+  "conversationId": "phone-check-in",
+  "lineId": "phone-2",
+  "index": 1,
+  "speaker": "Guide",
+  "text": "Gut, mayn kind. Un vi geyt es dir?",
+  "meaning": "Good, my child. And how are you?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/phone-check-in-phone-3.m4a",
+  "id": "phone-check-in-phone-3",
+  "kind": "conversation",
+  "conversationId": "phone-check-in",
+  "lineId": "phone-3",
+  "index": 2,
+  "speaker": "You",
+  "text": "Gut, a dank.",
+  "meaning": "Good, thank you.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/phone-check-in-phone-4.m4a",
+  "id": "phone-check-in-phone-4",
+  "kind": "conversation",
+  "conversationId": "phone-check-in",
+  "lineId": "phone-4",
+  "index": 3,
+  "speaker": "Guide",
+  "text": "Zay gezunt, mayn kind.",
+  "meaning": "Be well, my child.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/come-in-come-in-1.m4a",
+  "id": "come-in-come-in-1",
+  "kind": "conversation",
+  "conversationId": "come-in",
+  "lineId": "come-in-1",
+  "index": 0,
+  "speaker": "Guide",
+  "text": "Kum arayn, mayn kind!",
+  "meaning": "Come in, my child!",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/come-in-come-in-2.m4a",
+  "id": "come-in-come-in-2",
+  "kind": "conversation",
+  "conversationId": "come-in",
+  "lineId": "come-in-2",
+  "index": 1,
+  "speaker": "You",
+  "text": "A gutn tog, bobe.",
+  "meaning": "Good day, Grandma.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/come-in-come-in-3.m4a",
+  "id": "come-in-come-in-3",
+  "kind": "conversation",
+  "conversationId": "come-in",
+  "lineId": "come-in-3",
+  "index": 2,
+  "speaker": "Guide",
+  "text": "Zets dikh avek.",
+  "meaning": "Sit down.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/come-in-come-in-4.m4a",
+  "id": "come-in-come-in-4",
+  "kind": "conversation",
+  "conversationId": "come-in",
+  "lineId": "come-in-4",
+  "index": 3,
+  "speaker": "You",
+  "text": "A dank.",
+  "meaning": "Thank you.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/soup-soup-1.m4a",
+  "id": "soup-soup-1",
+  "kind": "conversation",
+  "conversationId": "soup",
+  "lineId": "soup-1",
+  "index": 0,
+  "speaker": "Guide",
+  "text": "Vilstu nokh a bisl zup?",
+  "meaning": "Would you like a little more soup?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/soup-soup-2.m4a",
+  "id": "soup-soup-2",
+  "kind": "conversation",
+  "conversationId": "soup",
+  "lineId": "soup-2",
+  "index": 1,
+  "speaker": "You",
+  "text": "Yo, a bisl. A dank.",
+  "meaning": "Yes, a little. Thank you.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/soup-soup-3.m4a",
+  "id": "soup-soup-3",
+  "kind": "conversation",
+  "conversationId": "soup",
+  "lineId": "soup-3",
+  "index": 2,
+  "speaker": "Guide",
+  "text": "Nem. S'iz heys.",
+  "meaning": "Take it. It’s hot.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/soup-soup-4.m4a",
+  "id": "soup-soup-4",
+  "kind": "conversation",
+  "conversationId": "soup",
+  "lineId": "soup-4",
+  "index": 3,
+  "speaker": "You",
+  "text": "S'iz zeyer gut.",
+  "meaning": "It’s very good.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/kitchen-kitchen-1.m4a",
+  "id": "kitchen-kitchen-1",
+  "kind": "conversation",
+  "conversationId": "kitchen",
+  "lineId": "kitchen-1",
+  "index": 0,
+  "speaker": "Guide",
+  "text": "Gib mir di tsibele, zay azoy gut.",
+  "meaning": "Give me the onion, please.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/kitchen-kitchen-2.m4a",
+  "id": "kitchen-kitchen-2",
+  "kind": "conversation",
+  "conversationId": "kitchen",
+  "lineId": "kitchen-2",
+  "index": 1,
+  "speaker": "You",
+  "text": "Di tsibele?",
+  "meaning": "The onion?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/kitchen-kitchen-3.m4a",
+  "id": "kitchen-kitchen-3",
+  "kind": "conversation",
+  "conversationId": "kitchen",
+  "lineId": "kitchen-3",
+  "index": 2,
+  "speaker": "Guide",
+  "text": "Yo. Shnayd zi kleyn.",
+  "meaning": "Yes. Cut it small.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/kitchen-kitchen-4.m4a",
+  "id": "kitchen-kitchen-4",
+  "kind": "conversation",
+  "conversationId": "kitchen",
+  "lineId": "kitchen-4",
+  "index": 3,
+  "speaker": "You",
+  "text": "Azoy?",
+  "meaning": "Like this?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/kitchen-kitchen-5.m4a",
+  "id": "kitchen-kitchen-5",
+  "kind": "conversation",
+  "conversationId": "kitchen",
+  "lineId": "kitchen-5",
+  "index": 4,
+  "speaker": "Guide",
+  "text": "Yo, punkt azoy.",
+  "meaning": "Yes, exactly like that.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/family-photo-photo-1.m4a",
+  "id": "family-photo-photo-1",
+  "kind": "conversation",
+  "conversationId": "family-photo",
+  "lineId": "photo-1",
+  "index": 0,
+  "speaker": "You",
+  "text": "Ver iz dos?",
+  "meaning": "Who is this?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/family-photo-photo-2.m4a",
+  "id": "family-photo-photo-2",
+  "kind": "conversation",
+  "conversationId": "family-photo",
+  "lineId": "photo-2",
+  "index": 1,
+  "speaker": "Guide",
+  "text": "Dos iz mayn bobe.",
+  "meaning": "This is my grandmother.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/family-photo-photo-3.m4a",
+  "id": "family-photo-photo-3",
+  "kind": "conversation",
+  "conversationId": "family-photo",
+  "lineId": "photo-3",
+  "index": 2,
+  "speaker": "You",
+  "text": "Vi hot zi geheysn?",
+  "meaning": "What was her name?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/family-photo-photo-4.m4a",
+  "id": "family-photo-photo-4",
+  "kind": "conversation",
+  "conversationId": "family-photo",
+  "lineId": "photo-4",
+  "index": 3,
+  "speaker": "Guide",
+  "text": "Zi hot geheysn…",
+  "meaning": "Her name was… (say your own relative’s name here)",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/grandfathers-story-story-1.m4a",
+  "id": "grandfathers-story-story-1",
+  "kind": "conversation",
+  "conversationId": "grandfathers-story",
+  "lineId": "story-1",
+  "index": 0,
+  "speaker": "You",
+  "text": "Zeyde, dertseyl mir a mayse.",
+  "meaning": "Grandpa, tell me a story.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/grandfathers-story-story-2.m4a",
+  "id": "grandfathers-story-story-2",
+  "kind": "conversation",
+  "conversationId": "grandfathers-story",
+  "lineId": "story-2",
+  "index": 1,
+  "speaker": "Guide",
+  "text": "Vos far a mayse?",
+  "meaning": "What kind of story?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/grandfathers-story-story-3.m4a",
+  "id": "grandfathers-story-story-3",
+  "kind": "conversation",
+  "conversationId": "grandfathers-story",
+  "lineId": "story-3",
+  "index": 2,
+  "speaker": "You",
+  "text": "Fun ven du bist geven a kind.",
+  "meaning": "From when you were a child.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/grandfathers-story-story-4.m4a",
+  "id": "grandfathers-story-story-4",
+  "kind": "conversation",
+  "conversationId": "grandfathers-story",
+  "lineId": "story-4",
+  "index": 3,
+  "speaker": "Guide",
+  "text": "Nu, ikh vel dir dertseyln.",
+  "meaning": "Well, I’ll tell you.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/family-saying-saying-1.m4a",
+  "id": "family-saying-saying-1",
+  "kind": "conversation",
+  "conversationId": "family-saying",
+  "lineId": "saying-1",
+  "index": 0,
+  "speaker": "You",
+  "text": "Vos hot zeyde ale mol gezogt?",
+  "meaning": "What did Grandpa always say?",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/family-saying-saying-2.m4a",
+  "id": "family-saying-saying-2",
+  "kind": "conversation",
+  "conversationId": "family-saying",
+  "lineId": "saying-2",
+  "index": 1,
+  "speaker": "Guide",
+  "text": "Er hot ale mol gezogt, 'Zay gezunt.'",
+  "meaning": "He always said, ‘Be well.’",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/family-saying-saying-3.m4a",
+  "id": "family-saying-saying-3",
+  "kind": "conversation",
+  "conversationId": "family-saying",
+  "lineId": "saying-3",
+  "index": 2,
+  "speaker": "You",
+  "text": "Zog es nokh a mol.",
+  "meaning": "Say it again.",
+  "speechCue": ""
+ },
+ {
+  "file": "audio/conversations/family-saying-saying-4.m4a",
+  "id": "family-saying-saying-4",
+  "kind": "conversation",
+  "conversationId": "family-saying",
+  "lineId": "saying-4",
+  "index": 3,
+  "speaker": "Guide",
+  "text": "Zay gezunt.",
+  "meaning": "Be well.",
+  "speechCue": ""
+ }
+]
