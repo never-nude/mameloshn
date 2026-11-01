@@ -10,7 +10,7 @@ This is an early family preview. Learning progress and family words stay on the 
 
 ## Learn in your browser
 
-**[Open Ziskeit (ZISS-kite), the interactive course](https://never-nude.github.io/mameloshn/)**
+**[Open Ziskeit (ZISS-kite), the interactive course](https://yiddish.wiki/)**
 
 Ziskeit is the web edition: a warm, conversation-led way to learn the Yiddish a grandparent might use with family. It includes seven lessons, short family exchanges, read/listen/recall exercises, gentle spaced return, the searchable phrasebook, and private Family Words. It works on phones and computers, can be added to an iPhone Home Screen, and keeps learning data in that browser. Family notes can be exported and imported as a private backup.
 
