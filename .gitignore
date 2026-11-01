@@ -1,0 +1,13 @@
+.DS_Store
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+
+# Unrelated workspace artifacts; keep them out of this repository.
+threadvoice-site/
+threadvoice-live.jpg
+
+# Local distribution output.
+.release/
+*.zip
