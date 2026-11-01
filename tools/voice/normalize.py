@@ -53,7 +53,7 @@ def phonetic_key(s: str) -> str:
     for a, b in [("ä","e"),("ö","e"),("ü","i"),("ß","s"),("é","e"),("š","sh"),("č","tsh")]:
         s = s.replace(a, b)
     s = re.sub(r"[^a-z ]", " ", s)
-    for a, b in [("tsch","c"),("tsh","c"),("sch","S"),("sh","S"),("ch","x"),("kh","x"),("ck","k"),("tz","s"),("ts","s"),("z","s"),
+    for a, b in [("tsch","c"),("tsh","c"),("sch","S"),("sh","S"),("zh","S"),("ch","x"),("kh","x"),("ck","k"),("tz","s"),("ts","s"),("z","s"),
                  ("ei","ay"),("ai","ay"),("eu","oy"),("äu","oy"),("oi","oy"),("ie","i"),("ey","e"),("ee","e"),("eh","e"),("ah","a"),("oh","o"),("uh","u"),("ih","i"),
                  ("w","f"),("v","f"),("ph","f"),("j","y"),("q","k")]:
         s = s.replace(a, b)

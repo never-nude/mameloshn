@@ -18,3 +18,7 @@ threadvoice-live.jpg
 tools/voice/.venv/
 tools/voice/work/
 tools/voice/refs*.json
+tools/voice/samples/
+
+# Local editor/agent config.
+.claude/

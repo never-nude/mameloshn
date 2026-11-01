@@ -1,0 +1,4519 @@
+{
+ "clips": [
+  {
+   "file": "audio/conversations/come-in-come-in-1.m4a",
+   "id": "come-in-come-in-1",
+   "kind": "conversation",
+   "text": "Kum arayn, mayn kind!",
+   "spoken": "Kum arayn, mayn kind!",
+   "tts_input": "Kum arain, main kind!",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Kum arein mein Kind.",
+    "sim": 1.0,
+    "dur": 1.78,
+    "expected": 1.74,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Kum arein mein Kind.",
+     "sim": 1.0,
+     "dur": 1.78,
+     "expected": 1.74,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Kumaren, Main Kind.",
+     "sim": 0.903,
+     "dur": 2.08,
+     "expected": 1.74,
+     "score": 0.903
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Kumaren Mein Kind",
+     "sim": 0.903,
+     "dur": 2.24,
+     "expected": 1.74,
+     "score": 0.903
+    }
+   ],
+   "duration": 1.99,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/come-in-come-in-2.m4a",
+   "id": "come-in-come-in-2",
+   "kind": "conversation",
+   "text": "A gutn tog, bobe.",
+   "spoken": "A gutn tog, bobe.",
+   "tts_input": "A gutn tog, bobe.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "A guttog bobe!",
+    "sim": 0.909,
+    "dur": 1.3,
+    "expected": 1.38,
+    "score": 0.909
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "A guttog bobe!",
+     "sim": 0.909,
+     "dur": 1.3,
+     "expected": 1.38,
+     "score": 0.909
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Guten Tag, Bobbe.",
+     "sim": 0.833,
+     "dur": 1.92,
+     "expected": 1.38,
+     "score": 0.833
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "A guten Togbobir.",
+     "sim": 0.846,
+     "dur": 1.6,
+     "expected": 1.38,
+     "score": 0.846
+    }
+   ],
+   "duration": 1.51,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/come-in-come-in-3.m4a",
+   "id": "come-in-come-in-3",
+   "kind": "conversation",
+   "text": "Zets dikh avek.",
+   "spoken": "Zets dikh avek.",
+   "tts_input": "Sez dich awek.",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Setz dich aufheck!",
+    "sim": 0.909,
+    "dur": 1.48,
+    "expected": 1.38,
+    "score": 0.909
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Setz dich arg.",
+     "sim": 0.737,
+     "dur": 1.0,
+     "expected": 1.38,
+     "score": 0.737
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Setz dich AWAK!",
+     "sim": 0.9,
+     "dur": 1.22,
+     "expected": 1.38,
+     "score": 0.9
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Setz dich aufheck!",
+     "sim": 0.909,
+     "dur": 1.48,
+     "expected": 1.38,
+     "score": 0.909
+    }
+   ],
+   "duration": 1.69,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/come-in-come-in-4.m4a",
+   "id": "come-in-come-in-4",
+   "kind": "conversation",
+   "text": "A dank.",
+   "spoken": "A dank.",
+   "tts_input": "A dank.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "A Dank.",
+    "sim": 1.0,
+    "dur": 0.42,
+    "expected": 0.75,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "A Dank.",
+     "sim": 1.0,
+     "dur": 0.42,
+     "expected": 0.75,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "A Dank.",
+     "sim": 1.0,
+     "dur": 0.58,
+     "expected": 0.75,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "A Dank.",
+     "sim": 1.0,
+     "dur": 0.54,
+     "expected": 0.75,
+     "score": 1.0
+    }
+   ],
+   "duration": 0.63,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/family-photo-photo-1.m4a",
+   "id": "family-photo-photo-1",
+   "kind": "conversation",
+   "text": "Ver iz dos?",
+   "spoken": "Ver iz dos?",
+   "tts_input": "Wer is dos?",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "wer ist dos",
+    "sim": 0.941,
+    "dur": 1.2,
+    "expected": 1.02,
+    "score": 0.941
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "DOS",
+     "sim": 0.545,
+     "dur": 0.72,
+     "expected": 1.02,
+     "score": 0.545
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Where is those?",
+     "sim": 0.7,
+     "dur": 1.2,
+     "expected": 1.02,
+     "score": 0.7
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "wer ist dos",
+     "sim": 0.941,
+     "dur": 1.2,
+     "expected": 1.02,
+     "score": 0.941
+    }
+   ],
+   "duration": 1.41,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/family-photo-photo-2.m4a",
+   "id": "family-photo-photo-2",
+   "kind": "conversation",
+   "text": "Dos iz mayn bobe.",
+   "spoken": "Dos iz mayn bobe.",
+   "tts_input": "Dos is main bobe.",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Das ist mein Bobbe.",
+    "sim": 0.889,
+    "dur": 2.36,
+    "expected": 1.47,
+    "score": 0.889
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Das ist mein Bob.",
+     "sim": 0.846,
+     "dur": 1.45,
+     "expected": 1.47,
+     "score": 0.846
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Dosis Main Bulba",
+     "sim": 0.815,
+     "dur": 1.28,
+     "expected": 1.47,
+     "score": 0.815
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Das ist mein Bobbe.",
+     "sim": 0.889,
+     "dur": 2.36,
+     "expected": 1.47,
+     "score": 0.889
+    }
+   ],
+   "duration": 2.57,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/family-photo-photo-3.m4a",
+   "id": "family-photo-photo-3",
+   "kind": "conversation",
+   "text": "Vi hot zi geheysn?",
+   "spoken": "Vi hot zi geheysn?",
+   "tts_input": "Wi hot si geheesn?",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Wie hot sie gehessen?",
+    "sim": 0.957,
+    "dur": 1.64,
+    "expected": 1.56,
+    "score": 0.957
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Wie hat sie geheißen?",
+     "sim": 0.8,
+     "dur": 1.88,
+     "expected": 1.56,
+     "score": 0.8
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Wie hot sie gehessen?",
+     "sim": 0.957,
+     "dur": 1.64,
+     "expected": 1.56,
+     "score": 0.957
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Wie hat sie gehiesen?",
+     "sim": 0.833,
+     "dur": 1.84,
+     "expected": 1.56,
+     "score": 0.833
+    }
+   ],
+   "duration": 1.85,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/family-photo-photo-4.m4a",
+   "id": "family-photo-photo-4",
+   "kind": "conversation",
+   "text": "Zi hot geheysn [family name].",
+   "spoken": "Zi hot geheysn.",
+   "tts_input": "Si hot geheesn.",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Sie hat gehiesen.",
+    "sim": 0.8,
+    "dur": 1.52,
+    "expected": 1.38,
+    "score": 0.8
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Sie hat gehäisen.",
+     "sim": 0.762,
+     "dur": 1.5,
+     "expected": 1.38,
+     "score": 0.762
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Sie hat Gehäisen.",
+     "sim": 0.762,
+     "dur": 1.4,
+     "expected": 1.38,
+     "score": 0.762
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Sie hat gehiesen.",
+     "sim": 0.8,
+     "dur": 1.52,
+     "expected": 1.38,
+     "score": 0.8
+    }
+   ],
+   "duration": 1.73,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/family-saying-saying-1.m4a",
+   "id": "family-saying-saying-1",
+   "kind": "conversation",
+   "text": "Vos hot zeyde ale mol gezogt?",
+   "spoken": "Vos hot zeyde ale mol gezogt?",
+   "tts_input": "Wos hot seede ale mol gesogt?",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "was hot sieder alle mal gesorgt",
+    "sim": 0.826,
+    "dur": 2.76,
+    "expected": 2.37,
+    "score": 0.826
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "was hot sieder alle mal gesorgt",
+     "sim": 0.826,
+     "dur": 2.76,
+     "expected": 2.37,
+     "score": 0.826
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "wo's heute wieder alle im Mord gesorgt.",
+     "sim": 0.784,
+     "dur": 2.46,
+     "expected": 2.37,
+     "score": 0.784
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "was hat sie dir allemal gesorgt",
+     "sim": 0.739,
+     "dur": 3.78,
+     "expected": 2.37,
+     "score": 0.739
+    }
+   ],
+   "duration": 2.97,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/family-saying-saying-2.m4a",
+   "id": "family-saying-saying-2",
+   "kind": "conversation",
+   "text": "Er hot ale mol gezogt, 'Zay gezunt.'",
+   "spoken": "Er hot ale mol gezogt, 'Zay gezunt.'",
+   "tts_input": "Er hot ale mol gesogt, 'Sai gesunt.'",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Er hat alle Mohl gesorgt, sei gesund.",
+    "sim": 0.906,
+    "dur": 2.72,
+    "expected": 2.64,
+    "score": 0.906
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Er hat alle Mohl gesorgt, sei gesund.",
+     "sim": 0.906,
+     "dur": 2.72,
+     "expected": 2.64,
+     "score": 0.906
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Er hat alle Mol gesorgt. Sei gesund.",
+     "sim": 0.906,
+     "dur": 3.48,
+     "expected": 2.64,
+     "score": 0.906
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Er hat alle Mohl gesucht. Sei gesund.",
+     "sim": 0.846,
+     "dur": 3.9,
+     "expected": 2.64,
+     "score": 0.846
+    }
+   ],
+   "duration": 2.93,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/family-saying-saying-3.m4a",
+   "id": "family-saying-saying-3",
+   "kind": "conversation",
+   "text": "Zog es nokh a mol.",
+   "spoken": "Zog es nokh a mol.",
+   "tts_input": "Sog es noch a mol.",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Sog es noch am Mohl.",
+    "sim": 0.96,
+    "dur": 1.68,
+    "expected": 1.47,
+    "score": 0.96
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Zorg es noch am Mol.",
+     "sim": 0.923,
+     "dur": 1.7,
+     "expected": 1.47,
+     "score": 0.923
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Sog es noch am Mohl.",
+     "sim": 0.96,
+     "dur": 1.68,
+     "expected": 1.47,
+     "score": 0.96
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Sog es noch Amo.",
+     "sim": 0.957,
+     "dur": 1.74,
+     "expected": 1.47,
+     "score": 0.957
+    }
+   ],
+   "duration": 1.89,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/family-saying-saying-4.m4a",
+   "id": "family-saying-saying-4",
+   "kind": "conversation",
+   "text": "Zay gezunt.",
+   "spoken": "Zay gezunt.",
+   "tts_input": "Sai gesunt.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Sei gesund!",
+    "sim": 0.889,
+    "dur": 0.72,
+    "expected": 1.11,
+    "score": 0.889
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Sei gesund!",
+     "sim": 0.889,
+     "dur": 0.72,
+     "expected": 1.11,
+     "score": 0.889
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Sei gesund!",
+     "sim": 0.889,
+     "dur": 0.82,
+     "expected": 1.11,
+     "score": 0.889
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Sei gesund!",
+     "sim": 0.889,
+     "dur": 0.94,
+     "expected": 1.11,
+     "score": 0.889
+    }
+   ],
+   "duration": 0.93,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/grandfathers-story-story-1.m4a",
+   "id": "grandfathers-story-story-1",
+   "kind": "conversation",
+   "text": "Zeyde, dertseyl mir a mayse.",
+   "spoken": "Zeyde, dertseyl mir a mayse.",
+   "tts_input": "Seede, derzeel mir a maise.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Zeder der Tellmier ameise.",
+    "sim": 0.923,
+    "dur": 2.6,
+    "expected": 2.28,
+    "score": 0.923
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Zeder der Tellmier ameise.",
+     "sim": 0.923,
+     "dur": 2.6,
+     "expected": 2.28,
+     "score": 0.923
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Zede der Zellmier Amäse",
+     "sim": 0.919,
+     "dur": 2.76,
+     "expected": 2.28,
+     "score": 0.919
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Sie der Ziel mir am Mäse.",
+     "sim": 0.722,
+     "dur": 2.74,
+     "expected": 2.28,
+     "score": 0.722
+    }
+   ],
+   "duration": 2.81,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/grandfathers-story-story-2.m4a",
+   "id": "grandfathers-story-story-2",
+   "kind": "conversation",
+   "text": "Vos far a mayse?",
+   "spoken": "Vos far a mayse?",
+   "tts_input": "Wos far a maise?",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Vos far amäise.",
+    "sim": 1.0,
+    "dur": 1.82,
+    "expected": 1.38,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "was far amazing",
+     "sim": 0.72,
+     "dur": 1.32,
+     "expected": 1.38,
+     "score": 0.72
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Was far am miser?",
+     "sim": 0.72,
+     "dur": 1.32,
+     "expected": 1.38,
+     "score": 0.72
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Vos far amäise.",
+     "sim": 1.0,
+     "dur": 1.82,
+     "expected": 1.38,
+     "score": 1.0
+    }
+   ],
+   "duration": 2.03,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/grandfathers-story-story-3.m4a",
+   "id": "grandfathers-story-story-3",
+   "kind": "conversation",
+   "text": "Fun ven du bist geven a kind.",
+   "spoken": "Fun ven du bist geven a kind.",
+   "tts_input": "Fun wen du bist gewen a kind.",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Von wem du bist gewin' Akin.",
+    "sim": 0.837,
+    "dur": 2.7,
+    "expected": 2.28,
+    "score": 0.837
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Von Wien Du bist Gewinn erkennt.",
+     "sim": 0.667,
+     "dur": 1.98,
+     "expected": 2.28,
+     "score": 0.667
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Von wenn du bist gewinn erkein.",
+     "sim": 0.711,
+     "dur": 1.9,
+     "expected": 2.28,
+     "score": 0.711
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Von wem du bist gewin' Akin.",
+     "sim": 0.837,
+     "dur": 2.7,
+     "expected": 2.28,
+     "score": 0.837
+    }
+   ],
+   "duration": 2.91,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/grandfathers-story-story-4.m4a",
+   "id": "grandfathers-story-story-4",
+   "kind": "conversation",
+   "text": "Nu, ikh vel dir dertseyln.",
+   "spoken": "Nu, ikh vel dir dertseyln.",
+   "tts_input": "Nu, ich wel dir derzeeln.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Nun, ich will dir der Zelln.",
+    "sim": 0.914,
+    "dur": 2.4,
+    "expected": 2.1,
+    "score": 0.914
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Nun, ich will dir der Zelln.",
+     "sim": 0.914,
+     "dur": 2.4,
+     "expected": 2.1,
+     "score": 0.914
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Nun, ich will dir der Zelln.",
+     "sim": 0.914,
+     "dur": 2.14,
+     "expected": 2.1,
+     "score": 0.914
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "nu ich will dir d'erzählen",
+     "sim": 0.914,
+     "dur": 2.82,
+     "expected": 2.1,
+     "score": 0.914
+    }
+   ],
+   "duration": 2.61,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/kitchen-kitchen-1.m4a",
+   "id": "kitchen-kitchen-1",
+   "kind": "conversation",
+   "text": "Gib mir di tsibele, zay azoy gut.",
+   "spoken": "Gib mir di tsibele, zay azoy gut.",
+   "tts_input": "Gib mir di zibele, sai asoi gut.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Gib mir die Zibelle, sei also gut.",
+    "sim": 0.958,
+    "dur": 2.98,
+    "expected": 2.55,
+    "score": 0.958
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Gib mir die Zibelle, sei also gut.",
+     "sim": 0.958,
+     "dur": 2.98,
+     "expected": 2.55,
+     "score": 0.958
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Gib mir die Tzibale. Zai azoi gut.",
+     "sim": 0.958,
+     "dur": 3.64,
+     "expected": 2.55,
+     "score": 0.958
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Gib mir die Sibbele, sei also gut.",
+     "sim": 0.958,
+     "dur": 3.34,
+     "expected": 2.55,
+     "score": 0.958
+    }
+   ],
+   "duration": 3.19,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/kitchen-kitchen-2.m4a",
+   "id": "kitchen-kitchen-2",
+   "kind": "conversation",
+   "text": "Di tsibele?",
+   "spoken": "Di tsibele?",
+   "tts_input": "Di zibele?",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Die Zibelle.",
+    "sim": 1.0,
+    "dur": 1.26,
+    "expected": 1.11,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "die Siebelen",
+     "sim": 0.941,
+     "dur": 1.5,
+     "expected": 1.11,
+     "score": 0.941
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Die Zibelle.",
+     "sim": 1.0,
+     "dur": 1.26,
+     "expected": 1.11,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Die Zibela",
+     "sim": 0.875,
+     "dur": 1.24,
+     "expected": 1.11,
+     "score": 0.875
+    }
+   ],
+   "duration": 1.47,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/kitchen-kitchen-3.m4a",
+   "id": "kitchen-kitchen-3",
+   "kind": "conversation",
+   "text": "Yo. Shnayd zi kleyn.",
+   "spoken": "Yo. Shnayd zi kleyn.",
+   "tts_input": "Jo. Schnaid si kleen.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Yo, schneid sie klein.",
+    "sim": 0.889,
+    "dur": 2.22,
+    "expected": 1.65,
+    "score": 0.889
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Yo, schneid sie klein.",
+     "sim": 0.889,
+     "dur": 2.22,
+     "expected": 1.65,
+     "score": 0.889
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Jo, schneit sie klein.",
+     "sim": 0.815,
+     "dur": 2.3,
+     "expected": 1.65,
+     "score": 0.815
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Jo, schneid sie clean.",
+     "sim": 0.889,
+     "dur": 2.08,
+     "expected": 1.65,
+     "score": 0.889
+    }
+   ],
+   "duration": 2.43,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/kitchen-kitchen-4.m4a",
+   "id": "kitchen-kitchen-4",
+   "kind": "conversation",
+   "text": "Azoy?",
+   "spoken": "Azoy?",
+   "tts_input": "Asoi?",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Azoi?",
+    "sim": 1.0,
+    "dur": 0.46,
+    "expected": 0.66,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Azoi?",
+     "sim": 1.0,
+     "dur": 0.46,
+     "expected": 0.66,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Azoi",
+     "sim": 1.0,
+     "dur": 0.66,
+     "expected": 0.66,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Azoi.",
+     "sim": 1.0,
+     "dur": 0.66,
+     "expected": 0.66,
+     "score": 1.0
+    }
+   ],
+   "duration": 0.67,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/kitchen-kitchen-5.m4a",
+   "id": "kitchen-kitchen-5",
+   "kind": "conversation",
+   "text": "Yo, punkt azoy.",
+   "spoken": "Yo, punkt azoy.",
+   "tts_input": "Jo, punkt asoi.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.9,
+    "transcript": "Yo. Punkt Azoi.",
+    "sim": 1.0,
+    "dur": 1.79,
+    "expected": 1.29,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "yo.azoi",
+     "sim": 0.706,
+     "dur": 1.54,
+     "expected": 1.29,
+     "score": 0.706
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Yo.Azoy",
+     "sim": 0.706,
+     "dur": 1.54,
+     "expected": 1.29,
+     "score": 0.706
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Yo.Zoi",
+     "sim": 0.625,
+     "dur": 1.66,
+     "expected": 1.29,
+     "score": 0.625
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "Yo. Punkt Azoi.",
+     "sim": 1.0,
+     "dur": 1.79,
+     "expected": 1.29,
+     "score": 1.0
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Yo.azoi",
+     "sim": 0.706,
+     "dur": 1.74,
+     "expected": 1.29,
+     "score": 0.706
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "jo.azoi",
+     "sim": 0.706,
+     "dur": 1.76,
+     "expected": 1.29,
+     "score": 0.706
+    }
+   ],
+   "duration": 2.0,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/phone-check-in-phone-1.m4a",
+   "id": "phone-check-in-phone-1",
+   "kind": "conversation",
+   "text": "Bobe, dos bin ikh. Vi geyt es dir?",
+   "spoken": "Bobe, dos bin ikh. Vi geyt es dir?",
+   "tts_input": "Bobe, dos bin ich. Wi geet es dir?",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Bobe, dos bin ich. Wie geht es dir?",
+    "sim": 1.0,
+    "dur": 3.28,
+    "expected": 2.46,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Bobe, Dost bin ich. Wie geht es dir?",
+     "sim": 0.978,
+     "dur": 2.98,
+     "expected": 2.46,
+     "score": 0.978
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Bobe, dos bin ich. Wie geht es dir?",
+     "sim": 1.0,
+     "dur": 3.28,
+     "expected": 2.46,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Wobe, dos bin ich, wie geht es dir?",
+     "sim": 0.955,
+     "dur": 3.5,
+     "expected": 2.46,
+     "score": 0.955
+    }
+   ],
+   "duration": 3.49,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/phone-check-in-phone-2.m4a",
+   "id": "phone-check-in-phone-2",
+   "kind": "conversation",
+   "text": "Gut, mayn kind. Un vi geyt es dir?",
+   "spoken": "Gut, mayn kind. Un vi geyt es dir?",
+   "tts_input": "Gut, main kind. Un wi geet es dir?",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Gut mein Kind, und wie geht es dir?",
+    "sim": 0.979,
+    "dur": 2.73,
+    "expected": 2.46,
+    "score": 0.979
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Gut mein Kind, und wie geht es dir?",
+     "sim": 0.979,
+     "dur": 2.73,
+     "expected": 2.46,
+     "score": 0.979
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Gut, mein Kinn. Und wie geht es dir?",
+     "sim": 0.957,
+     "dur": 3.42,
+     "expected": 2.46,
+     "score": 0.957
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Gut, mein Kind, und wie geht es dir?",
+     "sim": 0.979,
+     "dur": 3.7,
+     "expected": 2.46,
+     "score": 0.979
+    }
+   ],
+   "duration": 2.94,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/phone-check-in-phone-3.m4a",
+   "id": "phone-check-in-phone-3",
+   "kind": "conversation",
+   "text": "Gut, a dank.",
+   "spoken": "Gut, a dank.",
+   "tts_input": "Gut, a dank.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Gut, a Dank.",
+    "sim": 1.0,
+    "dur": 1.46,
+    "expected": 1.02,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Gut, a Dank.",
+     "sim": 1.0,
+     "dur": 1.46,
+     "expected": 1.02,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Gut, a Dank.",
+     "sim": 1.0,
+     "dur": 0.84,
+     "expected": 1.02,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Gut Adang!",
+     "sim": 0.875,
+     "dur": 1.32,
+     "expected": 1.02,
+     "score": 0.875
+    }
+   ],
+   "duration": 1.67,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/phone-check-in-phone-4.m4a",
+   "id": "phone-check-in-phone-4",
+   "kind": "conversation",
+   "text": "Zay gezunt, mayn kind.",
+   "spoken": "Zay gezunt, mayn kind.",
+   "tts_input": "Sai gesunt, main kind.",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Sei gesund, mein Kind.",
+    "sim": 0.941,
+    "dur": 2.0,
+    "expected": 1.83,
+    "score": 0.941
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Sei gesund, mein Kind.",
+     "sim": 0.941,
+     "dur": 2.0,
+     "expected": 1.83,
+     "score": 0.941
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Sei gesund, mein Kind!",
+     "sim": 0.941,
+     "dur": 2.04,
+     "expected": 1.83,
+     "score": 0.941
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Sei gesund, mein Kind.",
+     "sim": 0.941,
+     "dur": 1.82,
+     "expected": 1.83,
+     "score": 0.941
+    }
+   ],
+   "duration": 2.21,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/soup-soup-1.m4a",
+   "id": "soup-soup-1",
+   "kind": "conversation",
+   "text": "Vilstu nokh a bisl zup?",
+   "spoken": "Vilstu nokh a bisl zup?",
+   "tts_input": "Wilstu noch a bisl sup?",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Willst du noch abwiessel Soep?",
+    "sim": 0.842,
+    "dur": 2.2,
+    "expected": 1.92,
+    "score": 0.842
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Wilsst du noch abisultu?",
+     "sim": 0.8,
+     "dur": 2.42,
+     "expected": 1.92,
+     "score": 0.8
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Willst du noch abwiessel Soep?",
+     "sim": 0.842,
+     "dur": 2.2,
+     "expected": 1.92,
+     "score": 0.842
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Willst du noch abbeizdlo zu?",
+     "sim": 0.811,
+     "dur": 2.48,
+     "expected": 1.92,
+     "score": 0.811
+    }
+   ],
+   "duration": 2.41,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/soup-soup-2.m4a",
+   "id": "soup-soup-2",
+   "kind": "conversation",
+   "text": "Yo, a bisl. A dank.",
+   "spoken": "Yo, a bisl. A dank.",
+   "tts_input": "Jo, a bisl. A dank.",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Jo, a bissel, a dank.",
+    "sim": 0.96,
+    "dur": 2.52,
+    "expected": 1.38,
+    "score": 0.96
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Yo, abyss, adank.",
+     "sim": 0.87,
+     "dur": 1.93,
+     "expected": 1.38,
+     "score": 0.87
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Jo, a, bis, o, a, dank.",
+     "sim": 0.917,
+     "dur": 2.58,
+     "expected": 1.38,
+     "score": 0.917
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Jo, a bissel, a dank.",
+     "sim": 0.96,
+     "dur": 2.52,
+     "expected": 1.38,
+     "score": 0.96
+    }
+   ],
+   "duration": 2.73,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/soup-soup-3.m4a",
+   "id": "soup-soup-3",
+   "kind": "conversation",
+   "text": "Nem. S'iz heys.",
+   "spoken": "Nem. S'iz heys.",
+   "tts_input": "Nem. S'is hees.",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Nem, Sishaze",
+    "sim": 0.778,
+    "dur": 2.28,
+    "expected": 1.2,
+    "score": 0.778
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Nem, dieses Hays",
+     "sim": 0.667,
+     "dur": 1.64,
+     "expected": 1.2,
+     "score": 0.667
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Nem, dieses Hays",
+     "sim": 0.667,
+     "dur": 1.54,
+     "expected": 1.2,
+     "score": 0.667
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Nem, Sishaze",
+     "sim": 0.778,
+     "dur": 2.28,
+     "expected": 1.2,
+     "score": 0.778
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "Nem, tis Haze",
+     "sim": 0.737,
+     "dur": 1.3,
+     "expected": 1.2,
+     "score": 0.737
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Name C3s",
+     "sim": 0.533,
+     "dur": 1.6,
+     "expected": 1.2,
+     "score": 0.533
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "nim",
+     "sim": 0.333,
+     "dur": 1.66,
+     "expected": 1.2,
+     "score": 0.333
+    }
+   ],
+   "duration": 2.49,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/conversations/soup-soup-4.m4a",
+   "id": "soup-soup-4",
+   "kind": "conversation",
+   "text": "S'iz zeyer gut.",
+   "spoken": "S'iz zeyer gut.",
+   "tts_input": "S'is seeer gut.",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Sie ist sehr gut.",
+    "sim": 0.9,
+    "dur": 1.48,
+    "expected": 1.29,
+    "score": 0.9
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Sie sind gut.",
+     "sim": 0.667,
+     "dur": 1.18,
+     "expected": 1.29,
+     "score": 0.667
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Se sei er gut",
+     "sim": 0.737,
+     "dur": 1.26,
+     "expected": 1.29,
+     "score": 0.737
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Sie ist sehr gut.",
+     "sim": 0.9,
+     "dur": 1.48,
+     "expected": 1.29,
+     "score": 0.9
+    }
+   ],
+   "duration": 1.69,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/a-gutn-tog.m4a",
+   "id": "a-gutn-tog",
+   "kind": "phrase",
+   "text": "A gutn tog",
+   "spoken": "A gutn tog",
+   "tts_input": "A gutn tog",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "A guten Tag!",
+    "sim": 0.824,
+    "dur": 1.32,
+    "expected": 1.02,
+    "score": 0.824
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "A good talk.",
+     "sim": 0.375,
+     "dur": 0.72,
+     "expected": 1.02,
+     "score": 0.375
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "A guten Tag!",
+     "sim": 0.824,
+     "dur": 1.32,
+     "expected": 1.02,
+     "score": 0.824
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "A guten Tag!",
+     "sim": 0.824,
+     "dur": 1.46,
+     "expected": 1.02,
+     "score": 0.824
+    }
+   ],
+   "duration": 1.53,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/a-sheynem-dank.m4a",
+   "id": "a-sheynem-dank",
+   "kind": "phrase",
+   "text": "A sheynem dank",
+   "spoken": "A sheynem dank",
+   "tts_input": "A scheenem dank",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "A schenem Dank.",
+    "sim": 1.0,
+    "dur": 1.14,
+    "expected": 1.38,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Aschenim Dank",
+     "sim": 0.9,
+     "dur": 1.12,
+     "expected": 1.38,
+     "score": 0.9
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "A schenem Dank.",
+     "sim": 1.0,
+     "dur": 1.14,
+     "expected": 1.38,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Vielen Dank.",
+     "sim": 0.632,
+     "dur": 1.34,
+     "expected": 1.38,
+     "score": 0.632
+    }
+   ],
+   "duration": 1.35,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/aleykhem-sholem.m4a",
+   "id": "aleykhem-sholem",
+   "kind": "phrase",
+   "text": "Aleykhem sholem",
+   "spoken": "Aleykhem sholem",
+   "tts_input": "Aleechem scholem",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Ali yechem sholem",
+    "sim": 0.917,
+    "dur": 1.7,
+    "expected": 1.56,
+    "score": 0.917
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Aleihem Sholem",
+     "sim": 0.783,
+     "dur": 1.42,
+     "expected": 1.56,
+     "score": 0.783
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Aleyichem sholim.",
+     "sim": 0.87,
+     "dur": 1.48,
+     "expected": 1.56,
+     "score": 0.87
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ali yechem sholem",
+     "sim": 0.917,
+     "dur": 1.7,
+     "expected": 1.56,
+     "score": 0.917
+    }
+   ],
+   "duration": 1.91,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/biz-bald.m4a",
+   "id": "biz-bald",
+   "kind": "phrase",
+   "text": "Biz bald",
+   "spoken": "Biz bald",
+   "tts_input": "Bis bald",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Bis bald.",
+    "sim": 1.0,
+    "dur": 0.72,
+    "expected": 0.93,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "this bolt",
+     "sim": 0.533,
+     "dur": 0.64,
+     "expected": 0.93,
+     "score": 0.533
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Bis bald.",
+     "sim": 1.0,
+     "dur": 0.72,
+     "expected": 0.93,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "bisbalbed",
+     "sim": 0.875,
+     "dur": 0.82,
+     "expected": 0.93,
+     "score": 0.875
+    }
+   ],
+   "duration": 0.93,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/der-borshtsh.m4a",
+   "id": "der-borshtsh",
+   "kind": "phrase",
+   "text": "der borshtsh",
+   "spoken": "der borshtsh",
+   "tts_input": "der borschtsch",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Der Borsch.",
+    "sim": 0.933,
+    "dur": 1.0,
+    "expected": 1.29,
+    "score": 0.933
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Der Borsch.",
+     "sim": 0.933,
+     "dur": 0.56,
+     "expected": 1.29,
+     "score": 0.583
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Der Borschts.",
+     "sim": 0.875,
+     "dur": 0.78,
+     "expected": 1.29,
+     "score": 0.875
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Der Borsch.",
+     "sim": 0.933,
+     "dur": 1.0,
+     "expected": 1.29,
+     "score": 0.933
+    }
+   ],
+   "duration": 1.21,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/der-bruder.m4a",
+   "id": "der-bruder",
+   "kind": "phrase",
+   "text": "der bruder",
+   "spoken": "der bruder",
+   "tts_input": "der bruder",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "der Bruder.",
+    "sim": 1.0,
+    "dur": 0.82,
+    "expected": 1.11,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "der Bruder.",
+     "sim": 1.0,
+     "dur": 0.82,
+     "expected": 1.11,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "der Bruder.",
+     "sim": 1.0,
+     "dur": 0.72,
+     "expected": 1.11,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "der Bruder",
+     "sim": 1.0,
+     "dur": 1.02,
+     "expected": 1.11,
+     "score": 1.0
+    }
+   ],
+   "duration": 1.03,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/der-tate.m4a",
+   "id": "der-tate",
+   "kind": "phrase",
+   "text": "der tate",
+   "spoken": "der tate",
+   "tts_input": "der tate",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "der Tatte.",
+    "sim": 1.0,
+    "dur": 1.02,
+    "expected": 0.93,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "der Tatte.",
+     "sim": 1.0,
+     "dur": 1.02,
+     "expected": 0.93,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Der Tatte",
+     "sim": 1.0,
+     "dur": 0.88,
+     "expected": 0.93,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Der Tata",
+     "sim": 0.857,
+     "dur": 0.86,
+     "expected": 0.93,
+     "score": 0.857
+    }
+   ],
+   "duration": 1.23,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/der-tey.m4a",
+   "id": "der-tey",
+   "kind": "phrase",
+   "text": "der tey",
+   "spoken": "der tey",
+   "tts_input": "der tee",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Der Tate",
+    "sim": 0.833,
+    "dur": 0.74,
+    "expected": 0.84,
+    "score": 0.833
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Deppte.",
+     "sim": 0.8,
+     "dur": 1.12,
+     "expected": 0.84,
+     "score": 0.8
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Der Tei.",
+     "sim": 0.727,
+     "dur": 0.66,
+     "expected": 0.84,
+     "score": 0.727
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Der Tate",
+     "sim": 0.833,
+     "dur": 0.74,
+     "expected": 0.84,
+     "score": 0.833
+    }
+   ],
+   "duration": 0.95,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/der-zeyde.m4a",
+   "id": "der-zeyde",
+   "kind": "phrase",
+   "text": "der zeyde",
+   "spoken": "der zeyde",
+   "tts_input": "der seede",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.9,
+    "transcript": "Der Seda.",
+    "sim": 0.857,
+    "dur": 0.74,
+    "expected": 1.02,
+    "score": 0.857
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Der Sida",
+     "sim": 0.714,
+     "dur": 0.78,
+     "expected": 1.02,
+     "score": 0.714
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Der Sida.",
+     "sim": 0.714,
+     "dur": 0.62,
+     "expected": 1.02,
+     "score": 0.714
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Der Sida",
+     "sim": 0.714,
+     "dur": 0.96,
+     "expected": 1.02,
+     "score": 0.714
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "der Sita.",
+     "sim": 0.571,
+     "dur": 0.85,
+     "expected": 1.02,
+     "score": 0.571
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Der Seda.",
+     "sim": 0.857,
+     "dur": 0.74,
+     "expected": 1.02,
+     "score": 0.857
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "der Siede.",
+     "sim": 0.857,
+     "dur": 1.12,
+     "expected": 1.02,
+     "score": 0.857
+    }
+   ],
+   "duration": 0.95,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/dertseyl-mir-a-mayse.m4a",
+   "id": "dertseyl-mir-a-mayse",
+   "kind": "phrase",
+   "text": "Dertseyl mir a mayse",
+   "spoken": "Dertseyl mir a mayse",
+   "tts_input": "Derzeel mir a maise",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Der Tell mir amaze.",
+    "sim": 0.897,
+    "dur": 1.82,
+    "expected": 1.83,
+    "score": 0.897
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Der Telmier armäzer.",
+     "sim": 0.774,
+     "dur": 1.5,
+     "expected": 1.83,
+     "score": 0.774
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Der Tell mir amaze.",
+     "sim": 0.897,
+     "dur": 1.82,
+     "expected": 1.83,
+     "score": 0.897
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Der ziel mir amaze.",
+     "sim": 0.897,
+     "dur": 1.64,
+     "expected": 1.83,
+     "score": 0.897
+    }
+   ],
+   "duration": 2.03,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/di-bobe.m4a",
+   "id": "di-bobe",
+   "kind": "phrase",
+   "text": "di bobe",
+   "spoken": "di bobe",
+   "tts_input": "di bobe",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Die Bobbe.",
+    "sim": 1.0,
+    "dur": 0.68,
+    "expected": 0.84,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Die Bobbe.",
+     "sim": 1.0,
+     "dur": 0.68,
+     "expected": 0.84,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "D. Bobet.",
+     "sim": 0.833,
+     "dur": 0.9,
+     "expected": 0.84,
+     "score": 0.833
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Die Bobbitt.",
+     "sim": 0.769,
+     "dur": 0.74,
+     "expected": 0.84,
+     "score": 0.769
+    }
+   ],
+   "duration": 0.89,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/di-bulbes.m4a",
+   "id": "di-bulbes",
+   "kind": "phrase",
+   "text": "di bulbes",
+   "spoken": "di bulbes",
+   "tts_input": "di bulbes",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "die Bulbis",
+    "sim": 0.875,
+    "dur": 0.94,
+    "expected": 1.02,
+    "score": 0.875
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "die Bulbis",
+     "sim": 0.875,
+     "dur": 0.94,
+     "expected": 1.02,
+     "score": 0.875
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "D-bulbis",
+     "sim": 0.8,
+     "dur": 1.2,
+     "expected": 1.02,
+     "score": 0.8
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Die Bobes",
+     "sim": 0.8,
+     "dur": 0.84,
+     "expected": 1.02,
+     "score": 0.8
+    }
+   ],
+   "duration": 1.15,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/di-kashe.m4a",
+   "id": "di-kashe",
+   "kind": "phrase",
+   "text": "di kashe",
+   "spoken": "di kashe",
+   "tts_input": "di kasche",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Die Kasche.",
+    "sim": 1.0,
+    "dur": 0.92,
+    "expected": 0.93,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Die Kasche.",
+     "sim": 1.0,
+     "dur": 0.92,
+     "expected": 0.93,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Dikashe.",
+     "sim": 1.0,
+     "dur": 0.88,
+     "expected": 0.93,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Die Kasha",
+     "sim": 0.833,
+     "dur": 0.92,
+     "expected": 0.93,
+     "score": 0.833
+    }
+   ],
+   "duration": 1.13,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/di-mame.m4a",
+   "id": "di-mame",
+   "kind": "phrase",
+   "text": "di mame",
+   "spoken": "di mame",
+   "tts_input": "di mame",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "die Meime",
+    "sim": 0.923,
+    "dur": 0.88,
+    "expected": 0.84,
+    "score": 0.923
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "D. Main",
+     "sim": 0.545,
+     "dur": 0.7,
+     "expected": 0.84,
+     "score": 0.545
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "die Meime",
+     "sim": 0.923,
+     "dur": 0.88,
+     "expected": 0.84,
+     "score": 0.923
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Die Main.",
+     "sim": 0.667,
+     "dur": 0.88,
+     "expected": 0.84,
+     "score": 0.667
+    }
+   ],
+   "duration": 1.09,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/di-mishpokhe.m4a",
+   "id": "di-mishpokhe",
+   "kind": "phrase",
+   "text": "di mishpokhe",
+   "spoken": "di mishpokhe",
+   "tts_input": "di mischpoche",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "die Mischpoche",
+    "sim": 1.0,
+    "dur": 1.36,
+    "expected": 1.29,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "die Mischwoche.",
+     "sim": 0.889,
+     "dur": 1.04,
+     "expected": 1.29,
+     "score": 0.889
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Die Mischpocher.",
+     "sim": 0.947,
+     "dur": 1.66,
+     "expected": 1.29,
+     "score": 0.947
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "die Mischpoche",
+     "sim": 1.0,
+     "dur": 1.36,
+     "expected": 1.29,
+     "score": 1.0
+    }
+   ],
+   "duration": 1.57,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/di-shvester.m4a",
+   "id": "di-shvester",
+   "kind": "phrase",
+   "text": "di shvester",
+   "spoken": "di shvester",
+   "tts_input": "di schwester",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Die Schwester",
+    "sim": 1.0,
+    "dur": 1.02,
+    "expected": 1.2,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Die Schwester",
+     "sim": 1.0,
+     "dur": 1.02,
+     "expected": 1.2,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Die Schwester.",
+     "sim": 1.0,
+     "dur": 0.7,
+     "expected": 1.2,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Die Schwester.",
+     "sim": 1.0,
+     "dur": 1.02,
+     "expected": 1.2,
+     "score": 1.0
+    }
+   ],
+   "duration": 1.23,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/dos-broyt.m4a",
+   "id": "dos-broyt",
+   "kind": "phrase",
+   "text": "dos broyt",
+   "spoken": "dos broyt",
+   "tts_input": "dos broit",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Dos Breut.",
+    "sim": 1.0,
+    "dur": 1.12,
+    "expected": 1.02,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Dust Bright.",
+     "sim": 0.556,
+     "dur": 0.62,
+     "expected": 1.02,
+     "score": 0.556
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Dos freut.",
+     "sim": 0.875,
+     "dur": 0.92,
+     "expected": 1.02,
+     "score": 0.875
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Dos Breut.",
+     "sim": 1.0,
+     "dur": 1.12,
+     "expected": 1.02,
+     "score": 1.0
+    }
+   ],
+   "duration": 1.33,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/dos-iz-mayn-bobe.m4a",
+   "id": "dos-iz-mayn-bobe",
+   "kind": "phrase",
+   "text": "Dos iz mayn bobe",
+   "spoken": "Dos iz mayn bobe",
+   "tts_input": "Dos is main bobe",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Das ist mein Bobbe.",
+    "sim": 0.889,
+    "dur": 1.94,
+    "expected": 1.47,
+    "score": 0.889
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Das ist Main Bob.",
+     "sim": 0.846,
+     "dur": 1.86,
+     "expected": 1.47,
+     "score": 0.846
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Das ist mein Bube.",
+     "sim": 0.815,
+     "dur": 1.68,
+     "expected": 1.47,
+     "score": 0.815
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Das ist mein Bobbe.",
+     "sim": 0.889,
+     "dur": 1.94,
+     "expected": 1.47,
+     "score": 0.889
+    }
+   ],
+   "duration": 2.15,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/dos-kind.m4a",
+   "id": "dos-kind",
+   "kind": "phrase",
+   "text": "dos kind",
+   "spoken": "dos kind",
+   "tts_input": "dos kind",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Dos Kind.",
+    "sim": 1.0,
+    "dur": 0.88,
+    "expected": 0.93,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Dos Kindes.",
+     "sim": 0.875,
+     "dur": 0.6,
+     "expected": 0.93,
+     "score": 0.875
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Du's kin.",
+     "sim": 0.769,
+     "dur": 0.9,
+     "expected": 0.93,
+     "score": 0.769
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Dos Kind.",
+     "sim": 1.0,
+     "dur": 0.88,
+     "expected": 0.93,
+     "score": 1.0
+    }
+   ],
+   "duration": 1.09,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/dos-vaser.m4a",
+   "id": "dos-vaser",
+   "kind": "phrase",
+   "text": "dos vaser",
+   "spoken": "dos vaser",
+   "tts_input": "dos wasser",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Dos Wasser.",
+    "sim": 1.0,
+    "dur": 0.74,
+    "expected": 1.02,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Dost Wasser",
+     "sim": 0.941,
+     "dur": 0.84,
+     "expected": 1.02,
+     "score": 0.941
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Das war es sehr.",
+     "sim": 0.737,
+     "dur": 0.68,
+     "expected": 1.02,
+     "score": 0.737
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Dos Wasser.",
+     "sim": 1.0,
+     "dur": 0.74,
+     "expected": 1.02,
+     "score": 1.0
+    }
+   ],
+   "duration": 0.95,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/es-gezunterheyt.m4a",
+   "id": "es-gezunterheyt",
+   "kind": "phrase",
+   "text": "Es gezunterheyt!",
+   "spoken": "Es gezunterheyt!",
+   "tts_input": "Es gesunterheet!",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Es gesunderhebt.",
+    "sim": 0.889,
+    "dur": 0.9,
+    "expected": 1.56,
+    "score": 0.889
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Es gesünder hält.",
+     "sim": 0.815,
+     "dur": 1.04,
+     "expected": 1.56,
+     "score": 0.815
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Es gesunderhebt.",
+     "sim": 0.889,
+     "dur": 0.9,
+     "expected": 1.56,
+     "score": 0.889
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Es gesund erhit.",
+     "sim": 0.846,
+     "dur": 1.12,
+     "expected": 1.56,
+     "score": 0.846
+    }
+   ],
+   "duration": 1.11,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/fun-vanen-bistu.m4a",
+   "id": "fun-vanen-bistu",
+   "kind": "phrase",
+   "text": "Fun vanen bistu?",
+   "spoken": "Fun vanen bistu?",
+   "tts_input": "Fun wanen bistu?",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Von Wannen bist du.",
+    "sim": 0.889,
+    "dur": 1.22,
+    "expected": 1.47,
+    "score": 0.889
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Von wann bist du?",
+     "sim": 0.8,
+     "dur": 1.5,
+     "expected": 1.47,
+     "score": 0.8
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Von Wannen bist du.",
+     "sim": 0.889,
+     "dur": 1.22,
+     "expected": 1.47,
+     "score": 0.889
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Von Vonnen bist du?",
+     "sim": 0.815,
+     "dur": 1.44,
+     "expected": 1.47,
+     "score": 0.815
+    }
+   ],
+   "duration": 1.43,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/gut-a-dank.m4a",
+   "id": "gut-a-dank",
+   "kind": "phrase",
+   "text": "Gut, a dank",
+   "spoken": "Gut, a dank",
+   "tts_input": "Gut, a dank",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Gut, a Dank.",
+    "sim": 1.0,
+    "dur": 0.92,
+    "expected": 1.02,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Gut, a Dank.",
+     "sim": 1.0,
+     "dur": 0.92,
+     "expected": 1.02,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Gut, a Dank.",
+     "sim": 1.0,
+     "dur": 1.12,
+     "expected": 1.02,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Gut, a dank.",
+     "sim": 1.0,
+     "dur": 1.1,
+     "expected": 1.02,
+     "score": 1.0
+    }
+   ],
+   "duration": 1.13,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/gut-morgn.m4a",
+   "id": "gut-morgn",
+   "kind": "phrase",
+   "text": "Gut morgn",
+   "spoken": "Gut morgn",
+   "tts_input": "Gut morgn",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Gut morg.",
+    "sim": 0.933,
+    "dur": 0.94,
+    "expected": 1.02,
+    "score": 0.933
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Good morg.",
+     "sim": 0.667,
+     "dur": 0.82,
+     "expected": 1.02,
+     "score": 0.667
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Gut morg.",
+     "sim": 0.933,
+     "dur": 0.94,
+     "expected": 1.02,
+     "score": 0.933
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Good morning.",
+     "sim": 0.556,
+     "dur": 0.9,
+     "expected": 1.02,
+     "score": 0.556
+    }
+   ],
+   "duration": 1.15,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/ikh-bin-fun.m4a",
+   "id": "ikh-bin-fun",
+   "kind": "phrase",
+   "text": "Ikh bin fun…",
+   "spoken": "Ikh bin fun…",
+   "tts_input": "Ich bin fun...",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Ich bin Fun.",
+    "sim": 1.0,
+    "dur": 0.92,
+    "expected": 1.11,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Ich bin von...",
+     "sim": 0.875,
+     "dur": 1.0,
+     "expected": 1.11,
+     "score": 0.875
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ich bin voll.",
+     "sim": 0.75,
+     "dur": 0.82,
+     "expected": 1.11,
+     "score": 0.75
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ich bin Fun.",
+     "sim": 1.0,
+     "dur": 0.92,
+     "expected": 1.11,
+     "score": 1.0
+    }
+   ],
+   "duration": 1.13,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/ikh-bin-hungerik.m4a",
+   "id": "ikh-bin-hungerik",
+   "kind": "phrase",
+   "text": "Ikh bin hungerik",
+   "spoken": "Ikh bin hungerik",
+   "tts_input": "Ich bin hungerik",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Ich bin hungrig.",
+    "sim": 0.88,
+    "dur": 1.16,
+    "expected": 1.56,
+    "score": 0.88
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Ich bin hungrig.",
+     "sim": 0.88,
+     "dur": 1.16,
+     "expected": 1.56,
+     "score": 0.88
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ich bin hungrig.",
+     "sim": 0.88,
+     "dur": 0.96,
+     "expected": 1.56,
+     "score": 0.88
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ich bin hungrig.",
+     "sim": 0.88,
+     "dur": 1.08,
+     "expected": 1.56,
+     "score": 0.88
+    }
+   ],
+   "duration": 1.37,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/ikh-farshtey-nisht.m4a",
+   "id": "ikh-farshtey-nisht",
+   "kind": "phrase",
+   "text": "Ikh farshtey nisht",
+   "spoken": "Ikh farshtey nisht",
+   "tts_input": "Ich farschtee nischt",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Ich verstehe nicht.",
+    "sim": 0.75,
+    "dur": 1.22,
+    "expected": 1.74,
+    "score": 0.75
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Ich verstehe nicht.",
+     "sim": 0.75,
+     "dur": 1.22,
+     "expected": 1.74,
+     "score": 0.75
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ich verstehe nicht.",
+     "sim": 0.75,
+     "dur": 1.24,
+     "expected": 1.74,
+     "score": 0.75
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ich verstehe nicht.",
+     "sim": 0.75,
+     "dur": 1.06,
+     "expected": 1.74,
+     "score": 0.75
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "Ich verstehe nicht.",
+     "sim": 0.75,
+     "dur": 1.52,
+     "expected": 1.74,
+     "score": 0.75
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Ich verstehe nicht.",
+     "sim": 0.75,
+     "dur": 1.06,
+     "expected": 1.74,
+     "score": 0.75
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "Ich verstehe nicht.",
+     "sim": 0.75,
+     "dur": 1.26,
+     "expected": 1.74,
+     "score": 0.75
+    }
+   ],
+   "duration": 1.43,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/ikh-heys.m4a",
+   "id": "ikh-heys",
+   "kind": "phrase",
+   "text": "Ikh heys…",
+   "spoken": "Ikh heys…",
+   "tts_input": "Ich hees...",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.9,
+    "transcript": "Ich heze.",
+    "sim": 0.909,
+    "dur": 0.54,
+    "expected": 0.93,
+    "score": 0.909
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Ich heiz",
+     "sim": 0.727,
+     "dur": 0.8,
+     "expected": 0.93,
+     "score": 0.727
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ich heiße.",
+     "sim": 0.667,
+     "dur": 0.66,
+     "expected": 0.93,
+     "score": 0.667
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ich heiße",
+     "sim": 0.667,
+     "dur": 0.84,
+     "expected": 0.93,
+     "score": 0.667
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "Ich hieß",
+     "sim": 0.8,
+     "dur": 0.6,
+     "expected": 0.93,
+     "score": 0.8
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Ich heze.",
+     "sim": 0.909,
+     "dur": 0.54,
+     "expected": 0.93,
+     "score": 0.909
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "Ich heiz",
+     "sim": 0.727,
+     "dur": 0.64,
+     "expected": 0.93,
+     "score": 0.727
+    }
+   ],
+   "duration": 0.75,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/ikh-hob-dikh-lib.m4a",
+   "id": "ikh-hob-dikh-lib",
+   "kind": "phrase",
+   "text": "Ikh hob dikh lib",
+   "spoken": "Ikh hob dikh lib",
+   "tts_input": "Ich hob dich lib",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Ich hob dich lieb.",
+    "sim": 1.0,
+    "dur": 1.3,
+    "expected": 1.47,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Ich hoffe dich lieb.",
+     "sim": 0.87,
+     "dur": 1.24,
+     "expected": 1.47,
+     "score": 0.87
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ich hob dich lieb.",
+     "sim": 1.0,
+     "dur": 1.3,
+     "expected": 1.47,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ich hoffe dich lieb.",
+     "sim": 0.87,
+     "dur": 1.24,
+     "expected": 1.47,
+     "score": 0.87
+    }
+   ],
+   "duration": 1.51,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/ikh-vil-visn-mer.m4a",
+   "id": "ikh-vil-visn-mer",
+   "kind": "phrase",
+   "text": "Ikh vil visn mer",
+   "spoken": "Ikh vil visn mer",
+   "tts_input": "Ich wil wisn mer",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Ich will wissen mehr.",
+    "sim": 0.96,
+    "dur": 1.42,
+    "expected": 1.47,
+    "score": 0.96
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Ich will wissen mehr.",
+     "sim": 0.96,
+     "dur": 1.42,
+     "expected": 1.47,
+     "score": 0.96
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ich will wissen mehr.",
+     "sim": 0.96,
+     "dur": 1.62,
+     "expected": 1.47,
+     "score": 0.96
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ich will wissen mehr.",
+     "sim": 0.96,
+     "dur": 1.46,
+     "expected": 1.47,
+     "score": 0.96
+    }
+   ],
+   "duration": 1.63,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/in-undzer-heym.m4a",
+   "id": "in-undzer-heym",
+   "kind": "phrase",
+   "text": "In undzer heym…",
+   "spoken": "In undzer heym…",
+   "tts_input": "In undser heem...",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "in unser Hehm.",
+    "sim": 0.952,
+    "dur": 1.3,
+    "expected": 1.38,
+    "score": 0.952
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "in unser Helm.",
+     "sim": 0.909,
+     "dur": 1.12,
+     "expected": 1.38,
+     "score": 0.909
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "in unser Hehm.",
+     "sim": 0.952,
+     "dur": 1.3,
+     "expected": 1.38,
+     "score": 0.952
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "in unser Heim",
+     "sim": 0.818,
+     "dur": 1.36,
+     "expected": 1.38,
+     "score": 0.818
+    }
+   ],
+   "duration": 1.51,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/mayn-tayere.m4a",
+   "id": "mayn-tayere",
+   "kind": "phrase",
+   "text": "Mayn tayere",
+   "spoken": "Mayn tayere",
+   "tts_input": "Main taiere",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Main Taere",
+    "sim": 0.947,
+    "dur": 0.98,
+    "expected": 1.2,
+    "score": 0.947
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Main Taere",
+     "sim": 0.947,
+     "dur": 0.98,
+     "expected": 1.2,
+     "score": 0.947
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Mein Taeyere",
+     "sim": 0.947,
+     "dur": 1.3,
+     "expected": 1.2,
+     "score": 0.947
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Main Taiera",
+     "sim": 0.9,
+     "dur": 1.26,
+     "expected": 1.2,
+     "score": 0.9
+    }
+   ],
+   "duration": 1.19,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/mayn-zeyde-hot-gezogt.m4a",
+   "id": "mayn-zeyde-hot-gezogt",
+   "kind": "phrase",
+   "text": "Mayn zeyde hot gezogt…",
+   "spoken": "Mayn zeyde hot gezogt…",
+   "tts_input": "Main seede hot gesogt...",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Mainseater hot gesorgt.",
+    "sim": 0.865,
+    "dur": 2.0,
+    "expected": 1.92,
+    "score": 0.865
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Mainseater hat gesorgt.",
+     "sim": 0.811,
+     "dur": 2.2,
+     "expected": 1.92,
+     "score": 0.811
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Mainseater hot gesorgt.",
+     "sim": 0.865,
+     "dur": 2.0,
+     "expected": 1.92,
+     "score": 0.865
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Main Cedar Hood gesorgt.",
+     "sim": 0.778,
+     "dur": 2.38,
+     "expected": 1.92,
+     "score": 0.778
+    }
+   ],
+   "duration": 2.21,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/nu.m4a",
+   "id": "nu",
+   "kind": "phrase",
+   "text": "Nu?",
+   "spoken": "Nu?",
+   "tts_input": "Nu?",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.9,
+    "transcript": "Nub?",
+    "sim": 0.8,
+    "dur": 0.36,
+    "expected": 0.48,
+    "score": 0.8
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "No.",
+     "sim": 0.5,
+     "dur": 0.44,
+     "expected": 0.48,
+     "score": 0.5
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "No.",
+     "sim": 0.5,
+     "dur": 0.46,
+     "expected": 0.48,
+     "score": 0.5
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "No.",
+     "sim": 0.5,
+     "dur": 0.44,
+     "expected": 0.48,
+     "score": 0.5
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "No?",
+     "sim": 0.5,
+     "dur": 0.33,
+     "expected": 0.48,
+     "score": 0.5
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Nub?",
+     "sim": 0.8,
+     "dur": 0.36,
+     "expected": 0.48,
+     "score": 0.8
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "No.",
+     "sim": 0.5,
+     "dur": 1.04,
+     "expected": 0.48,
+     "score": 0.5
+    }
+   ],
+   "duration": 0.57,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/oy-vey.m4a",
+   "id": "oy-vey",
+   "kind": "phrase",
+   "text": "Oy vey!",
+   "spoken": "Oy vey!",
+   "tts_input": "Oi wee!",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Oi, we!",
+    "sim": 1.0,
+    "dur": 0.72,
+    "expected": 0.75,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Oi, we!",
+     "sim": 1.0,
+     "dur": 0.72,
+     "expected": 0.75,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ouiui.",
+     "sim": 0.222,
+     "dur": 0.68,
+     "expected": 0.75,
+     "score": 0.222
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "OI WI!",
+     "sim": 0.75,
+     "dur": 0.62,
+     "expected": 0.75,
+     "score": 0.75
+    }
+   ],
+   "duration": 0.93,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/red-langsamer.m4a",
+   "id": "red-langsamer",
+   "kind": "phrase",
+   "text": "Red a bisl langzamer",
+   "spoken": "Red a bisl langzamer",
+   "tts_input": "Red a bisl langsamer",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Red Abyss Langsamer",
+    "sim": 0.909,
+    "dur": 2.04,
+    "expected": 1.83,
+    "score": 0.909
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Red Abyss Longsummer",
+     "sim": 0.788,
+     "dur": 1.98,
+     "expected": 1.83,
+     "score": 0.788
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Red Obis Longsummer",
+     "sim": 0.788,
+     "dur": 1.64,
+     "expected": 1.83,
+     "score": 0.788
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Red Abyss Langsamer",
+     "sim": 0.909,
+     "dur": 2.04,
+     "expected": 1.83,
+     "score": 0.909
+    }
+   ],
+   "duration": 2.25,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/shlof-gezunt.m4a",
+   "id": "shlof-gezunt",
+   "kind": "phrase",
+   "text": "Shlof gezunt",
+   "spoken": "Shlof gezunt",
+   "tts_input": "Schlof gesunt",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Schlaf gesund!",
+    "sim": 0.8,
+    "dur": 0.86,
+    "expected": 1.29,
+    "score": 0.8
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Schlaf gesund!",
+     "sim": 0.8,
+     "dur": 0.86,
+     "expected": 1.29,
+     "score": 0.8
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Schluch gesund!",
+     "sim": 0.7,
+     "dur": 1.14,
+     "expected": 1.29,
+     "score": 0.7
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "schlafen gesund",
+     "sim": 0.727,
+     "dur": 1.16,
+     "expected": 1.29,
+     "score": 0.727
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "Schlaf gesund!",
+     "sim": 0.8,
+     "dur": 1.23,
+     "expected": 1.29,
+     "score": 0.8
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Schlaf gesund.",
+     "sim": 0.8,
+     "dur": 1.18,
+     "expected": 1.29,
+     "score": 0.8
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "Schlaf gesund.",
+     "sim": 0.8,
+     "dur": 1.6,
+     "expected": 1.29,
+     "score": 0.8
+    }
+   ],
+   "duration": 1.07,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/sholem-aleykhem.m4a",
+   "id": "sholem-aleykhem",
+   "kind": "phrase",
+   "text": "Sholem aleykhem",
+   "spoken": "Sholem aleykhem",
+   "tts_input": "Scholem aleechem",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Scholem Aleichem.",
+    "sim": 0.87,
+    "dur": 1.78,
+    "expected": 1.56,
+    "score": 0.87
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Shulem alayahim",
+     "sim": 0.609,
+     "dur": 1.82,
+     "expected": 1.56,
+     "score": 0.609
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Sholem Alehim",
+     "sim": 0.857,
+     "dur": 1.56,
+     "expected": 1.56,
+     "score": 0.857
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Scholem Aleichem.",
+     "sim": 0.87,
+     "dur": 1.78,
+     "expected": 1.56,
+     "score": 0.87
+    }
+   ],
+   "duration": 1.99,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/sound-ay.m4a",
+   "id": "sound-ay",
+   "kind": "sound",
+   "text": "ay",
+   "spoken": "ay",
+   "tts_input": "ai",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "Aai.",
+    "sim": 1.0,
+    "dur": 0.58,
+    "expected": 0.48,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Ich",
+     "sim": 0.0,
+     "dur": 0.42,
+     "expected": 0.48,
+     "score": 0.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "I.E.",
+     "sim": 0.0,
+     "dur": 0.62,
+     "expected": 0.48,
+     "score": 0.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Aai.",
+     "sim": 1.0,
+     "dur": 0.58,
+     "expected": 0.48,
+     "score": 1.0
+    }
+   ],
+   "duration": 0.79,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/sound-ey.m4a",
+   "id": "sound-ey",
+   "kind": "sound",
+   "text": "ey",
+   "spoken": "ey",
+   "tts_input": "ee",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "E",
+    "sim": 1.0,
+    "dur": 0.36,
+    "expected": 0.48,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "E",
+     "sim": 1.0,
+     "dur": 0.36,
+     "expected": 0.48,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "E",
+     "sim": 1.0,
+     "dur": 0.46,
+     "expected": 0.48,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Und",
+     "sim": 0.0,
+     "dur": 0.36,
+     "expected": 0.48,
+     "score": 0.0
+    }
+   ],
+   "duration": 0.57,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/sound-kh.m4a",
+   "id": "sound-kh",
+   "kind": "sound",
+   "text": "kh",
+   "spoken": "akh",
+   "tts_input": "ach",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Ach!",
+    "sim": 1.0,
+    "dur": 0.36,
+    "expected": 0.57,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Ach!",
+     "sim": 1.0,
+     "dur": 0.36,
+     "expected": 0.57,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ah.",
+     "sim": 0.667,
+     "dur": 0.3,
+     "expected": 0.57,
+     "score": 0.667
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ah.",
+     "sim": 0.667,
+     "dur": 0.32,
+     "expected": 0.57,
+     "score": 0.667
+    }
+   ],
+   "duration": 0.57,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/sound-oy.m4a",
+   "id": "sound-oy",
+   "kind": "sound",
+   "text": "oy",
+   "spoken": "oy",
+   "tts_input": "oi",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "OI",
+    "sim": 1.0,
+    "dur": 0.4,
+    "expected": 0.48,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "OI",
+     "sim": 1.0,
+     "dur": 0.4,
+     "expected": 0.48,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Oi.",
+     "sim": 1.0,
+     "dur": 0.48,
+     "expected": 0.48,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Oi.",
+     "sim": 1.0,
+     "dur": 0.38,
+     "expected": 0.48,
+     "score": 1.0
+    }
+   ],
+   "duration": 0.61,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/sound-sh.m4a",
+   "id": "sound-sh",
+   "kind": "sound",
+   "text": "sh",
+   "spoken": "sha",
+   "tts_input": "scha",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Scha!",
+    "sim": 1.0,
+    "dur": 0.4,
+    "expected": 0.57,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Schau.",
+     "sim": 0.8,
+     "dur": 0.42,
+     "expected": 0.57,
+     "score": 0.8
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Scha!",
+     "sim": 1.0,
+     "dur": 0.4,
+     "expected": 0.57,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ciao.",
+     "sim": 0.333,
+     "dur": 0.44,
+     "expected": 0.57,
+     "score": 0.333
+    }
+   ],
+   "duration": 0.61,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/sound-ts.m4a",
+   "id": "sound-ts",
+   "kind": "sound",
+   "text": "ts",
+   "spoken": "tsa",
+   "tts_input": "za",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.9,
+    "transcript": "Za.",
+    "sim": 1.0,
+    "dur": 0.48,
+    "expected": 0.57,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "So.",
+     "sim": 0.5,
+     "dur": 0.3,
+     "expected": 0.57,
+     "score": 0.5
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ja.",
+     "sim": 0.5,
+     "dur": 0.42,
+     "expected": 0.57,
+     "score": 0.5
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ja.",
+     "sim": 0.5,
+     "dur": 0.41,
+     "expected": 0.57,
+     "score": 0.5
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "So.",
+     "sim": 0.5,
+     "dur": 0.4,
+     "expected": 0.57,
+     "score": 0.5
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Za.",
+     "sim": 1.0,
+     "dur": 0.48,
+     "expected": 0.57,
+     "score": 1.0
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "So.",
+     "sim": 0.5,
+     "dur": 0.3,
+     "expected": 0.57,
+     "score": 0.5
+    }
+   ],
+   "duration": 0.69,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/sound-zh.m4a",
+   "id": "sound-zh",
+   "kind": "sound",
+   "text": "zh",
+   "spoken": "zha",
+   "tts_input": "scha",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Scha!",
+    "sim": 1.0,
+    "dur": 0.44,
+    "expected": 0.57,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Scha!",
+     "sim": 1.0,
+     "dur": 0.44,
+     "expected": 0.57,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ciao.",
+     "sim": 0.333,
+     "dur": 0.36,
+     "expected": 0.57,
+     "score": 0.333
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Ciao.",
+     "sim": 0.333,
+     "dur": 0.46,
+     "expected": 0.57,
+     "score": 0.333
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "Ciao.",
+     "sim": 0.333,
+     "dur": 0.36,
+     "expected": 0.57,
+     "score": 0.333
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Ciao.",
+     "sim": 0.333,
+     "dur": 0.4,
+     "expected": 0.57,
+     "score": 0.333
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "Ciao.",
+     "sim": 0.333,
+     "dur": 0.36,
+     "expected": 0.57,
+     "score": 0.333
+    }
+   ],
+   "duration": 0.65,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/ven-ikh-bin-geven-a-kind.m4a",
+   "id": "ven-ikh-bin-geven-a-kind",
+   "kind": "phrase",
+   "text": "Ven ikh bin geven a kind…",
+   "spoken": "Ven ikh bin geven a kind…",
+   "tts_input": "Wen ich bin gewen a kind...",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Wenn ich bin gewähnt und kind.",
+    "sim": 0.872,
+    "dur": 1.68,
+    "expected": 2.01,
+    "score": 0.872
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Wenn ich bin gewähnt und kind.",
+     "sim": 0.872,
+     "dur": 1.68,
+     "expected": 2.01,
+     "score": 0.872
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Ich bin gewähnt, ein Kind.",
+     "sim": 0.833,
+     "dur": 1.7,
+     "expected": 2.01,
+     "score": 0.833
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "wenn ich bin gewählt erkennend.",
+     "sim": 0.75,
+     "dur": 3.04,
+     "expected": 2.01,
+     "score": 0.75
+    }
+   ],
+   "duration": 1.89,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/vi-geyt-es.m4a",
+   "id": "vi-geyt-es",
+   "kind": "phrase",
+   "text": "Vi geyt es?",
+   "spoken": "Vi geyt es?",
+   "tts_input": "Wi geet es?",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "Wie geht es?",
+    "sim": 1.0,
+    "dur": 1.04,
+    "expected": 1.02,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "VGate S",
+     "sim": 0.769,
+     "dur": 0.84,
+     "expected": 1.02,
+     "score": 0.769
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Wie geht es?",
+     "sim": 1.0,
+     "dur": 1.04,
+     "expected": 1.02,
+     "score": 1.0
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Wie geht es?",
+     "sim": 1.0,
+     "dur": 1.08,
+     "expected": 1.02,
+     "score": 1.0
+    }
+   ],
+   "duration": 1.25,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/vi-heystu.m4a",
+   "id": "vi-heystu",
+   "kind": "phrase",
+   "text": "Vi heystu?",
+   "spoken": "Vi heystu?",
+   "tts_input": "Wi heestu?",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Wie heißt du?",
+    "sim": 0.75,
+    "dur": 0.8,
+    "expected": 1.02,
+    "score": 0.75
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Wie heißt du?",
+     "sim": 0.75,
+     "dur": 0.8,
+     "expected": 1.02,
+     "score": 0.75
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Wir haben hier ein.",
+     "sim": 0.381,
+     "dur": 0.72,
+     "expected": 1.02,
+     "score": 0.381
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Wie heißt du?",
+     "sim": 0.75,
+     "dur": 1.1,
+     "expected": 1.02,
+     "score": 0.75
+    },
+    {
+     "k": 3,
+     "ref": "conv",
+     "temp": 0.9,
+     "transcript": "Wie heißt du?",
+     "sim": 0.75,
+     "dur": 0.68,
+     "expected": 1.02,
+     "score": 0.75
+    },
+    {
+     "k": 4,
+     "ref": "proverb",
+     "temp": 0.9,
+     "transcript": "Wie heißt du?",
+     "sim": 0.75,
+     "dur": 0.9,
+     "expected": 1.02,
+     "score": 0.75
+    },
+    {
+     "k": 5,
+     "ref": "warm",
+     "temp": 0.9,
+     "transcript": "Wie heißt du?",
+     "sim": 0.75,
+     "dur": 0.94,
+     "expected": 1.02,
+     "score": 0.75
+    }
+   ],
+   "duration": 1.01,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/vi-hot-men-dos-gezogt.m4a",
+   "id": "vi-hot-men-dos-gezogt",
+   "kind": "phrase",
+   "text": "Vi hot men dos gezogt bay aykh in der heym?",
+   "spoken": "Vi hot men dos gezogt bay aykh in der heym?",
+   "tts_input": "Wi hot men dos gesogt bai aich in der heem?",
+   "chosen": {
+    "ref": "proverb",
+    "temp": 0.6,
+    "transcript": "wie hot men dos gesugt bei eich in der heim",
+    "sim": 0.921,
+    "dur": 4.42,
+    "expected": 3.27,
+    "score": 0.921
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Wie hot man dus gesugt bei eich in der heim?",
+     "sim": 0.857,
+     "dur": 3.32,
+     "expected": 3.27,
+     "score": 0.857
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "wie hot men dos gesugt bei eich in der heim",
+     "sim": 0.921,
+     "dur": 4.42,
+     "expected": 3.27,
+     "score": 0.921
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Wie haut man das gesorgt bei euch in der Heim?",
+     "sim": 0.8,
+     "dur": 4.08,
+     "expected": 3.27,
+     "score": 0.8
+    }
+   ],
+   "duration": 4.63,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/vos-meynt-dos.m4a",
+   "id": "vos-meynt-dos",
+   "kind": "phrase",
+   "text": "Vos meynt dos?",
+   "spoken": "Vos meynt dos?",
+   "tts_input": "Wos meent dos?",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "was meant dos",
+    "sim": 0.857,
+    "dur": 1.32,
+    "expected": 1.29,
+    "score": 0.857
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "was meant dos",
+     "sim": 0.857,
+     "dur": 1.32,
+     "expected": 1.29,
+     "score": 0.857
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Vos meint dos?",
+     "sim": 0.857,
+     "dur": 1.74,
+     "expected": 1.29,
+     "score": 0.857
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Vos ment 2",
+     "sim": 0.824,
+     "dur": 1.48,
+     "expected": 1.29,
+     "score": 0.824
+    }
+   ],
+   "duration": 1.53,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/zay-gezunt.m4a",
+   "id": "zay-gezunt",
+   "kind": "phrase",
+   "text": "Zay gezunt",
+   "spoken": "Zay gezunt",
+   "tts_input": "Sai gesunt",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Sei gesund!",
+    "sim": 0.889,
+    "dur": 0.8,
+    "expected": 1.11,
+    "score": 0.889
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Sei gesund!",
+     "sim": 0.889,
+     "dur": 0.8,
+     "expected": 1.11,
+     "score": 0.889
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "Sei gesund!",
+     "sim": 0.889,
+     "dur": 0.98,
+     "expected": 1.11,
+     "score": 0.889
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Sei gesund.",
+     "sim": 0.889,
+     "dur": 0.88,
+     "expected": 1.11,
+     "score": 0.889
+    }
+   ],
+   "duration": 1.01,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/zog-nokh-a-mol.m4a",
+   "id": "zog-nokh-a-mol",
+   "kind": "phrase",
+   "text": "Zog dos nokh a mol",
+   "spoken": "Zog dos nokh a mol",
+   "tts_input": "Sog dos noch a mol",
+   "chosen": {
+    "ref": "conv",
+    "temp": 0.6,
+    "transcript": "Sog dos noch amol.",
+    "sim": 1.0,
+    "dur": 1.66,
+    "expected": 1.56,
+    "score": 1.0
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Sog dos noch amol.",
+     "sim": 1.0,
+     "dur": 1.66,
+     "expected": 1.56,
+     "score": 1.0
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "So dos noch am Mohl.",
+     "sim": 0.923,
+     "dur": 1.68,
+     "expected": 1.56,
+     "score": 0.923
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "Zauk DOS noch amohl.",
+     "sim": 0.815,
+     "dur": 2.5,
+     "expected": 1.56,
+     "score": 0.815
+    }
+   ],
+   "duration": 1.87,
+   "generated": "2026-11-01"
+  },
+  {
+   "file": "audio/phrases/zolst-zayn-gezunt.m4a",
+   "id": "zolst-zayn-gezunt",
+   "kind": "phrase",
+   "text": "Zolst zayn gezunt",
+   "spoken": "Zolst zayn gezunt",
+   "tts_input": "Solst sain gesunt",
+   "chosen": {
+    "ref": "warm",
+    "temp": 0.6,
+    "transcript": "sollst sein gesund.",
+    "sim": 0.933,
+    "dur": 1.9,
+    "expected": 1.65,
+    "score": 0.933
+   },
+   "candidates": [
+    {
+     "k": 0,
+     "ref": "conv",
+     "temp": 0.6,
+     "transcript": "Soßt sein gesund.",
+     "sim": 0.897,
+     "dur": 1.6,
+     "expected": 1.65,
+     "score": 0.897
+    },
+    {
+     "k": 1,
+     "ref": "proverb",
+     "temp": 0.6,
+     "transcript": "So seien gesund.",
+     "sim": 0.786,
+     "dur": 1.44,
+     "expected": 1.65,
+     "score": 0.786
+    },
+    {
+     "k": 2,
+     "ref": "warm",
+     "temp": 0.6,
+     "transcript": "sollst sein gesund.",
+     "sim": 0.933,
+     "dur": 1.9,
+     "expected": 1.65,
+     "score": 0.933
+    }
+   ],
+   "duration": 2.11,
+   "generated": "2026-11-01"
+  }
+ ],
+ "tts_model": "mlx-community/Qwen3-TTS-12Hz-0.6B-Base-8bit",
+ "asr_model": "mlx-community/whisper-large-v3-turbo-q4",
+ "lang_code": "german",
+ "temps": [
+  0.6,
+  0.9
+ ],
+ "references": [
+  {
+   "name": "conv",
+   "sha256": "abc670f194705649",
+   "text": "A gut lebn far a hunt! Ikh makh nisht shlekht.",
+   "tts_input": "A gut lebn far a hunt! Ich mach nischt schlecht."
+  },
+  {
+   "name": "proverb",
+   "sha256": "372e05fa39f868ed",
+   "text": "Beser a loyt mazl eyder a funt gold.",
+   "tts_input": "Besser a loit masl eeder a funt gold."
+  },
+  {
+   "name": "warm",
+   "sha256": "a1f9c85b170afb09",
+   "text": "Zay mir gezunt un shtark. Zol dir voyl bakumen.",
+   "tts_input": "Sai mir gesunt un schtark. Sol dir woil bakumen."
+  }
+ ],
+ "codec": "AAC 64 kb/s, mono, 24 kHz, m4a (faststart)",
+ "level": "-23.0 dBFS RMS (speech frames), peak -3.0 dBFS",
+ "lead_tail_s": [
+  0.06,
+  0.15
+ ]
+}
