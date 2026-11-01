@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'">
+    <meta name="theme-color" content="#f6f0e2">
+    <meta name="description" content="Learn spoken Yiddish in Latin letters, with a family-centered Bessarabia–Odessa course.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Mameloshn">
+    <meta property="og:title" content="Mameloshn — Yiddish in your family’s voice">
+    <meta property="og:description" content="A free, private, Latin-letter Yiddish course shaped around Bessarabia and Odessa.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://never-nude.github.io/mameloshn/">
+    <meta property="og:image" content="https://never-nude.github.io/mameloshn/assets/icon-512.png">
+    <title>Mameloshn — Learn your family’s Yiddish</title>
+    <link rel="canonical" href="https://never-nude.github.io/mameloshn/">
+    <link rel="icon" href="assets/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icon-180.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to lesson content</a>
+
+    <div class="app-shell" id="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <button class="wordmark wordmark-button" type="button" data-go="home" aria-label="Mameloshn home">
+          <img src="assets/icon-192.png" alt="" width="46" height="46">
+          <span>
+            <strong>Mameloshn</strong>
+            <small>Yiddish in your family’s voice</small>
+          </span>
+        </button>
+
+        <nav class="side-nav" id="side-nav"></nav>
+
+        <div class="heritage-card sidebar-heritage">
+          <span class="eyebrow">Heritage track</span>
+          <strong id="sidebar-roots">Bessarabia–Odessa</strong>
+          <span>Southeastern Yiddish</span>
+        </div>
+      </aside>
+
+      <header class="mobile-header">
+        <button class="wordmark wordmark-button compact" type="button" data-go="home" aria-label="Mameloshn home">
+          <img src="assets/icon-192.png" alt="" width="38" height="38">
+          <span><strong>Mameloshn</strong><small>Latin letters only</small></span>
+        </button>
+        <div class="mobile-xp" aria-label="Total experience points"><span aria-hidden="true">★</span> <b id="header-xp">0</b></div>
+      </header>
+
+      <main id="main-content" tabindex="-1"></main>
+
+      <nav class="bottom-nav" id="bottom-nav" aria-label="Main navigation"></nav>
+    </div>
+
+    <div class="storage-warning" id="storage-warning" role="alert" hidden>
+      Browser storage is unavailable. Changes will last only for this visit; export a Family Words backup before leaving.
+    </div>
+    <div id="modal-root"></div>
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <noscript>
+      <div class="noscript">Mameloshn needs JavaScript for lessons, practice, and locally saved progress.</div>
+    </noscript>
+
+    <script src="course-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

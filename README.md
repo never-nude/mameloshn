@@ -6,7 +6,13 @@
 
 Mameloshn is a native Apple learning app for recovering the spoken Yiddish of a family whose roots run through Bessarabia toward Odessa. The course is written entirely in Latin letters. It starts from broad Southeastern Yiddish patterns, labels uncertainty, and makes the learner's own family words part of the curriculum.
 
-This is an early family preview. Learning progress and family words stay on the device; the app has no account, analytics, or network service. The public repository contains the source. iPhone sharing will require TestFlight.
+This is an early family preview. Learning progress and family words stay on the device; the app has no account or analytics. The public repository contains the source. The native iPhone build will require TestFlight, while the interactive website works in Safari now.
+
+## Learn in your browser
+
+**[Open the interactive Mameloshn course](https://never-nude.github.io/mameloshn/)**
+
+The website includes all seven lessons, read/listen/recall exercises, XP and streaks, spaced review, the searchable phrasebook, and private Family Words. It works on phones and computers, can be added to an iPhone Home Screen, and keeps learning data in that browser. Family notes can be exported and imported as a private backup.
 
 ## Download for Mac
 
@@ -27,6 +33,7 @@ The learning loop uses short sessions, immediate feedback, visible progress, var
 - Local progress, daily XP, and streak storage with no account or network service
 - Approximate on-device pronunciation, clearly labeled as rough audio
 - Dynamic Type-friendly adaptive layouts: sidebar on macOS and tabs on iPhone
+- A responsive, installable GitHub Pages version with local progress and offline course access after the first visit
 
 ## Run it
 
@@ -75,5 +82,6 @@ The preferred next step is a small set of licensed human recordings from a speak
 - `Mameloshn/Views/LessonSessionView.swift` — the active learning loop
 - `Mameloshn/Views/` — home, lesson library, practice, phrasebook, and family notebook
 - `Mameloshn/Services/SpeechCoach.swift` — approximate offline playback
+- `docs/` — the no-build interactive website deployed through GitHub Pages
 
 Copyright © 2026 Michael Kushman. All rights reserved.
