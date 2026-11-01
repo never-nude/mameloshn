@@ -9,6 +9,28 @@
   "background_color": "#f6f0e2",
   "theme_color": "#f6f0e2",
   "orientation": "any",
+  "lang": "en",
+  "dir": "ltr",
+  "shortcuts": [
+    {
+      "name": "Zog mir — a conversation",
+      "short_name": "Zog mir",
+      "url": "./#talk",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "A short review",
+      "short_name": "Practice",
+      "url": "./#practice",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Family words",
+      "short_name": "Family",
+      "url": "./#family",
+      "icons": [{ "src": "assets/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
   "icons": [
     {
       "src": "assets/icon-192.png",

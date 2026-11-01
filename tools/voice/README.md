@@ -105,8 +105,11 @@ tools/voice/.venv/bin/python tools/voice/generate_clips.py --phase score
 ```
 
 Candidates are cached in `tools/voice/work/` (ignored by git), so a re-run only synthesizes what is
-missing; `--force` regenerates. After replacing clips, bump `CACHE_NAME` in `docs/sw.js` so
-offline installs drop the old audio (clips are cached network-first, not precached).
+missing; `--force` regenerates.
+
+**Deployment rule:** the service worker serves clips cache-first once they have been played, so
+every change to `docs/audio/**/*.m4a` must ship together with a bump of `CACHE_NAME` in
+`docs/sw.js`, or installed copies keep playing the old clips.
 
 ## Preparing a reference clip
 

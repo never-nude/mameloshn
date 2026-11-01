@@ -10,7 +10,7 @@
   --honey: #df9525;
   --sage: #4d7d63;
   --blue: #386791;
-  --clay: #a7553e;
+  --clay: #8c422e;
   --white: #fffdf8;
   --line: rgba(83, 40, 77, 0.12);
   --shadow: 0 18px 45px rgba(27, 26, 34, 0.09);
@@ -69,8 +69,14 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid rgba(56, 103, 145, 0.55);
+  outline: 3px solid var(--blue);
   outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--blue);
+}
+
+.option:focus-visible,
+.nav-button:focus-visible {
+  outline-offset: 2px;
 }
 
 .skip-link {
@@ -514,8 +520,12 @@ body.in-session .bottom-nav {
 
 .plain-link,
 .text-button {
+  display: inline-flex;
+  align-items: center;
   width: max-content;
-  padding: 2px;
+  min-height: 44px;
+  padding: 2px 6px;
+  margin: -10px -4px;
   border: 0;
   color: var(--beet);
   background: transparent;
@@ -550,7 +560,7 @@ body.in-session .bottom-nav {
 }
 
 .back-link {
-  margin-bottom: 20px;
+  margin: -10px -4px 20px;
 }
 
 .lesson-detail-header {
@@ -1149,8 +1159,7 @@ body.in-session .bottom-nav {
 }
 
 .rating-button small {
-  opacity: 0.75;
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   font-weight: 650;
 }
 
@@ -1244,7 +1253,7 @@ body.in-session .bottom-nav {
 .phrase-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .audio-button,
@@ -1253,6 +1262,7 @@ body.in-session .bottom-nav {
   align-items: center;
   justify-content: center;
   gap: 6px;
+  min-width: 44px;
   min-height: 44px;
   padding: 7px 11px;
   border: 0;
@@ -1268,7 +1278,6 @@ body.in-session .bottom-nav {
 }
 
 .learn-button {
-  min-width: 38px;
   color: var(--ink-2);
   background: var(--paper-deep);
 }
@@ -2544,4 +2553,15 @@ body.in-session .storage-warning {
   .recording-button .record-dot {
     animation: none;
   }
+}
+
+/* Home notice: give the "How Ziskeit works" text button room below the notice text. */
+.notice + .text-button {
+  margin-top: 2px;
+}
+
+/* focusMain() moves focus to the main region after keyboard actions; the region itself needs no ring. */
+#main-content:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
