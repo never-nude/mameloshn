@@ -6,7 +6,13 @@
 
 Mameloshn is a native Apple learning app for recovering the spoken Yiddish of a family whose roots run through Bessarabia toward Odessa. The course is written entirely in Latin letters. It starts from broad Southeastern Yiddish patterns, labels uncertainty, and makes the learner's own family words part of the curriculum.
 
-This is an early family preview. Learning progress and family words stay on the device; the app has no account, analytics, or network service. The public repository contains the source. A simple Mac download will be added after the build completes Apple notarization, while iPhone sharing will require TestFlight.
+This is an early family preview. Learning progress and family words stay on the device; the app has no account, analytics, or network service. The public repository contains the source. iPhone sharing will require TestFlight.
+
+## Download for Mac
+
+**[Download Mameloshn 0.1.0](https://github.com/never-nude/mameloshn/releases/latest/download/Mameloshn-0.1.0-macOS.zip)**
+
+Requires macOS 15 or later. Double-click the downloaded ZIP, then move **Mameloshn** to the Applications folder and open it. The release is signed with an Apple Developer ID and notarized by Apple.
 
 The learning loop uses short sessions, immediate feedback, visible progress, varied prompts, review scheduling, and a modest daily goal. The interface keeps calm surfaces, stable navigation, one clear action at a time, compact context, and warm direct copy.
 
