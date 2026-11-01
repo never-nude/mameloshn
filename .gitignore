@@ -11,3 +11,8 @@ threadvoice-live.jpg
 # Local distribution output.
 .release/
 *.zip
+
+# Voice generation: local Python env, candidate WAVs and private reference clips.
+tools/voice/.venv/
+tools/voice/work/
+tools/voice/refs*.json

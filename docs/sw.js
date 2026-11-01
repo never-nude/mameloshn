@@ -1,4 +1,4 @@
-const CACHE_NAME = "mameloshn-web-v4";
+const CACHE_NAME = "mameloshn-web-v5";
 const APP_SHELL = [
   "./",
   "./index.html",

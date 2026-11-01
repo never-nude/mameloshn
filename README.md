@@ -73,7 +73,7 @@ Useful references include the [YIVO overview of Yiddish dialects](https://www.do
 
 ## Audio
 
-The web edition ships compact fixed voice clips rendered with [Kokoro-82M](https://github.com/hexgrad/kokoro) so playback sounds the same in each browser. They are expressive synthetic references shaped by the written pronunciation cues, not authenticated Bessarabia/Odessa recordings. The browser’s built-in speech voice is never used as a fallback.
+The web edition ships compact fixed voice clips so playback sounds the same in each browser. They are rendered offline in a **cloned family voice**: [Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS) (0.6B Base, run locally with MLX) imitates a short reference recording of the speaker and reads each Yiddish line in that voice, with the YIVO spelling respelled for the model. The pipeline, its settings and the per-clip provenance manifest live in [tools/voice](tools/voice/README.md). The clips are synthetic references in a real family voice, not authenticated Bessarabia/Odessa recordings. The browser’s built-in speech voice is never used as a fallback.
 
 The native preview’s `SpeechCoach` still feeds hand-tuned phonetic cues to an installed Apple English voice. It remains an offline prototype aid.
 
